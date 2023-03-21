@@ -13,3 +13,11 @@ After completing this section a customer should:
 
 -  Know which applications are ready to be migrated
 -  Know what further steps are required
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   Use cases <use_cases>
+   Assessment <assessment/index>
+   Business Assessment <business>

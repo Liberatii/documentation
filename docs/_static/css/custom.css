@@ -53,9 +53,11 @@ li.toctree-l1 {
 li.toctree-l1.active {
     background: rgba(26, 71, 255, 0.1);
 }
+
 .bd-sidebar-primary label.toctree-toggle:hover {
     background: transparent;
 }
+
 nav.bd-links li>a {
 	font-style: normal;
 	font-weight: 600;
@@ -108,6 +110,7 @@ nav.bd-links li>a {
 .popover{
     box-shadow: var(--bs-popover-box-shadow);
 }
+
 .popover-header{
     margin: 0;
     font-weight: bold;

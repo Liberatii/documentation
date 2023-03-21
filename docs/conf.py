@@ -34,7 +34,7 @@ html_theme_options = {
    "navbar_center": ["search-field"],
    "navbar_end": ["company-nav"],
    "navbar_persistent": [],
-   "navigation_depth": 2,
+   "navigation_depth": 3,
    "navigation_with_keys": False,
    "search_bar_text": "Search docs...",
 }
@@ -56,3 +56,5 @@ rst_prolog = """
    :format: html
 
 """
+
+pygments_style = "xcode"
