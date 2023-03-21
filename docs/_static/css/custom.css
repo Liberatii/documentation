@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,400;0,600;0,800;1,400&display=swap');
+
+
+html {
+    /* Font */
+    --pst-font-family-base: 'Albert Sans', sans-serif, Arial;
+    --pst-font-family-heading: 'Albert Sans', sans-serif, Arial;
+}
+
+html[data-theme="light"] {
+    /* Background */
+    --pst-color-background: #F5F5F5;
+    /* Color */
+    --pst-color-primary: #1A47FF;
+}
+
+/* Header */
+.bd-header .bd-header__inner {
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+@media (max-width: 959.98px){
+    .bd-header .bd-header__inner {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+.bd-header .navbar-header-items__center {
+    padding-left: 60px;
+}
+
+.bd-search input {
+    background-color: #fff;
+}
+
+.link-nounderline:hover{
+    text-decoration: none;
+}
+
+/* Sidebar */
+.bd-sidebar-primary {
+    padding: 2rem 0;
+    width: 260px;
+}
+
+li.toctree-l1 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+li.toctree-l1.active {
+    background: rgba(26, 71, 255, 0.1);
+}
+.bd-sidebar-primary label.toctree-toggle:hover {
+    background: transparent;
+}
+nav.bd-links li>a {
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 20px;
+    padding: 14px 0;
+}
+
+.bd-sidebar-primary label.toctree-toggle {
+    justify-content: flex-start;
+    height: 45px;
+}
+
+@media (max-width: 959.98px){
+    .sidebar-header-items__center{
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+    .sidebar-header-items__end{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+}
+
+/* Content */
+.bd-content {
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+/* Custom styles */
+.popover-role {
+	background: none;
+	outline: none;
+	border: none;
+	text-decoration: underline;
+}
+
+.custom-popover {
+  --bs-popover-border-color: #fff;
+  --bs-popover-box-shadow: 0 .2rem .5rem var(--pst-color-shadow),0 0 .0625rem var(--pst-color-shadow)!important;
+  --bs-popover-header-font-size: 1rem;
+  --bs-popover-header-color: #000;
+  --bs-popover-header-bg: #fff;
+  --bs-popover-body-padding-y: 0.5rem;
+}
+
+.popover{
+    box-shadow: var(--bs-popover-box-shadow);
+}
+.popover-header{
+    margin: 0;
+    font-weight: bold;
+}
