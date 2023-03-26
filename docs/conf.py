@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "Liberatii Gateway"
-copyright = "2023, Liberatii"
+copyright = "2023 Liberatii. All rights reserved"
 author = "Liberatii"
 
 # -- General configuration ---------------------------------------------------
@@ -37,6 +37,8 @@ html_theme_options = {
    "navigation_depth": 3,
    "navigation_with_keys": False,
    "search_bar_text": "Search docs...",
+   "footer_start": ["version", "copyright"],
+   "footer_end": ["footer-end"],
 }
 html_context = {
    "default_mode": "light"
