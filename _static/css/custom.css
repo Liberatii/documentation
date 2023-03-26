@@ -51,8 +51,15 @@ a.navbar-brand.logo p.logo__title {
 	color: #212123;
 }
 
+.bd-search {
+	margin-left: 0;
+	margin-right: 0;
+	padding: 1rem 0;
+}
+
 .bd-search i.fa-solid.fa-magnifying-glass {
     opacity: 0.8;
+    left: 0.6rem;
 }
 
 .bd-search input {
@@ -63,7 +70,9 @@ a.navbar-brand.logo p.logo__title {
     line-height: 130%;
     color: #575E7C;
     opacity: 0.8;
+    padding-left: 1.8rem;
 }
+
 @media (min-width: 959.98px){
 	.bd-search input {
 		width: 325px;
@@ -147,6 +156,10 @@ nav.bd-links li>a {
         padding-right: 5px;
     }
 
+}
+
+div.sidebar-primary-items__end, div#rtd-footer-container{
+	display: none;
 }
 
 /* Content */
@@ -255,4 +268,10 @@ a.policy-links.mobile{
 
 .divider {
     color: #E9E9E9;
+}
+
+
+/* Tables */
+div.responsive-table{
+    overflow: auto;
 }

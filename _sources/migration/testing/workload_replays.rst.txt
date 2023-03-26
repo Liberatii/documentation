@@ -102,14 +102,18 @@ database and against a PostgreSQL database proxied via Liberatii
 Gateway. Liberatii will provide a customer report that will contain the
 following information:
 
-+--------------------+-----------+----------+---------+------------------+
-| Query              | Length    | Order    | Data    | Performance      |
-|                    | match     | match    | match   | increase         |
-+====================+===========+==========+=========+==================+
-| SELECT \* FROM ... | Yes       | No       | 99%     | 1.3              |
-+--------------------+-----------+----------+---------+------------------+
-| ...                | ...       | ...      | ...     | ...              |
-+--------------------+-----------+----------+---------+------------------+
+.. table::
+   :widths: auto
+
+   +-----------------------------------------------------------------------------------------------------+
+   | .. centered:: Customer Report                                                                       |
+   +====================+==================+=================+================+==========================+
+   | **Query**          | **Length match** | **Order match** | **Data match** | **Performance increase** |
+   +--------------------+------------------+-----------------+----------------+--------------------------+
+   | SELECT \* FROM ... | Yes              | No              | 99%            | 1.3                      |
+   +--------------------+------------------+-----------------+----------------+--------------------------+
+   | ...                | ...              | ...             | ...            | ...                      |
+   +--------------------+------------------+-----------------+----------------+--------------------------+
 
 Failing queries
 ~~~~~~~~~~~~~~~
@@ -125,8 +129,8 @@ Order mismatching
 If the length of a query matches but its order does not then a query is
 being used without a defined order. For many applications this is
 deliberate and does not affect correctness. However, it is possible that
-the application depends upon Oracle implementation details or "implicit
-indexes" that are sensitive to changes in the underlying database. Even
+the application depends upon Oracle implementation details or :popover:`implicit
+indexes: In Oracle database, implicit indexes are automatically created by the database when certain actions are taken. These indexes are created without any direct user intervention or input, and are used to improve performance of common database operations.` that are sensitive to changes in the underlying database. Even
 a minor Oracle upgrade could change the results of these queries.
 
 Data match

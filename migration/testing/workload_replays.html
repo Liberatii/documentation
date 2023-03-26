@@ -435,25 +435,24 @@ Gateway. Liberatii will provide a customer report that will contain the
 following information:</p>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Query</p></th>
-<th class="head"><p>Length
-match</p></th>
-<th class="head"><p>Order
-match</p></th>
-<th class="head"><p>Data
-match</p></th>
-<th class="head"><p>Performance
-increase</p></th>
+<tr class="row-odd"><th class="head" colspan="5"><p class="centered">
+<strong>Customer Report</strong></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>SELECT * FROM …</p></td>
+<tr class="row-even"><td><p><strong>Query</strong></p></td>
+<td><p><strong>Length match</strong></p></td>
+<td><p><strong>Order match</strong></p></td>
+<td><p><strong>Data match</strong></p></td>
+<td><p><strong>Performance increase</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>SELECT * FROM …</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>99%</p></td>
 <td><p>1.3</p></td>
 </tr>
-<tr class="row-odd"><td><p>…</p></td>
+<tr class="row-even"><td><p>…</p></td>
 <td><p>…</p></td>
 <td><p>…</p></td>
 <td><p>…</p></td>
@@ -473,8 +472,9 @@ process.</p>
 <p>If the length of a query matches but its order does not then a query is
 being used without a defined order. For many applications this is
 deliberate and does not affect correctness. However, it is possible that
-the application depends upon Oracle implementation details or “implicit
-indexes” that are sensitive to changes in the underlying database. Even
+the application depends upon Oracle implementation details or <span class="popover-html"><button type="button" class="popover-role" data-bs-toggle="popover" data-bs-custom-class="custom-popover" data-bs-placement="top" data-bs-trigger="focus" data-bs-title="implicit
+indexes" data-bs-content="In Oracle database, implicit indexes are automatically created by the database when certain actions are taken. These indexes are created without any direct user intervention or input, and are used to improve performance of common database operations.">implicit
+indexes</button></span> that are sensitive to changes in the underlying database. Even
 a minor Oracle upgrade could change the results of these queries.</p>
 </section>
 <section id="data-match">
@@ -499,30 +499,6 @@ will be investigated by Liberatii as part of the migration process.</p>
                 </article>
               
               
-              
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="testing_client_side.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Client-side (Migration/change driver)</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../cdc.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">CDC</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
-</div>
-                </footer>
               
             </div>
             

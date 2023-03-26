@@ -6,7 +6,7 @@ Documentation
 .. admonition:: Custom
 
    * Take note we are not done here.
-   * This is a :popover-html:`<button type="button" class="popover-role" data-bs-toggle="popover" data-bs-custom-class="custom-popover" data-bs-placement="top" data-bs-trigger="focus" data-bs-title="Mapogisk" data-bs-content="Lörem ipsum biovältare polyfyngar och exonat revis.">Mapogisk</button>`
+   * This is a :popover:`popover: A popover is a transient view that appears above other content onscreen when people click or tap a control or interactive area.`.
 
 .. toctree::
    :hidden:
