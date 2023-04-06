@@ -15,7 +15,12 @@ author = "Liberatii"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx_copybutton", "sphinx_togglebutton", "sphinx_design"]
+extensions = [
+    "sphinxcontrib.video",
+    "sphinx_copybutton",
+    "sphinx_togglebutton",
+    "sphinx_design"
+]
 
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
@@ -28,8 +33,6 @@ html_title = "Liberatii Gateway"
 html_theme = "pydata_sphinx_theme"
 html_theme_options = {
     "logo": {
-        # "image_light": "_static/light-theme-logo.svg",
-        # "image_dark": "_static/dark-theme-logo.svg",
         "alt_text": "",
         "text": "Liberatii Docs"
     },
@@ -41,7 +44,7 @@ html_theme_options = {
     "search_bar_text": "Search docs...",
     "footer_start": ["version", "copyright"],
     "footer_end": ["footer-end"],
-    "show_prev_next": False,
+    "show_prev_next": True,
 }
 html_context = {
     "default_mode": "light"
@@ -54,6 +57,8 @@ html_logo = "_static/light-theme-logo.svg"
 html_static_path = ["_static"]
 html_css_files = ["css/custom.css"]
 html_show_sourcelink = False
+last_updated = True
+html_last_updated_fmt = "%B, %d %Y"
 
 pygments_style = "xcode"
 

@@ -1,0 +1,23 @@
+<!-- Previous / next buttons -->
+<div class="prev-next-area">
+  {%- if prev %}
+    <a class="left-prev"
+       href="{{ prev.link|e }}"
+       title="{{ _('previous page') }}">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-title">Previous Page</p>
+      </div>
+    </a>
+  {%- endif %}
+  {%- if next %}
+    <a class="right-next"
+       href="{{ next.link|e }}"
+       title="{{ _('next page') }}">
+      <div class="prev-next-info">
+        <p class="prev-next-title">Next Page</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+  {%- endif %}
+</div>

@@ -98,13 +98,16 @@ or not theme_secondary_sidebar_items %}
               {# This is empty and only shows up if text has been highlighted by the URL #}
                 {% include "components/searchbox.html" %}
                 <article class="bd-article" role="main">
+                  {%- if last_updated -%}
+                    {% include "last-updated.html" %}
+                  {%- endif %}
                   {% block body %}{% endblock %}
                 </article>
               {% endblock docs_body %}
               {# Article Footer #}
               {% if theme_show_prev_next %}
                 <footer class="bd-footer-article">
-                  {% include "sections/footer-article.html" %}
+                  {% include "footer-article/prev-next.html" %}
                 </footer>
               {% endif %}
             </div>
