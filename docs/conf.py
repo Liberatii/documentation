@@ -36,6 +36,7 @@ html_theme_options = {
         "alt_text": "",
         "text": "Liberatii Docs"
     },
+    "article_header_start": ["breadcrumbs"],
     "navbar_center": ["search-field"],
     "navbar_end": ["company-nav"],
     "navbar_persistent": [],

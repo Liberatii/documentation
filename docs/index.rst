@@ -25,19 +25,25 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy. Lore
 
     1.0 Image description
 
-.. figure:: _static/images/img_space.png
-    :width: 304px
-    :height: 472px
-    :align: left
+.. grid:: 2
 
-    1.1 Image description
+    .. grid-item::
 
-.. figure:: _static/images/img_space.png
-    :width: 304px
-    :height: 472px
-    :align: right
+        .. figure:: _static/images/img_space.png
+            :width: 404px
+            :height: 472px
+            :align: left
 
-    1.2 Image description
+            1.1 Image description
+
+    .. grid-item::
+
+        .. figure:: _static/images/img_space.png
+            :width: 404px
+            :height: 472px
+            :align: left
+
+            1.2 Image description
 
 Admonition Section
 -----------------
@@ -68,15 +74,28 @@ Link Section
 ------------
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
 
-.. rubric:: Liberatii Concept
-    :class: link-section
+.. grid:: 3
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+    .. grid-item::
 
-.. rubric:: Pre-migration
-    :class: link-section
+        .. rubric:: Liberatii Concept
+            :class: link-section
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+
+    .. grid-item::
+
+        .. rubric:: Pre-migration
+            :class: link-section
+
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+
+    .. grid-item::
+
+        .. rubric:: Migration
+            :class: link-section
+
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
 
 
 Code Section :bdg-success:`DONE`
@@ -84,32 +103,29 @@ Code Section :bdg-success:`DONE`
 
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
 
-.. tab-set::
+.. code-block:: JSON
+    :linenos:
 
-    .. tab-item:: Code
+    {
+       "version": "1.0"
+       "timestamp": "2025-07-15T14:45:08.026Z"
+       "source_type_name": "SHOPIFY",
+       "pipeline_name": "test_shopify",
+       "source_table_name": "orders",
+       "destination_type_name": "REDSHIFT",
+       "destination_name": "MY_REDSHIFT_DESTINATION",
+       "destination_table_name": "orders",
+       "events_loaded": 100,
+       "events_sidelined": 11,
+       "primary_keys": [
+            "order_id"
+        ],
+    }
 
-        .. code-block:: JSON
+.. code-block:: bash
+    :class: code-output
 
-            {
-           "version": "1.0"
-           "timestamp": "2025-07-15T14:45:08.026Z"
-           "source_type_name":"SHOPIFY",
-           "pipeline_name":"test_shopify",
-           "source_table_name":"orders",
-           "destination_type_name":"REDSHIFT",
-           "destination_name":"MY_REDSHIFT_DESTINATION",
-           "destination_table_name":"orders",
-           "events_loaded":100,
-           "events_sidelined":11,
-           "primary_keys":[
-                "order_id"
-                ],
-             }
-
-    .. tab-item:: Output
-        :class-content: code-output
-
-        Output text to be displayed here
+    Output text to be displayed here
 
 
 Example Text Section :bdg-warning:`TO DO`
@@ -126,13 +142,37 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy. Lore
 Suggested Links Section
 -----------------------
 
-Liberatii Gateway
+.. grid:: 3
 
-* What is Liberatii?
-* How does it work?
-* Your Liberatii Journey
-* Software Architecture
+    .. grid-item::
 
+        .. rubric:: Liberatii Gateway
+            :class: bullet-title
+
+        * What is Liberatii?
+        * How does it work?
+        * Your Liberatii Journey
+        * Software Architecture
+
+    .. grid-item::
+
+        .. rubric:: Migration Process
+            :class: bullet-title
+
+        * Use Cases
+        * Schema Migration
+        * Data Migration
+        * Monitoring
+
+    .. grid-item::
+
+        .. rubric:: Useful Links
+            :class: bullet-title
+
+        * Latest Release
+        * Upcoming Features
+        * Troubleshooting
+        * Tuning
 
 
 
