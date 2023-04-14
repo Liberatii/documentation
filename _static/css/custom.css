@@ -721,6 +721,12 @@ a.policy-links.mobile{
     color: #1A47FF;
 }
 
+.prev-next-area i {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+
 /* Tables */
 div.responsive-table{
     overflow: auto;
