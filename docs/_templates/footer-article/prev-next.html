@@ -2,8 +2,7 @@
 <div class="prev-next-area">
   {%- if prev %}
     <a class="left-prev"
-       href="{{ prev.link|e }}"
-       title="{{ _('previous page') }}">
+       href="{{ prev.link|e }}">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-title">Previous Page</p>
@@ -12,8 +11,7 @@
   {%- endif %}
   {%- if next %}
     <a class="right-next"
-       href="{{ next.link|e }}"
-       title="{{ _('next page') }}">
+       href="{{ next.link|e }}">
       <div class="prev-next-info">
         <p class="prev-next-title">Next Page</p>
       </div>
