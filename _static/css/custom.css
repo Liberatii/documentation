@@ -34,6 +34,10 @@ body::-webkit-scrollbar {
 }
 
 /* Header */
+.bd-header {
+    box-shadow: 0 0 4px rgba(0, 0, 0, .1)!important;
+}
+
 .bd-header .bd-header__inner {
     padding-left: 60px;
     padding-right: 60px;
@@ -100,11 +104,14 @@ a.navbar-brand.logo p.logo__title {
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
+    border: 0;
 }
 
 .link-nounderline:hover {
     text-decoration: none;
+    font-weight: 600;
     font-size: 16px;
+    border: 0;
 }
 
 a.link-1 {
@@ -113,14 +120,16 @@ a.link-1 {
     line-height: 20px;
     text-align: center;
     color: #575E7C;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 a.link-1:hover {
-    color: #1A47FF;
+    outline: 0;
 }
 
 a.link-2 {
-    background: #1A47FF;
+    background-color: #1A47FF;
     border-radius: 6px;
     padding: 14px 28px;
     font-family: 'Albert Sans';
@@ -133,8 +142,9 @@ a.link-2 {
 }
 
 a.link-2:hover {
-    background: rgba(26, 71, 255, 0.1);
-    color: #1A47FF;
+    background: #1337ca;
+    color: #FFFFFF;
+    outline: 0;
 }
 
 /*Breadcrumbs*/
@@ -191,6 +201,10 @@ li.toctree-l1 > a.reference.internal::before {
 
 .navbar-nav li.toctree-l1.current>a {
     background-color: #1a47ff1a;
+}
+
+nav.bd-links li>a:hover, .toc-entry a.nav-link:hover  {
+    color: #575E7C;
 }
 
 li.toctree-l1.active > a.reference.internal::before {
@@ -329,6 +343,18 @@ ol, ul {
 }
 
 /* Custom styles */
+a {
+    font-family: 'Albert Sans';
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #1A47FF;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
 a.headerlink i.fa-chain {
     font-size: 16px;
     color: #0458D6;
@@ -726,6 +752,9 @@ a.policy-links.mobile{
 	font-weight: 600;
 }
 
+.prev-next-area a:hover p.prev-next-title {
+    text-decoration: none;
+}
 
 /* Tables */
 div.responsive-table{
