@@ -179,6 +179,7 @@ Suggested Links Section
 .. toctree::
    :hidden:
 
+   Introduction <introduction/index>
    Getting Started <getting-started/index>
    Concept <concept/index>
    Pre-migration <pre-migration/index>
