@@ -221,18 +221,22 @@
         <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links">
 <!--  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>-->
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="introduction/index.html">Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction/what_is_liberatii_gateway.html">What is Liberatii Gateway?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/how_does_liberatii_gateway_work.html">How does Liberatii Gateway work?</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started/index.html">Getting Started</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="concept/index.html">Concept</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="concept/index.html">Concept</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="concept/what_is_liberatii.html">What is Liberatii?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="concept/how_does_it_work.html">How does it work?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="concept/journey.html">Your Liberatii Journey</a></li>
 <li class="toctree-l2"><a class="reference internal" href="concept/software_architecture.html">Software Architecture</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="pre-migration/index.html">Pre-migration</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pre-migration/index.html">Pre-migration</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="pre-migration/use_cases.html">Use cases</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="pre-migration/assessment/index.html">Assessment</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pre-migration/assessment/index.html">Assessment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="pre-migration/assessment/install_liberatii_database_migration_assessment.html">Install Liberatii Database Migration Assessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pre-migration/assessment/perform_an_assessment.html">Perform an assessment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pre-migration/assessment/export_assessment.html">Export assessment</a></li>
@@ -241,8 +245,8 @@
 <li class="toctree-l2"><a class="reference internal" href="pre-migration/business.html">Business Assessment</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="migration/index.html">Migration</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="migration/azure/index.html">Azure Deployment</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="migration/index.html">Migration</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="migration/azure/index.html">Azure Deployment</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="migration/azure/deployment.html">Deployment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/azure/configuration.html">Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/azure/upgrade.html">Upgrade</a></li>
@@ -250,35 +254,35 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="migration/schema_migration.html">Schema Migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration/data_migration.html">Data Migration</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="migration/testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="migration/testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="migration/testing/testing_client_side.html">Client-side (Migration/change driver)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/testing/workload_replays.html">Workload replays</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="migration/cdc.html">CDC</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="migration/cut_over/index.html">Cut over</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="migration/cut_over/index.html">Cut over</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="migration/cut_over/cut_over_client_side.html">Client-side (Migration/change driver)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration/cut_over/replication.html">Replication</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="post-migration/index.html">Post-migration</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="post-migration/index.html">Post-migration</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="post-migration/monitoring.html">Monitoring</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-migration/tuning.html">Tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-migration/manual_translation_table.html">Manual translation table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post-migration/troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="reference/index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="reference/index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="reference/supported_systems.html">Supported databases and client applications</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="reference/database-connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="reference/database-connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="reference/database-connector/jdbc.html">JDBC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reference/database-connector/odbc.html">ODBC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reference/database-connector/oci.html">OCI</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="reference/oracle-plsql/index.html">Oracle PL/SQL Syntax</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="reference/oracle-plsql/index.html">Oracle PL/SQL Syntax</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="reference/oracle-plsql/plsql_syntax.html">PL/SQL syntax (Reference/DQL, DML, DDL)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reference/oracle-plsql/packages.html">Packages</a></li>
 </ul>
