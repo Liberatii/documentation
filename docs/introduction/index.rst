@@ -27,3 +27,12 @@ As you navigate through this documentation, you'll encounter various sections, e
 - **References:** Tailored for those seeking a deeper technical grasp, this section caters to developers and database administrators desiring an in-depth perspective on the Liberatii Data Platform.
 
 It is recommended to progress through the content sequentially to gain a holistic understanding of the platform.
+
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   What is Liberatii Gateway? <what_is_liberatii_gateway>
+   How does Liberatii Gateway work? <how_does_liberatii_gateway_work>
