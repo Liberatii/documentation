@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Troubleshooting &#8212; Liberatii Gateway</title>
+    <title>Introduction &#8212; Liberatii Gateway</title>
   
   
   
@@ -53,12 +53,12 @@
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'post-migration/troubleshooting';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'introduction/index';</script>
     <link rel="shortcut icon" href="../_static/dark-theme-logo.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Reference" href="../reference/index.html" />
-    <link rel="prev" title="Manual translation table" href="manual_translation_table.html" />
+    <link rel="next" title="Getting Started" href="../getting-started/index.html" />
+    <link rel="prev" title="Page Title" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -224,7 +224,7 @@
         <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links">
 <!--  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>-->
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../concept/index.html">Concept</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../concept/what_is_liberatii.html">What is Liberatii?</a></li>
@@ -266,11 +266,11 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Post-migration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tuning.html">Tuning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual_translation_table.html">Manual translation table</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Troubleshooting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../post-migration/index.html">Post-migration</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../post-migration/monitoring.html">Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../post-migration/tuning.html">Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../post-migration/manual_translation_table.html">Manual translation table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../post-migration/troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../reference/index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -326,10 +326,7 @@
         Liberatii Docs
       </a>
     </li>
-    
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Post-migration</a></li>
-    
-    <li class="breadcrumb-item active" aria-current="page">Troubleshooting</li>
+    <li class="breadcrumb-item active" aria-current="page">Introduction</li>
   </ul>
 </nav>
 </div>
@@ -349,8 +346,23 @@
   <br/>
 </p>
                   
-  <section id="troubleshooting">
-<span id="troubleshoot"></span><h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h1>
+  <section id="introduction">
+<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<p>Welcome to the comprehensive guide for the Liberatii Data Platform, a state-of-the-art solution for database virtualization.</p>
+<p>The Liberatii Data Platform has been meticulously designed to address multifaceted database migration and lock-in challenges. This documentation will provide insights into its architecture, the key components that drive its functionality, and the strategic implementations that harness its capabilities. For areas that require a deeper technical dive, we have incorporated specific links to detailed resources.</p>
+<p>Two primary elements form the backbone of the Liberatii Data Platform:</p>
+<p><strong>1. Liberatii Gateway</strong>: At the heart of the Liberatii Data Platform lies the Liberatii Gateway. This core component functions as a real-time SQL translation engine, pivotal to the platform’s overall efficacy and seamless operation.</p>
+<p><strong>2. Liberatii Database Migration Engine:</strong> This service, provisioned with a REST API, is adept at streamlining many tasks, including but not limited to data migration, verification, assessment, and synchronization.</p>
+<p>Understanding these elements is crucial for users aiming to leverage the Liberatii Data Platform effectively.</p>
+<p>As you navigate through this documentation, you’ll encounter various sections, each addressing different facets of the platform:</p>
+<ul class="simple">
+<li><p><strong>Concepts:</strong> This section offers a foundational understanding of the Liberatii Data Platform. It delves into the nuances of the Liberatii Gateway, Database Migration Engine, and outlines the typical migration journey with Liberatii.</p></li>
+<li><p><strong>Pre-migration:</strong> Here, the focus is on the preparatory stages leading up to database migration, emphasizing the critical assessment phase.</p></li>
+<li><p><strong>Migration:</strong> A thorough exploration of the database migration process is presented, covering activities ranging from schema transfers to data migration and beyond.</p></li>
+<li><p><strong>Post-migration:</strong> This segment touches upon activities post the migration process, detailing procedures like monitoring, tuning, and troubleshooting.</p></li>
+<li><p><strong>References:</strong> Tailored for those seeking a deeper technical grasp, this section caters to developers and database administrators desiring an in-depth perspective on the Liberatii Data Platform.</p></li>
+</ul>
+<p>It is recommended to progress through the content sequentially to gain a holistic understanding of the platform.</p>
 </section>
 
 
@@ -362,14 +374,14 @@
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="manual_translation_table.html">
+       href="../index.html">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-title">Previous Page</p>
       </div>
     </a>
     <a class="right-next"
-       href="../reference/index.html">
+       href="../getting-started/index.html">
       <div class="prev-next-info">
         <p class="prev-next-title">Next Page</p>
       </div>
