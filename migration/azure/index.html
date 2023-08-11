@@ -225,8 +225,8 @@
 <!--  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>-->
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../introduction/index.html">Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../introduction/what_is_liberatii_gateway.html">What is Liberatii Gateway?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../introduction/how_does_liberatii_gateway_work.html">How does Liberatii Gateway work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/concepts.html">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/software_architecture.html">Software Aarchitecture</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../getting-started/index.html">Getting Started</a></li>
@@ -256,6 +256,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../schema_migration.html">Schema Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running_sql_statements/index.html">Running SQL Statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data_migration.html">Data Migration</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../testing/testing_client_side.html">Client-side (Migration/change driver)</a></li>
@@ -355,6 +356,78 @@
                   
   <section id="azure-deployment">
 <span id="id1"></span><h1>Azure Deployment<a class="headerlink" href="#azure-deployment" title="Permalink to this heading">#</a></h1>
+<p>We now use a preview audience list to allow access to our offer before it’s published live in the online stores. To have the ability to deploy Liberatii Gateway software on Azure, you have to contact us and share your subscription ID with us. It lets us include it in the preview list and make it visible for you to use. As soon as it’s done, you can use the following instruction to deploy Liberatii Gateway.</p>
+<p>Here is the start page of the app. To create Liberatii Gateway for Oracle Apps click on the button <strong>Create</strong>.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/azure_deployment_01.png"><img alt="../../_images/azure_deployment_01.png" src="../../_images/azure_deployment_01.png" style="width: 100%;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p>On the <strong>Basic</strong> tab point to general information about <strong>subscriptions</strong>, <strong>resource groups</strong>, <strong>regions</strong> etc. Use information hints to get more info. Examples of filling in the fields are in the screenshot below.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/azure_deployment_02.png"><img alt="../../_images/azure_deployment_02.png" src="../../_images/azure_deployment_02.png" style="width: 100%;" /></a>
+</figure>
+<p>To go to specific parameters press the button <strong>Next : Liberatii Gateway settings &gt;</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p>On the next tab, it is needed to fill in <strong>VM parameters</strong>. They are self-understandable and info hints can be used to get the details.</p>
+<p>Info about <strong>PostgreSQL database parameters</strong> is designed to support two variants of configuration.</p>
+<p>One is using a preliminary configured database server. In this case, no PostgreSQL db server will be created. The following fields <strong>Host, Username, Password, Confirm password, Infoquery User, Password, Confirm password, Database name</strong> should be filled in according to the result of the configuration of the database server that was done before (preliminary) by a DBA. Also, <strong>Azure Database for PostgreSQL parameters</strong> should be set to <strong>None</strong>.</p>
+<p>Another variant is for deploying Azure Database for PostgreSQL flexible server to be used with Liberatii Gateway. In this case, <strong>Azure Database for PostgreSQL parameters</strong> should be set to <strong>Standard_B2s</strong>, <strong>Database Name</strong> should be set to <em>postgres</em> and credentials of User and Infoquery User could be the same.</p>
+<p>The <strong>Azure Virtual Machine Scale Set parameters</strong> can be set to <strong>None</strong>. It means that for Liberatii Gateway the virtual machine will be deployed. To use the virtual machine scale set for LGW choose any other value where the number is the number of instances of VMSS.</p>
+<p>Examples of filling in the fields to deploy Liberatii Gateway with <strong>Azure Virtual Machine Scale Set</strong> and <strong>Azure Database for PostgreSQL flexible server</strong> are on the screenshot below.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/azure_deployment_03.png"><img alt="../../_images/azure_deployment_03.png" src="../../_images/azure_deployment_03.png" style="width: 100%;" /></a>
+</figure>
+<p>After all preparation click on the button <strong>Next : Review + create &gt;</strong>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p>The next tab contains brief info about deployment to review.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/azure_deployment_04.png"><img alt="../../_images/azure_deployment_04.png" src="../../_images/azure_deployment_04.png" style="width: 100%;" /></a>
+</figure>
+<p>it needs to agree to the terms and conditions and press the button <strong>Create</strong> to start the deployment process.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/azure_deployment_05.png"><img alt="../../_images/azure_deployment_05.png" src="../../_images/azure_deployment_05.png" style="width: 100%;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p>When the deployment completes, the following page will appear. Click on button Go to resource to navigate components of the deployment.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/azure_deployment_06.png"><img alt="../../_images/azure_deployment_06.png" src="../../_images/azure_deployment_06.png" style="width: 100%;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p>Then click on <strong>Parameters and Outputs</strong> to see the details of deployment or <strong>Managed resource group link</strong> to see all components of deployment.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/azure_deployment_07.png"><img alt="../../_images/azure_deployment_07.png" src="../../_images/azure_deployment_07.png" style="width: 100%;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p>Here it is an example of <strong>Parameters and Outputs</strong> tab:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/azure_deployment_08.png"><img alt="../../_images/azure_deployment_08.png" src="../../_images/azure_deployment_08.png" style="width: 100%;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p>And this example of <strong>Managed resource group</strong> page:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/azure_deployment_09.png"><img alt="../../_images/azure_deployment_09.png" src="../../_images/azure_deployment_09.png" style="width: 100%;" /></a>
+</figure>
 <div class="toctree-wrapper compound">
 </div>
 </section>

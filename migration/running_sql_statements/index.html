@@ -1,0 +1,605 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Running SQL Statements &#8212; Liberatii Gateway</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'migration/running_sql_statements/index';</script>
+    <link rel="shortcut icon" href="../../_static/dark-theme-logo.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data Migration" href="../data_migration.html" />
+    <link rel="prev" title="Schema Migration" href="../schema_migration.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search docs..."
+         aria-label="Search docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/light-theme-logo.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../_static/light-theme-logo.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">Liberatii Docs</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search docs..."
+         aria-label="Search docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item"><!--This will display the content on the right side of the navbar.-->
+<a class="link-1 link-nounderline" href="#">Visit Website</a>
+<a class="btn link-2 link-nounderline" href="#" role="button">Schedule a demo</a></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search docs..."
+         aria-label="Search docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><!--This will display the content on the right side of the navbar.-->
+<a class="link-1 link-nounderline" href="#">Visit Website</a>
+<a class="btn link-2 link-nounderline" href="#" role="button">Schedule a demo</a></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links">
+<!--  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>-->
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../introduction/index.html">Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/concepts.html">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/software_architecture.html">Software Aarchitecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/index.html">Getting Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../concept/index.html">Concept</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../concept/what_is_liberatii.html">What is Liberatii?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../concept/how_does_it_work.html">How does it work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../concept/journey.html">Your Liberatii Journey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../concept/software_architecture.html">Software Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pre-migration/index.html">Pre-migration</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pre-migration/use_cases.html">Use cases</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../pre-migration/assessment/index.html">Assessment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pre-migration/assessment/install_liberatii_database_migration_assessment.html">Install Liberatii Database Migration Assessment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pre-migration/assessment/perform_an_assessment.html">Perform an assessment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pre-migration/assessment/export_assessment.html">Export assessment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pre-migration/business.html">Business Assessment</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Migration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../azure/index.html">Azure Deployment</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../azure/deployment.html">Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../azure/configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../azure/upgrade.html">Upgrade</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../schema_migration.html">Schema Migration</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Running SQL Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_migration.html">Data Migration</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../testing/testing_client_side.html">Client-side (Migration/change driver)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../testing/workload_replays.html">Workload replays</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cdc.html">CDC</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cut_over/index.html">Cut over</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cut_over/cut_over_client_side.html">Client-side (Migration/change driver)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cut_over/replication.html">Replication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../post-migration/index.html">Post-migration</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../post-migration/monitoring.html">Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../post-migration/tuning.html">Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../post-migration/manual_translation_table.html">Manual translation table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../post-migration/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../reference/index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/supported_systems.html">Supported databases and client applications</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/database-connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/database-connector/jdbc.html">JDBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/database-connector/odbc.html">ODBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/database-connector/oci.html">OCI</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/oracle-plsql/index.html">Oracle PL/SQL Syntax</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/oracle-plsql/plsql_syntax.html">PL/SQL syntax (Reference/DQL, DML, DDL)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/oracle-plsql/packages.html">Packages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/high_availability_fault_tolerance_and_replication.html">High availability, Fault tolerance and Replication</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        Liberatii Docs
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Migration</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Running SQL Statements</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main"><p class="last-updated">
+  Updated August, 11 2023
+  <br/>
+</p>
+                  
+  <section id="running-sql-statements">
+<span id="id1"></span><h1>Running SQL Statements<a class="headerlink" href="#running-sql-statements" title="Permalink to this heading">#</a></h1>
+<section id="applications">
+<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h2>
+<p>Liberatii Gateway from the client application looks like a PostgreSQL database which accepts Oracle queries. So the application using it should replace its connectivity driver (or library) with a PostgreSQL connectivity driver or a driver provided by Liberatii.</p>
+<p>If an application uses JDBC/ODBC connectivity technology it’s likely enough to replace it with any PostgreSQL JDBC/ODBC drivers pointing to Liberatii Gateway rather than to a real PostgreSQL database. There are however some usages where this may not work. Mostly because the driver itself expects the queries to have PostgreSQL syntax. In this case, Liberatii can provide their own drivers.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="ides">
+<h2>IDEs<a class="headerlink" href="#ides" title="Permalink to this heading">#</a></h2>
+<p>To use LGW in IDE it’s enough to replace the driver. However, some IDE also expects the query to be in the target SQL language.</p>
+<p>To replace the JDBC driver in DBeaver, follow the instructions:</p>
+<ul class="simple">
+<li><p>Select Database-&gt;Driver Manager</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/DBeaver_01.png"><img alt="../../_images/DBeaver_01.png" src="../../_images/DBeaver_01.png" style="width: 100%;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Press new driver</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/DBeaver_02.png"><img alt="../../_images/DBeaver_02.png" src="../../_images/DBeaver_02.png" style="width: 100%;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Fill same as below picture</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/DBeaver_03.png"><img alt="../../_images/DBeaver_03.png" src="../../_images/DBeaver_03.png" style="width: 100%;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Add liberatii jdbc driver</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/DBeaver_04.png"><img alt="../../_images/DBeaver_04.png" src="../../_images/DBeaver_04.png" style="width: 100%;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Press the Find class button, and select liberatii.jdbc class</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/DBeaver_05.png"><img alt="../../_images/DBeaver_05.png" src="../../_images/DBeaver_05.png" style="width: 100%;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Use Liberatti LGW driver for adding new connection</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/DBeaver_06.png"><img alt="../../_images/DBeaver_06.png" src="../../_images/DBeaver_06.png" style="width: 100%;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Point your parameters of connection (host, port, database, username, password)</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/DBeaver_07.png"><img alt="../../_images/DBeaver_07.png" src="../../_images/DBeaver_07.png" style="width: 100%;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Press button Test Connection …</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/DBeaver_08.png"><img alt="../../_images/DBeaver_08.png" src="../../_images/DBeaver_08.png" style="width: 100%;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>WARNING: DBeaver doesn’t understand the query is in Oracle syntax, so you cannot just run the whole buffer. For simple queries, it’s possible to select them all and press Alt-X. But for complex ones (e.g. PL/SQL DDLs) it works only by selecting a single statement and pressing Ctrl(Command on Mac)-Enter.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="using-psql">
+<h2>Using <cite>psql</cite><a class="headerlink" href="#using-psql" title="Permalink to this heading">#</a></h2>
+<p>The standard PostgreSQL client utility can be used to run Oracle’s query as well. Just connect to the Liberatii Gateway instead of PostgreSQL. However, psql doesn’t know if it works with Oracle SQL syntax and may unexpectedly split the queries on semicolons or something else sending them separately. Liberatii Gateway won’t be able to understand this. To avoid this just wrap Oracle queries with $LBR$ tags. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> postgres=# $LBR$
+<span class="linenos">2</span> CREATE PACKAGE my utils
+<span class="linenos">3</span> ....
+<span class="linenos">4</span> $LBR$;
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../schema_migration.html">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-title">Previous Page</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../data_migration.html">
+      <div class="prev-next-info">
+        <p class="prev-next-title">Next Page</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ides">IDEs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-psql">Using <cite>psql</cite></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner"></div>
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src="../../_static/js/custom.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="version">
+ Latest version V1.2.0
+</p></div>
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023 Liberatii. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><a class="policy-links desktop" href="#">
+  Security
+</a>
+
+<a class="policy-links mobile" href="#">
+  Security
+</a>
+
+<span class="mx-1 divider">|</span>
+
+<a class="policy-links desktop" href="#">
+  Privacy & Cookies Policy
+</a>
+
+<a class="policy-links mobile" href="#">
+  Cookies
+</a>
+
+<span class="mx-1 divider">|</span>
+
+<a class="policy-links desktop" href="#">
+  Terms of Service
+</a>
+
+<a class="policy-links mobile" href="#">
+  ToS
+</a>
+
+<span class="mx-1 divider">|</span>
+
+<a class="social-media me-1" href="#">
+  <i class="fa-brands fa-linkedin-in"></i>
+</a>
+
+<a class="social-media" href="#">
+  <i class="fa-brands fa-twitter"></i>
+</a></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>What is Liberatii Gateway? &#8212; Liberatii Gateway</title>
+    <title>Software Architecture &#8212; Liberatii Gateway</title>
   
   
   
@@ -53,12 +53,12 @@
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'introduction/what_is_liberatii_gateway';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'introduction/software_architecture';</script>
     <link rel="shortcut icon" href="../_static/dark-theme-logo.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="How does Liberatii Gateway work?" href="how_does_liberatii_gateway_work.html" />
-    <link rel="prev" title="Introduction" href="index.html" />
+    <link rel="next" title="Getting Started" href="../getting-started/index.html" />
+    <link rel="prev" title="Concepts" href="concepts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -225,8 +225,8 @@
 <!--  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>-->
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Introduction</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">What is Liberatii Gateway?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_does_liberatii_gateway_work.html">How does Liberatii Gateway work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Software Aarchitecture</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
@@ -256,6 +256,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../migration/schema_migration.html">Schema Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/running_sql_statements/index.html">Running SQL Statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../migration/data_migration.html">Data Migration</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../migration/testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../migration/testing/testing_client_side.html">Client-side (Migration/change driver)</a></li>
@@ -333,7 +334,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Introduction</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">What is Liberatii Gateway?</li>
+    <li class="breadcrumb-item active" aria-current="page">Software Architecture</li>
   </ul>
 </nav>
 </div>
@@ -353,10 +354,15 @@
   <br/>
 </p>
                   
-  <section id="what-is-liberatii-gateway">
-<span id="id1"></span><h1>What is Liberatii Gateway?<a class="headerlink" href="#what-is-liberatii-gateway" title="Permalink to this heading">#</a></h1>
-<p>Liberatii Gateway is a database virtualisation platform (PaaS) that does real-time SQL translations. It enables Non-Oracle cloud databases such as Microsoft Azure SQL or Azure Database for PostgreSQL to understand applications written originally for Oracle databases.</p>
-<p>Liberatii Gateway is a service which sits between legacy applications and a cloud database, such as PostgreSQL. It translates all the arriving queries and data to formats acceptable by PostgreSQL and passes it to the backend database after this. The query result is translated back to Oracle-specific formats so the application doesn’t see the difference and keeQLps behaving like it continues working with the Oracle database. Liberatii Gateway translates not only the resulting data but errors in case of some exceptional situation that must be reported to the application side.</p>
+  <section id="software-architecture">
+<span id="id1"></span><h1>Software Architecture<a class="headerlink" href="#software-architecture" title="Permalink to this heading">#</a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/software_architecture.png"><img alt="../_images/software_architecture.png" src="../_images/software_architecture.png" style="width: 100%; height: 372px;" /></a>
+</figure>
 </section>
 
 
@@ -368,14 +374,14 @@
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html">
+       href="concepts.html">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-title">Previous Page</p>
       </div>
     </a>
     <a class="right-next"
-       href="how_does_liberatii_gateway_work.html">
+       href="../getting-started/index.html">
       <div class="prev-next-info">
         <p class="prev-next-title">Next Page</p>
       </div>

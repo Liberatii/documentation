@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../_static/dark-theme-logo.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="What is Liberatii Gateway?" href="what_is_liberatii_gateway.html" />
+    <link rel="next" title="Concepts" href="concepts.html" />
     <link rel="prev" title="Page Title" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -225,8 +225,8 @@
 <!--  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>-->
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Introduction</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="what_is_liberatii_gateway.html">What is Liberatii Gateway?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_does_liberatii_gateway_work.html">How does Liberatii Gateway work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software_architecture.html">Software Aarchitecture</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
@@ -256,6 +256,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../migration/schema_migration.html">Schema Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../migration/running_sql_statements/index.html">Running SQL Statements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../migration/data_migration.html">Data Migration</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../migration/testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../migration/testing/testing_client_side.html">Client-side (Migration/change driver)</a></li>
@@ -352,21 +353,22 @@
                   
   <section id="introduction">
 <span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
-<p>Welcome to the comprehensive guide for the Liberatii Data Platform, a state-of-the-art solution for database virtualization.</p>
-<p>The Liberatii Data Platform has been meticulously designed to address multifaceted database migration and lock-in challenges. This documentation will provide insights into its architecture, the key components that drive its functionality, and the strategic implementations that harness its capabilities. For areas that require a deeper technical dive, we have incorporated specific links to detailed resources.</p>
-<p>Two primary elements form the backbone of the Liberatii Data Platform:</p>
-<p><strong>1. Liberatii Gateway</strong>: At the heart of the Liberatii Data Platform lies the Liberatii Gateway. This core component functions as a real-time SQL translation engine, pivotal to the platform’s overall efficacy and seamless operation.</p>
-<p><strong>2. Liberatii Database Migration Engine:</strong> This service, provisioned with a REST API, is adept at streamlining many tasks, including but not limited to data migration, verification, assessment, and synchronization.</p>
-<p>Understanding these elements is crucial for users aiming to leverage the Liberatii Data Platform effectively.</p>
-<p>As you navigate through this documentation, you’ll encounter various sections, each addressing different facets of the platform:</p>
+<p>Welcome to the Liberatii Data Platform documentation, your resource for understanding our solution to database virtualization and migration.</p>
+<p>Liberatii Data Platform focuses on simplifying database migration tasks and challenges. This guide introduces you to its structure, primary components, and how it all works together. We’ve added links for you to dive deeper into topics when you need more detail.</p>
+<p>The Liberatii Data Platform is built on three main components:</p>
+<p><strong>1. Database Migration Assessment Tool:</strong> A tool designed to evaluate Oracle databases in preparation for migration, ensuring they align with the Liberatii platform.</p>
+<p><strong>2. Liberatii Database Migration Engine:</strong> Equipped with a REST API, this engine manages various aspects of the migration process, from data transfer to verification and more.</p>
+<p><strong>3. Liberatii Gateway:</strong> This is the central part of our platform. Acting as a real-time SQL translation engine, it’s vital for database virtualization and helps shift applications smoothly to new cloud databases.</p>
+<p>Knowing how these components interact is key to getting the most out of the Liberatii Data Platform.</p>
+<p>As you go through this guide, you’ll find:</p>
 <ul class="simple">
-<li><p><strong>Concepts:</strong> This section offers a foundational understanding of the Liberatii Data Platform. It delves into the nuances of the Liberatii Gateway, Database Migration Engine, and outlines the typical migration journey with Liberatii.</p></li>
-<li><p><strong>Pre-migration:</strong> Here, the focus is on the preparatory stages leading up to database migration, emphasizing the critical assessment phase.</p></li>
-<li><p><strong>Migration:</strong> A thorough exploration of the database migration process is presented, covering activities ranging from schema transfers to data migration and beyond.</p></li>
-<li><p><strong>Post-migration:</strong> This segment touches upon activities post the migration process, detailing procedures like monitoring, tuning, and troubleshooting.</p></li>
-<li><p><strong>References:</strong> Tailored for those seeking a deeper technical grasp, this section caters to developers and database administrators desiring an in-depth perspective on the Liberatii Data Platform.</p></li>
+<li><p><strong>Concepts:</strong> Introducing the basics of the Liberatii Data Platform, including details on the Liberatii Gateway and Database Migration Engine, and an overview of the migration journey.</p></li>
+<li><p><strong>Pre-migration:</strong> Highlighting the steps taken before the actual migration, with a special focus on the assessment phase.</p></li>
+<li><p><strong>Migration:</strong> Walking you through the migration steps, from moving schema to data migration and more.</p></li>
+<li><p><strong>Post-migration:</strong> Covering actions to take after migration, such as monitoring and tuning.</p></li>
+<li><p><strong>References:</strong> For those looking for technical depth, this is where developers and DBAs can learn more about the ins and outs of the Liberatii Data Platform.</p></li>
 </ul>
-<p>It is recommended to progress through the content sequentially to gain a holistic understanding of the platform.</p>
+<p>It’s best to go through the guide from start to finish to get a complete picture.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -387,7 +389,7 @@
       </div>
     </a>
     <a class="right-next"
-       href="what_is_liberatii_gateway.html">
+       href="concepts.html">
       <div class="prev-next-info">
         <p class="prev-next-title">Next Page</p>
       </div>
