@@ -16,6 +16,7 @@ The focus MUST be on actions that the customer can take.
 
    Azure Deployment <azure/index>
    Schema Migration <schema_migration>
+   Running SQL Statements <running_sql_statements/index>
    Data Migration <data_migration>
    Testing <testing/index>
    CDC <cdc>

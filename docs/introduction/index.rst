@@ -2,37 +2,38 @@
 
 Introduction
 ============
-Welcome to the comprehensive guide for the Liberatii Data Platform, a state-of-the-art solution for database virtualization.
+Welcome to the Liberatii Data Platform documentation, your resource for understanding our solution to database virtualization and migration.
 
-The Liberatii Data Platform has been meticulously designed to address multifaceted database migration and lock-in challenges. This documentation will provide insights into its architecture, the key components that drive its functionality, and the strategic implementations that harness its capabilities. For areas that require a deeper technical dive, we have incorporated specific links to detailed resources.
+Liberatii Data Platform focuses on simplifying database migration tasks and challenges. This guide introduces you to its structure, primary components, and how it all works together. We've added links for you to dive deeper into topics when you need more detail.
 
-Two primary elements form the backbone of the Liberatii Data Platform:
+The Liberatii Data Platform is built on three main components:
 
-**1. Liberatii Gateway**: At the heart of the Liberatii Data Platform lies the Liberatii Gateway. This core component functions as a real-time SQL translation engine, pivotal to the platform's overall efficacy and seamless operation. 
+**1. Database Migration Assessment Tool:** A tool designed to evaluate Oracle databases in preparation for migration, ensuring they align with the Liberatii platform.
 
-**2. Liberatii Database Migration Engine:** This service, provisioned with a REST API, is adept at streamlining many tasks, including but not limited to data migration, verification, assessment, and synchronization.
+**2. Liberatii Database Migration Engine:** Equipped with a REST API, this engine manages various aspects of the migration process, from data transfer to verification and more.
 
-Understanding these elements is crucial for users aiming to leverage the Liberatii Data Platform effectively.
+**3. Liberatii Gateway:** This is the central part of our platform. Acting as a real-time SQL translation engine, it's vital for database virtualization and helps shift applications smoothly to new cloud databases.
 
-As you navigate through this documentation, you'll encounter various sections, each addressing different facets of the platform:
+Knowing how these components interact is key to getting the most out of the Liberatii Data Platform.
 
-- **Concepts:** This section offers a foundational understanding of the Liberatii Data Platform. It delves into the nuances of the Liberatii Gateway, Database Migration Engine, and outlines the typical migration journey with Liberatii.
+As you go through this guide, you'll find:
 
-- **Pre-migration:** Here, the focus is on the preparatory stages leading up to database migration, emphasizing the critical assessment phase.
+- **Concepts:** Introducing the basics of the Liberatii Data Platform, including details on the Liberatii Gateway and Database Migration Engine, and an overview of the migration journey.
 
-- **Migration:** A thorough exploration of the database migration process is presented, covering activities ranging from schema transfers to data migration and beyond.
+- **Pre-migration:** Highlighting the steps taken before the actual migration, with a special focus on the assessment phase.
 
-- **Post-migration:** This segment touches upon activities post the migration process, detailing procedures like monitoring, tuning, and troubleshooting.
+- **Migration:** Walking you through the migration steps, from moving schema to data migration and more.
 
-- **References:** Tailored for those seeking a deeper technical grasp, this section caters to developers and database administrators desiring an in-depth perspective on the Liberatii Data Platform.
+- **Post-migration:** Covering actions to take after migration, such as monitoring and tuning.
 
-It is recommended to progress through the content sequentially to gain a holistic understanding of the platform.
+- **References:** For those looking for technical depth, this is where developers and DBAs can learn more about the ins and outs of the Liberatii Data Platform.
 
+It's best to go through the guide from start to finish to get a complete picture.
 
 
 .. toctree::
    :maxdepth: 1
    :hidden:
 
-   What is Liberatii Gateway? <what_is_liberatii_gateway>
-   How does Liberatii Gateway work? <how_does_liberatii_gateway_work>
+   Concepts <concepts>
+   Software Aarchitecture <software_architecture>
