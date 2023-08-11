@@ -19,7 +19,7 @@ extensions = [
     "sphinxcontrib.video",
     "sphinx_copybutton",
     "sphinx_togglebutton",
-    "sphinx_design"
+    "sphinx_design",
 ]
 
 templates_path = ["_templates"]
@@ -63,6 +63,7 @@ html_last_updated_fmt = "%B, %d %Y"
 
 pygments_style = "xcode"
 
+html_extra_path=["extra"]
 
 def process_popover_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     """Processes the :popover: role to create raw HTML for the popover effect."""
