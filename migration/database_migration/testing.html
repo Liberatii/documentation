@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Cut over &#8212; Liberatii Gateway</title>
+    <title>Testing &#8212; Liberatii Gateway</title>
   
   
   
@@ -53,12 +53,12 @@
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'migration/cut_over/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'migration/database_migration/testing';</script>
     <link rel="shortcut icon" href="../../_static/dark-theme-logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Client-side (Migration/change driver)" href="cut_over_client_side.html" />
-    <link rel="prev" title="CDC" href="../cdc.html" />
+    <link rel="next" title="Running SQL Statements" href="../running_sql_statements/index.html" />
+    <link rel="prev" title="Synchronising Databases" href="synchronising_databases.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -249,44 +249,42 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Migration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="../azure/index.html">Azure Deployment</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../azure/deployment.html">Deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../azure/configuration.html">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../azure/upgrade.html">Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../azure/index.html">Azure Deployment</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Database Migration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="initialization.html">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="schema_migration.html">Schema migration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_migration.html">Data migration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="verification.html">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synchronising_databases.html">Synchronising Databases</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Testing</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../schema_migration.html">Schema Migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../running_sql_statements/index.html">Running SQL Statements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data_migration.html">Data Migration</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../testing/testing_client_side.html">Client-side (Migration/change driver)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../testing/workload_replays.html">Workload replays</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../cdc.html">CDC</a></li>
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Cut over</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="cut_over_client_side.html">Client-side (Migration/change driver)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="replication.html">Replication</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../running_sql_statements/index.html">Running SQL Statements</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../running_sql_statements/applications.html">Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../running_sql_statements/ides.html">IDEs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../running_sql_statements/using_psql.html">Using `psql`</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../post-migration/index.html">Post-migration</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../post-migration/index.html">Post-migration</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../post-migration/monitoring.html">Monitoring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../post-migration/tuning.html">Tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../post-migration/manual_translation_table.html">Manual translation table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../post-migration/tuning.html">Tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../post-migration/troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../reference/index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../reference/index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/supported_oracle_plsql_syntax.html">Supported Oracle PL/SQL Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../reference/supported_systems.html">Supported databases and client applications</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/database-connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/database-connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/database-connector/jdbc.html">JDBC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/database-connector/odbc.html">ODBC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/database-connector/oci.html">OCI</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/oracle-plsql/index.html">Oracle PL/SQL Syntax</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/oracle-plsql/index.html">Oracle PL/SQL Syntax</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/oracle-plsql/plsql_syntax.html">PL/SQL syntax (Reference/DQL, DML, DDL)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/oracle-plsql/packages.html">Packages</a></li>
 </ul>
@@ -334,7 +332,10 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Migration</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Cut over</li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Database Migration</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Testing</li>
   </ul>
 </nav>
 </div>
@@ -354,10 +355,10 @@
   <br/>
 </p>
                   
-  <section id="cut-over">
-<span id="id1"></span><h1>Cut over<a class="headerlink" href="#cut-over" title="Permalink to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-</div>
+  <section id="testing">
+<span id="id1"></span><h1>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h1>
+<p>There are several steps for testing. After the data migration the migration service checks hash sums of all the data in the table. It’s also possible to provide it with a set of queries to compare their result sets.</p>
+<p>But the most effective way for verification is replaying Oracle workload files on the Oracle snapshot database and PostgreSQL database and comparing the results. For this, it needs a separate Oracle staging sandbox database. So first the data is staged into this separate Oracle DB which is used for testing. The workload files are captured from the source DB. There is a special <code class="docutils literal notranslate"><span class="pre">replay</span></code> stage for this. There is a <code class="docutils literal notranslate"><span class="pre">workloadsBlob</span></code> parameter to specify the location of the workload files.</p>
 </section>
 
 
@@ -369,14 +370,14 @@
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../cdc.html">
+       href="synchronising_databases.html">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-title">Previous Page</p>
       </div>
     </a>
     <a class="right-next"
-       href="cut_over_client_side.html">
+       href="../running_sql_statements/index.html">
       <div class="prev-next-info">
         <p class="prev-next-title">Next Page</p>
       </div>

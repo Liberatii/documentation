@@ -1,4 +1,0 @@
-.. _upgrade:
-
-Upgrade
-=======

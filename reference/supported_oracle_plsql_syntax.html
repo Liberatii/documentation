@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Data Migration &#8212; Liberatii Gateway</title>
+    <title>Supported Oracle PL/SQL Syntax &#8212; Liberatii Gateway</title>
   
   
   
@@ -53,12 +53,12 @@
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'migration/data_migration';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/supported_oracle_plsql_syntax';</script>
     <link rel="shortcut icon" href="../_static/dark-theme-logo.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Testing" href="testing/index.html" />
-    <link rel="prev" title="Running SQL Statements" href="running_sql_statements/index.html" />
+    <link rel="next" title="Supported databases and client applications" href="supported_systems.html" />
+    <link rel="prev" title="Reference" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -172,6 +172,10 @@
   
 
   
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
 </div>
 
     </nav>
@@ -248,50 +252,48 @@
 <li class="toctree-l2"><a class="reference internal" href="../pre-migration/business.html">Business Assessment</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Migration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="azure/index.html">Azure Deployment</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="azure/deployment.html">Deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="azure/configuration.html">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="azure/upgrade.html">Upgrade</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../migration/index.html">Migration</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../migration/azure/index.html">Azure Deployment</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../migration/database_migration/index.html">Database Migration</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/initialization.html">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/schema_migration.html">Schema migration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/data_migration.html">Data migration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/verification.html">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/synchronising_databases.html">Synchronising Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/testing.html">Testing</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="schema_migration.html">Schema Migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running_sql_statements/index.html">Running SQL Statements</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Data Migration</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="testing/index.html">Testing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="testing/testing_client_side.html">Client-side (Migration/change driver)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="testing/workload_replays.html">Workload replays</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="cdc.html">CDC</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="cut_over/index.html">Cut over</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="cut_over/cut_over_client_side.html">Client-side (Migration/change driver)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cut_over/replication.html">Replication</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../migration/running_sql_statements/index.html">Running SQL Statements</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/running_sql_statements/applications.html">Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/running_sql_statements/ides.html">IDEs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/running_sql_statements/using_psql.html">Using `psql`</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../post-migration/index.html">Post-migration</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../post-migration/index.html">Post-migration</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../post-migration/monitoring.html">Monitoring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../post-migration/tuning.html">Tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../post-migration/manual_translation_table.html">Manual translation table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../post-migration/tuning.html">Tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../post-migration/troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../reference/supported_systems.html">Supported databases and client applications</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/database-connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../reference/database-connector/jdbc.html">JDBC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/database-connector/odbc.html">ODBC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/database-connector/oci.html">OCI</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Supported Oracle PL/SQL Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_systems.html">Supported databases and client applications</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="database-connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="database-connector/jdbc.html">JDBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="database-connector/odbc.html">ODBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="database-connector/oci.html">OCI</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/oracle-plsql/index.html">Oracle PL/SQL Syntax</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../reference/oracle-plsql/plsql_syntax.html">PL/SQL syntax (Reference/DQL, DML, DDL)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/oracle-plsql/packages.html">Packages</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="oracle-plsql/index.html">Oracle PL/SQL Syntax</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="oracle-plsql/plsql_syntax.html">PL/SQL syntax (Reference/DQL, DML, DDL)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="oracle-plsql/packages.html">Packages</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/high_availability_fault_tolerance_and_replication.html">High availability, Fault tolerance and Replication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="high_availability_fault_tolerance_and_replication.html">High availability, Fault tolerance and Replication</a></li>
 </ul>
 </li>
 </ul>
@@ -332,9 +334,9 @@
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Migration</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Reference</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Data Migration</li>
+    <li class="breadcrumb-item active" aria-current="page">Supported Oracle PL/SQL Syntax</li>
   </ul>
 </nav>
 </div>
@@ -354,8 +356,98 @@
   <br/>
 </p>
                   
-  <section id="data-migration">
-<span id="data-migrate"></span><h1>Data Migration<a class="headerlink" href="#data-migration" title="Permalink to this heading">#</a></h1>
+  <section id="supported-oracle-pl-sql-syntax">
+<span id="supported-oracle-plsql-syntax"></span><h1>Supported Oracle PL/SQL Syntax<a class="headerlink" href="#supported-oracle-pl-sql-syntax" title="Permalink to this heading">#</a></h1>
+<section id="type-mapping">
+<h2>Type Mapping<a class="headerlink" href="#type-mapping" title="Permalink to this heading">#</a></h2>
+<p>We cover a few notable differences in translation:</p>
+<table class="table">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Oracle DB</strong></p></th>
+<th class="head"><p><strong>PostgreSQL</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>VARCHAR2</p></td>
+<td><p>VARCHAR</p></td>
+</tr>
+<tr class="row-odd"><td><p>NVARCHAR2</p></td>
+<td><p>VARCHAR</p></td>
+</tr>
+<tr class="row-even"><td><p>NCHAR</p></td>
+<td><p>CHAR</p></td>
+</tr>
+<tr class="row-odd"><td><p>NUMBER(n, m)</p></td>
+<td><p>NUMERIC(n,m)</p></td>
+</tr>
+<tr class="row-even"><td><p>NUMBER( n&lt;=4)</p></td>
+<td><p>SMALLINT</p></td>
+</tr>
+<tr class="row-odd"><td><p>NUMBER( n&lt;=9)</p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-even"><td><p>NUMBER( n&lt;=18)</p></td>
+<td><p>BIGINT</p></td>
+</tr>
+<tr class="row-odd"><td><p>NUMBER( n&gt;18)</p></td>
+<td><p>NUMERIC(n)</p></td>
+</tr>
+<tr class="row-even"><td><p>BINARY_INTEGER</p></td>
+<td><p>INTEGER</p></td>
+</tr>
+<tr class="row-odd"><td><p>BINARY_FLOAT</p></td>
+<td><p>FLOAT</p></td>
+</tr>
+<tr class="row-even"><td><p>DATE</p></td>
+<td><p>TIMESTAMP(0)</p></td>
+</tr>
+<tr class="row-odd"><td><p>TIMESTAMP WITH LOCAL TIME ZONE</p></td>
+<td><p>TIMESTAMPTZ</p></td>
+</tr>
+<tr class="row-even"><td><p>CLOB</p></td>
+<td><p>TEXT</p></td>
+</tr>
+<tr class="row-odd"><td><p>LONG</p></td>
+<td><p>TEXT</p></td>
+</tr>
+<tr class="row-even"><td><p>BLOB</p></td>
+<td><p>BYTEA</p></td>
+</tr>
+<tr class="row-odd"><td><p>RAW(n)</p></td>
+<td><p>BYTEA</p></td>
+</tr>
+<tr class="row-even"><td><p>LONG RAW</p></td>
+<td><p>BYTEA</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p><strong>Details:</strong></p>
+<p><strong>1.</strong> Oracle char datatypes have BYTE and CHAR notation for sizing. Where BYTE corresponds to length in bytes and CHAR to length in characters. Postgre has only char length. We ignore BYTE and CHAR notation. There will be no error for 1 to 1 Byte to Char translation. Just the length on Postgres will be bigger than it’s needed. Default values depend on the session variable NLS_LENGTH_SEMANTICS.</p>
+<p>Oracle:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">DECLARE</span>
+<span class="linenos">2</span>  <span class="n">var1</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">1</span> <span class="n">char</span><span class="p">)</span> <span class="o">:=</span> <span class="s1">&#39;й&#39;</span><span class="p">;</span>
+<span class="linenos">3</span>  <span class="n">var2</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">1</span> <span class="n">char</span><span class="p">)</span> <span class="o">:=</span> <span class="s1">&#39;q&#39;</span><span class="p">;</span>
+<span class="linenos">4</span>  <span class="n">var3</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">1</span> <span class="n">byte</span><span class="p">)</span> <span class="o">:=</span> <span class="s1">&#39;й&#39;</span><span class="p">;</span>  <span class="o">--</span><span class="n">error</span> <span class="n">MultyByte</span> <span class="n">char</span>
+<span class="linenos">5</span>  <span class="n">var4</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">1</span> <span class="n">byte</span><span class="p">)</span> <span class="o">:=</span> <span class="s1">&#39;q&#39;</span><span class="p">;</span>
+<span class="linenos">6</span>  <span class="n">var5</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">2</span> <span class="n">byte</span><span class="p">)</span> <span class="o">:=</span> <span class="s1">&#39;й&#39;</span><span class="p">;</span>
+<span class="linenos">7</span><span class="n">BEGIN</span>
+<span class="linenos">8</span>  <span class="n">NULL</span><span class="p">;</span>
+<span class="linenos">9</span><span class="n">END</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</section>
 </section>
 
 
@@ -367,14 +459,14 @@
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="running_sql_statements/index.html">
+       href="index.html">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-title">Previous Page</p>
       </div>
     </a>
     <a class="right-next"
-       href="testing/index.html">
+       href="supported_systems.html">
       <div class="prev-next-info">
         <p class="prev-next-title">Next Page</p>
       </div>
@@ -386,6 +478,20 @@
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-mapping">Type Mapping</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

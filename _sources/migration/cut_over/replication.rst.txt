@@ -1,4 +1,0 @@
-.. _replication:
-
-Replication
-===========

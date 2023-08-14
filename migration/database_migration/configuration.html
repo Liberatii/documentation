@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Testing &#8212; Liberatii Gateway</title>
+    <title>Configuration &#8212; Liberatii Gateway</title>
   
   
   
@@ -53,12 +53,12 @@
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'migration/testing/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'migration/database_migration/configuration';</script>
     <link rel="shortcut icon" href="../../_static/dark-theme-logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Client-side (Migration/change driver)" href="testing_client_side.html" />
-    <link rel="prev" title="Data Migration" href="../data_migration.html" />
+    <link rel="next" title="Initialization" href="initialization.html" />
+    <link rel="prev" title="Database Migration" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -249,44 +249,42 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Migration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="../azure/index.html">Azure Deployment</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../azure/deployment.html">Deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../azure/configuration.html">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../azure/upgrade.html">Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../azure/index.html">Azure Deployment</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Database Migration</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="initialization.html">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="schema_migration.html">Schema migration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_migration.html">Data migration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="verification.html">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synchronising_databases.html">Synchronising Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html">Testing</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../schema_migration.html">Schema Migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../running_sql_statements/index.html">Running SQL Statements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data_migration.html">Data Migration</a></li>
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Testing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="testing_client_side.html">Client-side (Migration/change driver)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="workload_replays.html">Workload replays</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../cdc.html">CDC</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../cut_over/index.html">Cut over</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../cut_over/cut_over_client_side.html">Client-side (Migration/change driver)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cut_over/replication.html">Replication</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../running_sql_statements/index.html">Running SQL Statements</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../running_sql_statements/applications.html">Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../running_sql_statements/ides.html">IDEs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../running_sql_statements/using_psql.html">Using `psql`</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../post-migration/index.html">Post-migration</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../post-migration/index.html">Post-migration</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../post-migration/monitoring.html">Monitoring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../post-migration/tuning.html">Tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../post-migration/manual_translation_table.html">Manual translation table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../post-migration/tuning.html">Tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../post-migration/troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../reference/index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../reference/index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/supported_oracle_plsql_syntax.html">Supported Oracle PL/SQL Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../reference/supported_systems.html">Supported databases and client applications</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/database-connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/database-connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/database-connector/jdbc.html">JDBC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/database-connector/odbc.html">ODBC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/database-connector/oci.html">OCI</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/oracle-plsql/index.html">Oracle PL/SQL Syntax</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/oracle-plsql/index.html">Oracle PL/SQL Syntax</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/oracle-plsql/plsql_syntax.html">PL/SQL syntax (Reference/DQL, DML, DDL)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/oracle-plsql/packages.html">Packages</a></li>
 </ul>
@@ -334,7 +332,10 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Migration</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Testing</li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Database Migration</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Configuration</li>
   </ul>
 </nav>
 </div>
@@ -354,9 +355,66 @@
   <br/>
 </p>
                   
-  <section id="testing">
-<span id="id1"></span><h1>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
+  <section id="configuration">
+<span id="id1"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h1>
+<p>The comprehensive migration process is strategically divided into the following pivotal stages:</p>
+<p><strong>1. Initialization (init)</strong>: This initiates by extracting vital meta-data from the source database. Subsequently, this information is meticulously stored within the target database through dedicated tables, as elaborated further below.</p>
+<p><strong>2. Schema Migration (schema)</strong>: This phase is dedicated to the migration of the schema. It executes all Data Definition Language (DDL) statements from the source database on the target database, ensuring the seamless transition of the essential structure.</p>
+<p><strong>3. Data Migration (data)</strong>: Herein, the core data migration transpires. The process diligently transfers data from the source to the target, meticulously safeguarding the integrity and fidelity of the information.</p>
+<p><strong>4. Data Consistency Check (check)</strong>: A vital verification step, this phase computes hash sums for all data involved. By comparing these hash sums between the source and target, data consistency is rigorously validated.</p>
+<p><strong>5. Constraints and Artifacts Migration (constraints)</strong>: This pivotal stage orchestrates the migration of intricate components such as indexes, triggers, and constraints from the source to the target. This ensures the complete replication of the operational context.</p>
+<p><strong>6. SQL Consistency Check (checksql)</strong>: Through the execution of a curated list of SQL queries, this step performs a meticulous comparison of result sets. The goal is to ascertain the congruence of outcomes between the source and the target.</p>
+<p><strong>7. Workload Reenactment (replay)</strong>: In this phase, the migration process simulates the original workload by replaying the workload files on both the source and a designated target sandbox database. The consistency and parity of results are rigorously verified.</p>
+<p><strong>8. Continuous Data Change Synchronization (sync)</strong>: The final stage orchestrates Change Data Capture (CDC) synchronization between the databases. This ongoing process ensures that any alterations in the source are promptly propagated to the target, maintaining a real-time, synchronized state.</p>
+<p>Each stage contributes fundamentally to a seamless and meticulous database migration, ensuring that the transition is not only accomplished successfully but also with uncompromising integrity.</p>
+<p>So the command will not reload schema information from the source DB so that you can change anything right in <code class="docutils literal notranslate"><span class="pre">dbt.migration_objects</span> <span class="pre">table</span></code>.</p>
+<p>The table can be updated during the migration. This way we can skip some objects migration, fix the DDLs (in DDL1/DDL2 columns), restart migration of some of the objects,  generate a migration report and so on.</p>
+<p>The table contains the following columns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> - the type of the object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">owner</span></code> - the owner of the object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> - the name of the object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stage</span></code> - the current migration stage</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error</span></code> - the error message in case of failed migration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ddl1</span></code> - the first part of DDL used to create this object on Oracle</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ddl2</span></code> - the second part of DDLs used to create this object, and these are usually constraints for tables</p></li>
+</ul>
+<p>There is also a table <code class="docutils literal notranslate"><span class="pre">dbt.migration_deps</span></code> for ordering object creation and <code class="docutils literal notranslate"><span class="pre">dbt.migration_table_deps</span></code> for ordering the table’s constraints creations.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">stage</span></code> field of <code class="docutils literal notranslate"><span class="pre">dbt.migration_objects</span></code> has the following meanings:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'S'</span></code> - skip this object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'I'</span></code> - an object scheduled for migration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'r'</span></code> - an error happened during initialisation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'P'</span></code> - this object is currently translating</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'D'</span></code> - this object’s schema is migrated</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'E'</span></code> - an error happened during schema migration for this object (the error message in the <code class="docutils literal notranslate"><span class="pre">error</span></code> column)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'m'</span></code> - this is a table, and now the scripts stages data on Oracle’s side</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'f'</span></code> - this is a table, and there is an error during staging</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'M'</span></code> - this is a table, and the data was staged</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R'</span></code> - the data migration was succesful</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'F'</span></code> - the data migration failed (the error message in the <code class="docutils literal notranslate"><span class="pre">error</span></code> column)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'p'</span></code> - the table’s constraints are currently executing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'d'</span></code> - the table’s constraints were successfully applied</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'e'</span></code> - there was an error while migrating these table constraints (the error message in the <code class="docutils literal notranslate"><span class="pre">error</span></code> column)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'c'</span></code> - the table is being checked now</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'i'</span></code> - the table check failed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'K'</span></code> - the table is checked</p></li>
+</ul>
+<p>You don’t have to rerun everything from scratch if you fix anything. Just change stage column for <code class="docutils literal notranslate"><span class="pre">dbt.migration_objects</span></code> to the required value. For example, you’ve fixed table constraints on the table <code class="docutils literal notranslate"><span class="pre">&quot;DEMO&quot;.&quot;DEPARTMENTS&quot;</span></code>, just run:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">update</span><span class="w"> </span><span class="n">dbt</span><span class="p">.</span><span class="n">migration_objects</span>
+<span class="linenos">2</span><span class="w">   </span><span class="k">set</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;R&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ddl2</span><span class="o">=</span><span class="s1">&#39;&lt;correct constraints&gt;&#39;</span>
+<span class="linenos">3</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="k">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DEMO&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DEPARTMENTS&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>And rerun the script in stage constraints.</p>
+<p>It’s also fairly simple to migrate the reports, like:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">select</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">type</span>
+<span class="linenos">2</span><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="n">dbt</span><span class="p">.</span><span class="n">migration_objects</span>
+<span class="linenos">3</span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="k">type</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 </section>
 
@@ -369,14 +427,14 @@
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../data_migration.html">
+       href="index.html">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-title">Previous Page</p>
       </div>
     </a>
     <a class="right-next"
-       href="testing_client_side.html">
+       href="initialization.html">
       <div class="prev-next-info">
         <p class="prev-next-title">Next Page</p>
       </div>

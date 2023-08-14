@@ -3,11 +3,20 @@
 Post-migration
 ==============
 
+  - :ref:`monitoring`
+
+  - :ref:`manual_translation_table`
+
+  - :ref:`tuning`
+
+  - :ref:`troubleshooting`
+
+
 .. toctree::
    :maxdepth: 2
    :hidden:
 
    Monitoring <monitoring>
-   Tuning <tuning>
    Manual translation table <manual_translation_table>
+   Tuning <tuning>
    Troubleshooting <troubleshooting>
