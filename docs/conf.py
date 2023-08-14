@@ -19,7 +19,7 @@ extensions = [
     "sphinxcontrib.video",
     "sphinx_copybutton",
     "sphinx_togglebutton",
-    "sphinx_design",
+    "sphinx_design"
 ]
 
 templates_path = ["_templates"]
