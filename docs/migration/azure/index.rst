@@ -1,8 +1,7 @@
 .. _azure-deployment:
 
 Azure Deployment
-================
-
+++++++++++++++++
 
 We now use a preview audience list to allow access to our offer before it's published live in the online stores. To have the ability to deploy Liberatii Gateway software on Azure, you have to contact us and share your subscription ID with us. It lets us include it in the preview list and make it visible for you to use. As soon as it's done, you can use the following instruction to deploy Liberatii Gateway.
 
@@ -101,11 +100,3 @@ And this example of **Managed resource group** page:
 
 
 
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   Deployment <deployment>
-   Configuration <configuration>
-   Upgrade <upgrade>
