@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>OCI &#8212; Liberatii Gateway</title>
+    <title>BULK COLLECT INTO &#8212; Liberatii Gateway</title>
   
   
   
@@ -53,12 +53,12 @@
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/database-connector/oci';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/supported_oracle_syntax/bulk_collect_into';</script>
     <link rel="shortcut icon" href="../../_static/dark-theme-logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Oracle PL/SQL Syntax" href="../oracle-plsql/index.html" />
-    <link rel="prev" title="ODBC" href="odbc.html" />
+    <link rel="next" title="Gateway configuration" href="../gateway_configuration.html" />
+    <link rel="prev" title="Hierarchical queries" href="hierarchical_queries.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -172,6 +172,10 @@
   
 
   
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
 </div>
 
     </nav>
@@ -263,7 +267,7 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../migration/running_sql_statements/index.html">Running SQL Statements</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/running_sql_statements/applications.html">Applications</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/running_sql_statements/ides.html">IDEs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../migration/running_sql_statements/using_psql.html">Using `psql`</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/running_sql_statements/using_psql.html">Using psql</a></li>
 </ul>
 </li>
 </ul>
@@ -276,20 +280,34 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../supported_oracle_plsql_syntax.html">Supported Oracle PL/SQL Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../supported_systems.html">Supported databases and client applications</a></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Liberatii database connector</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="jdbc.html">JDBC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="odbc.html">ODBC</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">OCI</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../database_connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../database_connector/jdbc.html">JDBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../database_connector/odbc.html">ODBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../database_connector/oci.html">OCI</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../oracle-plsql/index.html">Oracle PL/SQL Syntax</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../oracle-plsql/plsql_syntax.html">PL/SQL syntax (Reference/DQL, DML, DDL)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../oracle-plsql/packages.html">Packages</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Supported Oracle SQL and PL/SQL Syntax</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="type_mapping.html">Type Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pl_sql.html">PL/SQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="string_literals.html">String literals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sql_aliases.html">SQL Aliases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pl_sql_block.html">Plsql Blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_accessing.html">Objects accessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_types.html">User Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameter_bindings.html">Parameter bindings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="packages.html">Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sql.html">SQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cursors.html">CURSORS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="triggers.html">TRIGGERS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synonyms.html">SYNONYMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autonomous_transactions.html">Autonomous transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hierarchical_queries.html">Hierarchical queries</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">BULK COLLECT INTO</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../high_availability_fault_tolerance_and_replication.html">High availability, Fault tolerance and Replication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gateway_configuration.html">Gateway configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -333,9 +351,9 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Liberati database connector</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL Syntax</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">OCI</li>
+    <li class="breadcrumb-item active" aria-current="page">BULK COLLECT INTO</li>
   </ul>
 </nav>
 </div>
@@ -351,12 +369,93 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated August, 14 2023
+  Updated August, 15 2023
   <br/>
 </p>
                   
-  <section id="oci">
-<span id="id1"></span><h1>OCI<a class="headerlink" href="#oci" title="Permalink to this heading">#</a></h1>
+  <section id="bulk-collect-into">
+<span id="id1"></span><h1>BULK COLLECT INTO<a class="headerlink" href="#bulk-collect-into" title="Permalink to this heading">#</a></h1>
+<p>To emulate <code class="docutils literal notranslate"><span class="pre">BULK</span> <span class="pre">COLLECT</span> <span class="pre">INTO</span></code> clause we create an aggregate function for each collection type</p>
+<p>This is an example of creating an aggregate for associative collection type:</p>
+<section id="select-bulk-collect-into">
+<h2>SELECT BULK COLLECT INTO<a class="headerlink" href="#select-bulk-collect-into" title="Permalink to this heading">#</a></h2>
+<p>To emulate select bulk collect we call aggregate for each value and insert them into the temporary record variable. After selecting we assign each field to the corresponding collection variable.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">DECLARE</span>
+<span class="linenos">2</span><span class="p">...</span>
+<span class="linenos">3</span><span class="k">BEGIN</span>
+<span class="linenos">4</span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">empno</span><span class="p">,</span><span class="w"> </span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p">,</span><span class="w"> </span><span class="n">hiredate</span><span class="p">,</span><span class="w"> </span><span class="n">sal</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">deptno</span>
+<span class="linenos">5</span><span class="w">    </span><span class="n">BULK</span><span class="w"> </span><span class="n">COLLECT</span>
+<span class="linenos">6</span><span class="w">       </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_empno</span><span class="p">,</span><span class="w"> </span><span class="n">t_ename</span><span class="p">,</span><span class="w"> </span><span class="n">t_job</span><span class="p">,</span><span class="w"> </span><span class="n">t_hiredate</span><span class="p">,</span><span class="w"> </span><span class="n">t_sal</span><span class="p">,</span><span class="w"> </span><span class="n">t_comm</span><span class="p">,</span><span class="w"> </span><span class="n">t_deptno</span>
+<span class="linenos">7</span><span class="w">       </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">;</span>
+<span class="linenos">8</span><span class="w">    </span><span class="p">...</span>
+<span class="linenos">9</span><span class="k">END</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="select-bulk-collect-into-rowtype">
+<h2>SELECT BULK COLLECT INTO ROWTYPE<a class="headerlink" href="#select-bulk-collect-into-rowtype" title="Permalink to this heading">#</a></h2>
+<p>Emulation of select bulk collect into %ROWTYPE collection is similar to regular select bulk collect but we must specify an asterisk with the source name(alias).</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">declare</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">emp_tbl</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">emp</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="n">t_emp</span><span class="w">           </span><span class="n">EMP_TBL</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="k">BEGIN</span>
+<span class="linenos"> 5</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="n">BULK</span><span class="w"> </span><span class="n">COLLECT</span>
+<span class="linenos"> 7</span><span class="w">       </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_emp</span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="p">...</span>
+<span class="linenos">10</span><span class="k">END</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="fetch-bulk-collect-into">
+<h2>FETCH BULK COLLECT INTO<a class="headerlink" href="#fetch-bulk-collect-into" title="Permalink to this heading">#</a></h2>
+<p>To aggregate values from the cursor we create a fetch loop and store each fetched column in <code class="docutils literal notranslate"><span class="pre">elem</span></code> field of the corresponding collection variable. To aggregate values we’re using <code class="docutils literal notranslate"><span class="pre">lbr$accum</span></code> function without actual aggregate.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">declare</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">deptno_tbl</span><span class="w">    </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">deptno</span><span class="o">%</span><span class="k">TYPE</span><span class="w">    </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">dname_tbl</span><span class="w">    </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">dname</span><span class="o">%</span><span class="k">TYPE</span><span class="w">    </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">loc_tbl</span><span class="w">      </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">loc</span><span class="o">%</span><span class="k">TYPE</span><span class="w">      </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="n">t_deptno</span><span class="w">           </span><span class="n">deptno_TBL</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="n">t_dname</span><span class="w">           </span><span class="n">dname_TBL</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="n">t_loc</span><span class="w">             </span><span class="n">loc_TBL</span><span class="p">;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="k">CURSOR</span><span class="w"> </span><span class="n">emp_cur</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="p">;</span>
+<span class="linenos">10</span><span class="k">BEGIN</span>
+<span class="linenos">11</span><span class="w">    </span><span class="k">OPEN</span><span class="w"> </span><span class="n">emp_cur</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">emp_cur</span><span class="w"> </span><span class="n">BULK</span><span class="w"> </span><span class="n">COLLECT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_deptno</span><span class="p">,</span><span class="w"> </span><span class="n">t_dname</span><span class="p">,</span><span class="w"> </span><span class="n">t_loc</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">     </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">emp_cur</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w">     </span><span class="p">...</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="fetch-bulk-collect-into-rowtype">
+<h2>FETCH BULK COLLECT INTO ROWTYPE<a class="headerlink" href="#fetch-bulk-collect-into-rowtype" title="Permalink to this heading">#</a></h2>
+<p>Emulation of fetch bulk collect into %ROWTYPE collection is similar to regular fetch bulk collect but we should use temporary record variable(for some reason using .elem field as with table type doesn’t work in PG).</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">declare</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">emp_tbl</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">emp</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="n">t_emp</span><span class="w">           </span><span class="n">EMP_TBL</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="k">CURSOR</span><span class="w"> </span><span class="n">emp_cur</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="k">BEGIN</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="k">OPEN</span><span class="w"> </span><span class="n">emp_cur</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">emp_cur</span><span class="w"> </span><span class="n">BULK</span><span class="w"> </span><span class="n">COLLECT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_emp</span><span class="p">;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">emp_cur</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">    </span><span class="p">....</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
 </section>
 
 
@@ -368,14 +467,14 @@
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="odbc.html">
+       href="hierarchical_queries.html">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-title">Previous Page</p>
       </div>
     </a>
     <a class="right-next"
-       href="../oracle-plsql/index.html">
+       href="../gateway_configuration.html">
       <div class="prev-next-info">
         <p class="prev-next-title">Next Page</p>
       </div>
@@ -387,6 +486,23 @@
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-bulk-collect-into">SELECT BULK COLLECT INTO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-bulk-collect-into-rowtype">SELECT BULK COLLECT INTO ROWTYPE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-bulk-collect-into">FETCH BULK COLLECT INTO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-bulk-collect-into-rowtype">FETCH BULK COLLECT INTO ROWTYPE</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

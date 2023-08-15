@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Packages &#8212; Liberatii Gateway</title>
+    <title>String literals &#8212; Liberatii Gateway</title>
   
   
   
@@ -53,12 +53,12 @@
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/oracle-plsql/packages';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/supported_oracle_syntax/string_literals';</script>
     <link rel="shortcut icon" href="../../_static/dark-theme-logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="High availability, Fault tolerance and Replication" href="../high_availability_fault_tolerance_and_replication.html" />
-    <link rel="prev" title="PL/SQL syntax (Reference/DQL, DML, DDL)" href="plsql_syntax.html" />
+    <link rel="next" title="SQL Aliases" href="sql_aliases.html" />
+    <link rel="prev" title="PL/SQL" href="pl_sql.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -263,7 +263,7 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../migration/running_sql_statements/index.html">Running SQL Statements</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/running_sql_statements/applications.html">Applications</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/running_sql_statements/ides.html">IDEs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../migration/running_sql_statements/using_psql.html">Using `psql`</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/running_sql_statements/using_psql.html">Using psql</a></li>
 </ul>
 </li>
 </ul>
@@ -276,20 +276,34 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../supported_oracle_plsql_syntax.html">Supported Oracle PL/SQL Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../supported_systems.html">Supported databases and client applications</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../database-connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../database-connector/jdbc.html">JDBC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../database-connector/odbc.html">ODBC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../database-connector/oci.html">OCI</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../database_connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../database_connector/jdbc.html">JDBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../database_connector/odbc.html">ODBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../database_connector/oci.html">OCI</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Oracle PL/SQL Syntax</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="plsql_syntax.html">PL/SQL syntax (Reference/DQL, DML, DDL)</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Packages</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Supported Oracle SQL and PL/SQL Syntax</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="type_mapping.html">Type Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pl_sql.html">PL/SQL</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">String literals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sql_aliases.html">SQL Aliases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pl_sql_block.html">Plsql Blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_accessing.html">Objects accessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_types.html">User Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameter_bindings.html">Parameter bindings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="packages.html">Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sql.html">SQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cursors.html">CURSORS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="triggers.html">TRIGGERS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synonyms.html">SYNONYMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autonomous_transactions.html">Autonomous transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hierarchical_queries.html">Hierarchical queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bulk_collect_into.html">BULK COLLECT INTO</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../high_availability_fault_tolerance_and_replication.html">High availability, Fault tolerance and Replication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gateway_configuration.html">Gateway configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -333,9 +347,9 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Oracle PL/SQL Syntax</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL Syntax</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Packages</li>
+    <li class="breadcrumb-item active" aria-current="page">String literals</li>
   </ul>
 </nav>
 </div>
@@ -351,12 +365,14 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated August, 14 2023
+  Updated August, 15 2023
   <br/>
 </p>
                   
-  <section id="packages">
-<span id="id1"></span><h1>Packages<a class="headerlink" href="#packages" title="Permalink to this heading">#</a></h1>
+  <section id="string-literals">
+<span id="id1"></span><h1>String literals<a class="headerlink" href="#string-literals" title="Permalink to this heading">#</a></h1>
+<p>We remove all national character specifications (N).</p>
+<p><code class="docutils literal notranslate"><span class="pre">N'TEST'</span></code>  =&gt;  <code class="docutils literal notranslate"><span class="pre">'TEST'</span></code></p>
 </section>
 
 
@@ -368,14 +384,14 @@
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="plsql_syntax.html">
+       href="pl_sql.html">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-title">Previous Page</p>
       </div>
     </a>
     <a class="right-next"
-       href="../high_availability_fault_tolerance_and_replication.html">
+       href="sql_aliases.html">
       <div class="prev-next-info">
         <p class="prev-next-title">Next Page</p>
       </div>

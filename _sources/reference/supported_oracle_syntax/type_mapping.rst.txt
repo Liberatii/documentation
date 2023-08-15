@@ -1,13 +1,9 @@
-.. _supported_oracle_plsql_syntax:
-
-
-Supported Oracle PL/SQL Syntax
-==============================
+.. _type_mapping:
 
 
 
 Type Mapping
-++++++++++++
+~~~~~~~~~~~~
 
 
 We cover a few notable differences in translation:
@@ -56,7 +52,6 @@ We cover a few notable differences in translation:
      - BYTEA
 
 |
-|
 
 **Details:**
 
@@ -78,5 +73,7 @@ Oracle:
    END;
 
 |
-|
 
+**2.** BLOB, RAW(n),  LONG RAW maps to BYTEA or to a Large object if stored data larger 1 GB limit.  We map to BYTEA by default.
+
+|

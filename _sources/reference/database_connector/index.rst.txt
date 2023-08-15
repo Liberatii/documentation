@@ -1,7 +1,17 @@
-.. _database-connector:
+.. _database_connector:
 
 Liberati database connector
 ===========================
+
+
+
+ - :ref:`jdbc`
+
+ - :ref:`odbc`
+
+ - :ref:`oci`
+
+
 
 .. toctree::
    :maxdepth: 1

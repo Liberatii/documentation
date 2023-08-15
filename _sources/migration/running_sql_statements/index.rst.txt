@@ -20,5 +20,5 @@ Running SQL Statements
 
    Applications <applications>
    IDEs <ides>
-   Using `psql` <using_psql>
+   Using psql <using_psql>
 

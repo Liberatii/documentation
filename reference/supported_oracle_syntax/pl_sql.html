@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>JDBC &#8212; Liberatii Gateway</title>
+    <title>PL/SQL &#8212; Liberatii Gateway</title>
   
   
   
@@ -53,12 +53,12 @@
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/database-connector/jdbc';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/supported_oracle_syntax/pl_sql';</script>
     <link rel="shortcut icon" href="../../_static/dark-theme-logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ODBC" href="odbc.html" />
-    <link rel="prev" title="Liberati database connector" href="index.html" />
+    <link rel="next" title="String literals" href="string_literals.html" />
+    <link rel="prev" title="Type Mapping" href="type_mapping.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -172,6 +172,10 @@
   
 
   
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
 </div>
 
     </nav>
@@ -263,7 +267,7 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../migration/running_sql_statements/index.html">Running SQL Statements</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/running_sql_statements/applications.html">Applications</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../migration/running_sql_statements/ides.html">IDEs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../migration/running_sql_statements/using_psql.html">Using `psql`</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../migration/running_sql_statements/using_psql.html">Using psql</a></li>
 </ul>
 </li>
 </ul>
@@ -276,20 +280,34 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../supported_oracle_plsql_syntax.html">Supported Oracle PL/SQL Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../supported_systems.html">Supported databases and client applications</a></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Liberatii database connector</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">JDBC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="odbc.html">ODBC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="oci.html">OCI</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../database_connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../database_connector/jdbc.html">JDBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../database_connector/odbc.html">ODBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../database_connector/oci.html">OCI</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../oracle-plsql/index.html">Oracle PL/SQL Syntax</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../oracle-plsql/plsql_syntax.html">PL/SQL syntax (Reference/DQL, DML, DDL)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../oracle-plsql/packages.html">Packages</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Supported Oracle SQL and PL/SQL Syntax</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="type_mapping.html">Type Mapping</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">PL/SQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="string_literals.html">String literals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sql_aliases.html">SQL Aliases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pl_sql_block.html">Plsql Blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_accessing.html">Objects accessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_types.html">User Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameter_bindings.html">Parameter bindings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="packages.html">Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sql.html">SQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cursors.html">CURSORS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="triggers.html">TRIGGERS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synonyms.html">SYNONYMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autonomous_transactions.html">Autonomous transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hierarchical_queries.html">Hierarchical queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bulk_collect_into.html">BULK COLLECT INTO</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../high_availability_fault_tolerance_and_replication.html">High availability, Fault tolerance and Replication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gateway_configuration.html">Gateway configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -333,9 +351,9 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Liberati database connector</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL Syntax</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">JDBC</li>
+    <li class="breadcrumb-item active" aria-current="page">PL/SQL</li>
   </ul>
 </nav>
 </div>
@@ -351,12 +369,65 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated August, 14 2023
+  Updated August, 15 2023
   <br/>
 </p>
                   
-  <section id="jdbc">
-<span id="id1"></span><h1>JDBC<a class="headerlink" href="#jdbc" title="Permalink to this heading">#</a></h1>
+  <section id="pl-sql">
+<span id="id1"></span><h1>PL/SQL<a class="headerlink" href="#pl-sql" title="Permalink to this heading">#</a></h1>
+<section id="block">
+<h2>Block<a class="headerlink" href="#block" title="Permalink to this heading">#</a></h2>
+<p>We wrap anonymous blocks with <code class="docutils literal notranslate"><span class="pre">DO</span> <span class="pre">$$</span> <span class="pre">...</span> <span class="pre">$$</span></code> and for procedures and functions we wrap the bodies with <code class="docutils literal notranslate"><span class="pre">$$...$$</span> <span class="pre">LANGUAGE</span> <span class="pre">plpgsql</span></code>.</p>
+<p><strong>Oracle DB</strong></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Anonimus blocks</span>
+<span class="linenos"> 2</span><span class="k">declare</span>
+<span class="linenos"> 3</span><span class="k">begin</span>
+<span class="linenos"> 4</span><span class="w">   </span><span class="p">...</span>
+<span class="linenos"> 5</span><span class="k">end</span><span class="p">;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1">--Functions</span>
+<span class="linenos"> 9</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(...)</span>
+<span class="linenos">10</span><span class="w">  </span><span class="k">RETURN</span><span class="w"> </span><span class="o">&lt;</span><span class="n">ret_type</span><span class="o">&gt;</span>
+<span class="linenos">11</span><span class="k">IS</span>
+<span class="linenos">12</span><span class="k">BEGIN</span>
+<span class="linenos">13</span><span class="w"> </span><span class="p">...</span>
+<span class="linenos">14</span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="c1">--Procedures</span>
+<span class="linenos">18</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="p">(...)</span>
+<span class="linenos">19</span><span class="k">IS</span>
+<span class="linenos">20</span><span class="k">BEGIN</span>
+<span class="linenos">21</span><span class="w">  </span><span class="p">...</span>
+<span class="linenos">22</span><span class="k">END</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="procedures-call">
+<h2>Procedures call<a class="headerlink" href="#procedures-call" title="Permalink to this heading">#</a></h2>
+<p>We just added <code class="docutils literal notranslate"><span class="pre">CALL</span></code> keyword before calling procedures in PL/PGSQL block.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="type-attribute">
+<h2>%TYPE attribute<a class="headerlink" href="#type-attribute" title="Permalink to this heading">#</a></h2>
+<p>Postgres can handle this almost like Oracle does but it has a few limitations. Postgres cannot use <code class="docutils literal notranslate"><span class="pre">%TYPE</span></code> attribute in the column definition of table or type. So we substitute <code class="docutils literal notranslate"><span class="pre">%TYPE</span></code> attribute with the real column type by getting the column’s metadata from DB in this case.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="select-into">
+<h2>Select into<a class="headerlink" href="#select-into" title="Permalink to this heading">#</a></h2>
+<p>To ensure that we select only one row and that any related error is generated if we do not we use <code class="docutils literal notranslate"><span class="pre">STRICT</span></code> keyword.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
 </section>
 
 
@@ -368,14 +439,14 @@
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html">
+       href="type_mapping.html">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-title">Previous Page</p>
       </div>
     </a>
     <a class="right-next"
-       href="odbc.html">
+       href="string_literals.html">
       <div class="prev-next-info">
         <p class="prev-next-title">Next Page</p>
       </div>
@@ -387,6 +458,23 @@
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block">Block</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#procedures-call">Procedures call</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-attribute">%TYPE attribute</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-into">Select into</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

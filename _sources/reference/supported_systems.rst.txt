@@ -1,4 +1,4 @@
-.. _supported-systems:
+.. _supported_systems:
 
 Supported databases and client applications
 ===========================================
