@@ -20,6 +20,10 @@ Together, these components provide a comprehensive framework, making the Liberat
 
 ___________________________________________________________________________________________________
 
+|
+
+Migration journey with Liberatii
+++++++++++++++++++++++++++++++++
 
 This section provides a concise and neutral overview of the Liberatii Data Platform.Migration journey with Liberatii
 
@@ -33,4 +37,21 @@ This section provides a concise and neutral overview of the Liberatii Data Platf
     :width: 100%
     :height: 372px
     :align: center
+
+|
+|
+
+Software Architecture
++++++++++++++++++++++
+
+|
+|
+
+.. figure:: images/software_architecture.png
+    :width: 100%
+    :height: 372px
+    :align: center
+
+|
+|
 
