@@ -186,7 +186,7 @@ Suggested Links Section
    Introduction <introduction/index>
    Getting Started <getting-started/index>
    Concept <concept/index>
-   Pre-migration <pre-migration/index>
+   Pre-migration <pre_migration/index>
    Migration <migration/index>
    Post-migration <post-migration/index>
    Reference <reference/index>

@@ -1,0 +1,216 @@
+.. _assessment:
+
+Technical Assessment
+====================
+
+
+Migration Assessment extension for Azure Data Studio
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+The Liberatii Assessment extension enables you to assess an Oracle Database to determine its compatibility with `Liberatii Gateway <https://www.liberatii.com/>`_.
+
+This extension may be used with or without a database connection.
+
+The extension will either query the database or files containing SQL statements to assess their compatibility with `Liberatii Gateway <https://www.liberatii.com/>`_. It does this by:
+
+**1.** Reading meta-information directly from the database (optional)
+
+**2.** Parsing the statements using the Liberatii Gateway parser
+
+**3.** Mapping the statements to database objects that they reference
+
+**4.** Providing a score for each statement based on its similarity to a set of pre-tested statements
+
+**5.** Running each statement through a Liberatii Gateway (optional) and finding the minimum statement that produces an error
+
+This information can be recorded in a series of JSON files and will only contain:
+
+**1.** Database meta-information (optional)
+
+**2.** The SQL statements that form the database schema (this may be minimized)
+
+**3.** SQL statements stripped of strings and number values
+
+**4.** Minimized statements that fail to translate in Liberatii Gateway
+
+As all information is either minimised or stripped the JSON files should contain no sensitive information.
+
+
+Prerequisites
++++++++++++++
+
+Before you begin assessing your Oracle database for migration, you need to
+
+- Verify that your source environment is supported.
+
+- Download and install `Azure Data Studio <https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio>`_ in your environment.
+
+- Obtain permission to connect and query an Oracle database.
+
+
+Install the extension
++++++++++++++++++++++
+
+Once Azure Data Studio is downloaded and installed, the Liberatii Migration Assessment extension can be installed by downloading the VSIX file and selecting "Install from VSIX..." from the ADS extension menu.
+
+.. figure:: images/assessment_01.png
+    :width: 100%
+    :align: center
+
+|
+|
+
+The latest VSIX file can be downloaded from here. `The release page <https://drive.google.com/file/d/1Hq5GaYcotLlF-BJDDkPDzBtpEwk34w8p/view?usp=sharing>`_.
+
+
+Connect to an Oracle database
++++++++++++++++++++++++++++++
+
+When connecting to a live database this extension requires the `Extension for Oracle <https://learn.microsoft.com/en-us/sql/azure-data-studio/extensions/extension-for-oracle?view=sql-server-ver16>`_ is installed to provide connections to the Oracle Databases. It is therefore limited to Oracle 11.2 and above.
+
+A connection to an Oracle must already be setup:
+
+.. figure:: images/assessment_02.png
+    :width: 100%
+    :align: center
+
+|
+|
+
+A new assessment project can now be created using this database and selecting schema to assess:
+
+.. figure:: images/assessment_03.png
+    :width: 100%
+    :align: center
+
+|
+|
+
+Create an assessment without a live database
+++++++++++++++++++++++++++++++++++++++++++++
+
+An assessment project can be created without a database connection by selecting "None" as the database connection:
+
+.. figure:: images/assessment_04.png
+    :width: 100%
+    :align: center
+
+|
+|
+
+Assessment projects created in this way can only use SQL files to supply DDL (Data Definition Lanugage) and DML (Data Manipulation Language) for assessment.
+
+Read Database Information
++++++++++++++++++++++++++
+
+Database information is downloaded automatically as the first step of the assessment:
+
+.. figure:: images/assessment_05.png
+    :width: 100%
+    :align: center
+
+|
+|
+
+Assess the schema
++++++++++++++++++
+
+The schema can be assessed by downloading the DDL (Data Definition Language) statements from the database using dumped DDL file. If you want 
+to use a live connection click on the "Download" button and the assessment will start.
+
+.. figure:: images/assessment_06.png
+    :width: 100%
+    :align: center
+
+|
+|
+
+Same for using dumped DDL files. Click the "Load" button and select the DDLs file to assess.
+
+The DDL is processed using the same parser as found in Liberatii Gateway and any errors encountered during this stage will be displayed in the Errors table.
+
+ 
+
+By clicking the "Save" button it is possible to save the results of the schema assessment as .json file for further analyzing or sending the Liberatii team for improvements
+
+
+
+Examining DML (Data Manipulation Language) statements
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+After the schema is downloaded any DML statements used by applications attached to the database can be examined. This can be performed by 
+downloading DML currently executing in the database ("Download" button) or by providing files of DML statements used by database applications ("Load" button).
+
+.. figure:: images/assessment_07.png
+    :width: 100%
+    :align: center
+
+|
+|
+
+The DML assessment will parse all DML statements and determine any other database objects that they reference. All statements are made canonical by replacing any values with dummy values so that two statements that differ only in their data are considered identical.
+
+The results table provides the following information:
+
+
+.. list-table:: 
+   :widths: 50 50 50 50
+   :header-rows: 1
+
+   * - **SQL**
+     - **Count**
+     - **Parses**
+     - **Metric**
+   * - The SQL statement
+     - The number of times this statement was encountered in the file or download
+     - Whether the statement can be parsed by Liberatii Gateway
+     - A score to determine similarity to known test cases
+
+
+The following tables will present the function, table and type objects referenced by the statements.
+
+By clicking the "Save" button it is possible to save the results of the DML assessment as .json file for further analyzing or sending the Liberatii team for improvements
+
+
+Running a detailed assessment
++++++++++++++++++++++++++++++
+
+.. note::
+
+   NOTE: On the Windows platform this page is still under development and will be available in next versions.
+
+
+The detailed assessment is run by connecting the extension to an instance of Liberatii Gateway. Each DDL and DML statement is run against a real gateway to determine whether the statement is supported.
+
+To perform this assessment you must download `Liberatii Gateway container <https://drive.google.com/file/d/1wcKx9yfxsxJL0p_IhUgHqz72Xk0taHmW/view?usp=sharing>`_ and put it under ``/tmp`` directory. If "Process DML and minimal supporting DDL" is selected then only the DDL statements required by the DML statements supplied or downloaded in the previous step will be used.
+
+.. figure:: images/assessment_08.png
+    :width: 100%
+    :align: center
+
+|
+|
+
+The result table provides the following information:
+
+.. list-table:: 
+   :widths: 50 50 50
+   :header-rows: 1
+
+   * - **Object name**
+     - **Error**
+     - **Reduced**
+   * - The SQL statement
+     - The error that occurred
+     - A minimised statement that also produces this error
+
+|
+|
+
+
+
+
+
+
+
+
