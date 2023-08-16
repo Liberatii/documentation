@@ -1,4 +1,4 @@
-.. _post-migrate:
+.. _post_migration:
 
 Post-migration
 ==============
