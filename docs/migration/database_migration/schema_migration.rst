@@ -5,7 +5,7 @@
 Schema migration
 ++++++++++++++++
 
-After initialisation is done we can start schema migration. It's split into two stages, with names ``schema`` and ``constraints``. The schema ``stage`` must run before ``init`` and ``constraints`` after ``data``. The second stage is needed to create indexes, constraints and triggers. It's run before the data stage to make the migration process faster and avoid triggers to break something in the database.
+After initialization is done we can start schema migration. It's split into two stages, with names ``schema`` and ``constraints``. The schema ``stage`` must run before ``init`` and ``constraints`` after ``data``. The second stage is needed to create indexes, constraints and triggers. It's run before the data stage to make the migration process faster and avoid triggers to break something in the database.
 
 Schema migration can be parallelised, for this just run whatever number of threads are needed the migration services will evenly schedule the jobs between the nodes. 
 

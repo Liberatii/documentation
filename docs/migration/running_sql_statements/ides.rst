@@ -3,11 +3,11 @@
 IDEs
 ++++
 
-To use LGW in IDE it's enough to replace the driver. However, some IDE also expects the query to be in the target SQL language. 
+Integrating LGW into an IDE primarily involves replacing the driver. This step is essential to enable the IDE to communicate effectively with LGW and the underlying database. However, in certain IDEs, an additional requirement exists: the query must be in the specific SQL language of the target database.
 
-To replace the JDBC driver in DBeaver, follow the instructions:
+To seamlessly replace the JDBC driver in DBeaver, adhere to these systematic guidelines:
 
-- Select Database->Driver Manager
+**1.** Navigate to **Database** > **Driver Manager**.
 
 .. figure:: images/DBeaver_01.png
     :width: 80%
@@ -16,7 +16,7 @@ To replace the JDBC driver in DBeaver, follow the instructions:
 |
 |
 
-- Press new driver
+**2.** Click on **New Driver** to initiate the process.
 
 .. figure:: images/DBeaver_02.png
     :width: 80%
@@ -25,7 +25,7 @@ To replace the JDBC driver in DBeaver, follow the instructions:
 |
 |
 
-- Fill same as below picture
+**3.** Fill in the details as demonstrated in the provided image.
 
 .. figure:: images/DBeaver_03.png
     :width: 80%
@@ -34,7 +34,7 @@ To replace the JDBC driver in DBeaver, follow the instructions:
 |
 |
 
-- Add liberatii jdbc driver
+**4.** Integrate the Liberatti JDBC Driver as an additional driver.
 
 .. figure:: images/DBeaver_04.png
     :width: 80%
@@ -43,7 +43,7 @@ To replace the JDBC driver in DBeaver, follow the instructions:
 |
 |
 
-- Press the Find class button, and select liberatii.jdbc class
+**5.** Utilize the Find class button to locate and select the ``liberatii.jdbc`` class.
 
 .. figure:: images/DBeaver_05.png
     :width: 80%
@@ -52,7 +52,7 @@ To replace the JDBC driver in DBeaver, follow the instructions:
 |
 |
 
-- Use Liberatti LGW driver for adding new connection
+**6.** When establishing a new connection, opt for the ``Liberatti LGW driver``.
 
 .. figure:: images/DBeaver_06.png
     :width: 80%
@@ -61,7 +61,7 @@ To replace the JDBC driver in DBeaver, follow the instructions:
 |
 |
 
-- Point your parameters of connection (host, port, database, username, password)
+**7.** Input the requisite connection parameters such as host, port, database name, username, and password.
 
 .. figure:: images/DBeaver_07.png
     :width: 80%
@@ -70,7 +70,7 @@ To replace the JDBC driver in DBeaver, follow the instructions:
 |
 |
 
-- Press button Test Connection ...
+**8.** To validate the connection, click the **Test Connection** button.
 
 .. figure:: images/DBeaver_08.png
     :width: 80%
@@ -81,7 +81,7 @@ To replace the JDBC driver in DBeaver, follow the instructions:
 
 .. warning::
 
-    WARNING: DBeaver doesn't understand the query is in Oracle syntax, so you cannot just run the whole buffer. For simple queries, it's possible to select them all and press Alt-X. But for complex ones (e.g. PL/SQL DDLs) it works only by selecting a single statement and pressing Ctrl(Command on Mac)-Enter.
+    WARNING: It's essential to note that DBeaver doesn't inherently understand the Oracle syntax of queries. Consequently, you can't directly execute an entire query buffer. For simpler queries, a potential approach involves selecting them all and pressing **Alt-X**. However, for intricate queries (such as PL/SQL DDLs), it's advisable to choose a single statement and press **Ctrl (Command on Mac)-Enter** to execute.
 
 |
 |
