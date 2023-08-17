@@ -350,17 +350,15 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated August, 16 2023
+  Updated August, 17 2023
   <br/>
 </p>
                   
   <section id="ides">
 <span id="id1"></span><h1>IDEs<a class="headerlink" href="#ides" title="Permalink to this heading">#</a></h1>
-<p>To use LGW in IDE it’s enough to replace the driver. However, some IDE also expects the query to be in the target SQL language.</p>
-<p>To replace the JDBC driver in DBeaver, follow the instructions:</p>
-<ul class="simple">
-<li><p>Select Database-&gt;Driver Manager</p></li>
-</ul>
+<p>Integrating LGW into an IDE primarily involves replacing the driver. This step is essential to enable the IDE to communicate effectively with LGW and the underlying database. However, in certain IDEs, an additional requirement exists: the query must be in the specific SQL language of the target database.</p>
+<p>To seamlessly replace the JDBC driver in DBeaver, adhere to these systematic guidelines:</p>
+<p><strong>1.</strong> Navigate to <strong>Database</strong> &gt; <strong>Driver Manager</strong>.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/DBeaver_01.png"><img alt="../../_images/DBeaver_01.png" src="../../_images/DBeaver_01.png" style="width: 80%;" /></a>
 </figure>
@@ -368,9 +366,7 @@
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-<ul class="simple">
-<li><p>Press new driver</p></li>
-</ul>
+<p><strong>2.</strong> Click on <strong>New Driver</strong> to initiate the process.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/DBeaver_02.png"><img alt="../../_images/DBeaver_02.png" src="../../_images/DBeaver_02.png" style="width: 80%;" /></a>
 </figure>
@@ -378,9 +374,7 @@
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-<ul class="simple">
-<li><p>Fill same as below picture</p></li>
-</ul>
+<p><strong>3.</strong> Fill in the details as demonstrated in the provided image.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/DBeaver_03.png"><img alt="../../_images/DBeaver_03.png" src="../../_images/DBeaver_03.png" style="width: 80%;" /></a>
 </figure>
@@ -388,9 +382,7 @@
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-<ul class="simple">
-<li><p>Add liberatii jdbc driver</p></li>
-</ul>
+<p><strong>4.</strong> Integrate the Liberatti JDBC Driver as an additional driver.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/DBeaver_04.png"><img alt="../../_images/DBeaver_04.png" src="../../_images/DBeaver_04.png" style="width: 80%;" /></a>
 </figure>
@@ -398,9 +390,7 @@
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-<ul class="simple">
-<li><p>Press the Find class button, and select liberatii.jdbc class</p></li>
-</ul>
+<p><strong>5.</strong> Utilize the Find class button to locate and select the <code class="docutils literal notranslate"><span class="pre">liberatii.jdbc</span></code> class.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/DBeaver_05.png"><img alt="../../_images/DBeaver_05.png" src="../../_images/DBeaver_05.png" style="width: 80%;" /></a>
 </figure>
@@ -408,9 +398,7 @@
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-<ul class="simple">
-<li><p>Use Liberatti LGW driver for adding new connection</p></li>
-</ul>
+<p><strong>6.</strong> When establishing a new connection, opt for the <code class="docutils literal notranslate"><span class="pre">Liberatti</span> <span class="pre">LGW</span> <span class="pre">driver</span></code>.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/DBeaver_06.png"><img alt="../../_images/DBeaver_06.png" src="../../_images/DBeaver_06.png" style="width: 80%;" /></a>
 </figure>
@@ -418,9 +406,7 @@
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-<ul class="simple">
-<li><p>Point your parameters of connection (host, port, database, username, password)</p></li>
-</ul>
+<p><strong>7.</strong> Input the requisite connection parameters such as host, port, database name, username, and password.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/DBeaver_07.png"><img alt="../../_images/DBeaver_07.png" src="../../_images/DBeaver_07.png" style="width: 80%;" /></a>
 </figure>
@@ -428,9 +414,7 @@
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
-<ul class="simple">
-<li><p>Press button Test Connection …</p></li>
-</ul>
+<p><strong>8.</strong> To validate the connection, click the <strong>Test Connection</strong> button.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/DBeaver_08.png"><img alt="../../_images/DBeaver_08.png" src="../../_images/DBeaver_08.png" style="width: 80%;" /></a>
 </figure>
@@ -440,7 +424,7 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>WARNING: DBeaver doesn’t understand the query is in Oracle syntax, so you cannot just run the whole buffer. For simple queries, it’s possible to select them all and press Alt-X. But for complex ones (e.g. PL/SQL DDLs) it works only by selecting a single statement and pressing Ctrl(Command on Mac)-Enter.</p>
+<p>WARNING: It’s essential to note that DBeaver doesn’t inherently understand the Oracle syntax of queries. Consequently, you can’t directly execute an entire query buffer. For simpler queries, a potential approach involves selecting them all and pressing <strong>Alt-X</strong>. However, for intricate queries (such as PL/SQL DDLs), it’s advisable to choose a single statement and press <strong>Ctrl (Command on Mac)-Enter</strong> to execute.</p>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>

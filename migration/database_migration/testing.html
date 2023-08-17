@@ -350,14 +350,23 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated August, 16 2023
+  Updated August, 17 2023
   <br/>
 </p>
                   
   <section id="testing">
 <span id="id1"></span><h1>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h1>
-<p>There are several steps for testing. After the data migration the migration service checks hash sums of all the data in the table. It’s also possible to provide it with a set of queries to compare their result sets.</p>
-<p>But the most effective way for verification is replaying Oracle workload files on the Oracle snapshot database and PostgreSQL database and comparing the results. For this, it needs a separate Oracle staging sandbox database. So first the data is staged into this separate Oracle DB which is used for testing. The workload files are captured from the source DB. There is a special <code class="docutils literal notranslate"><span class="pre">replay</span></code> stage for this. There is a <code class="docutils literal notranslate"><span class="pre">workloadsBlob</span></code> parameter to specify the location of the workload files.</p>
+<p>The testing phase involves several distinct steps, each contributing to the meticulous verification of the migration process. Post data migration, the migration service undertakes a crucial validation process by computing hash sums for all data within the table. Additionally, you have the option to supply a collection of queries, allowing for a thorough comparison of their result sets.</p>
+<p>However, the most robust approach to verification entails the reenactment of Oracle workload files on both the Oracle snapshot database and the PostgreSQL database, followed by a meticulous comparison of the outcomes. This procedure necessitates the utilization of a dedicated Oracle staging sandbox database. Here’s a concise overview of this verification process:</p>
+<p><strong>1. Staging Data into Oracle Database:</strong> Initially, the data is meticulously staged into a separate Oracle database, exclusively designated for testing purposes. This sandbox environment serves as a controlled space for assessing the migration outcome.</p>
+<p><strong>2. Capturing Workload Files:</strong> The workload files are systematically captured from the source Oracle database. These workload files encapsulate the real-world operational patterns and transactions that transpire within the source database.</p>
+<p><strong>3. Replaying Workload Files:</strong> A dedicated “replay” stage is employed for this purpose. The captured workload files are reenacted on both the Oracle snapshot database and the PostgreSQL database. This replication of operational patterns serves as the foundation for comparison.</p>
+<p><strong>4. WorkloadsBlob Parameter:</strong> Within this orchestrated process, the <code class="docutils literal notranslate"><span class="pre">workloadsBlob</span></code> parameter comes into play. This parameter serves as a crucial directive, enabling you to specify the precise location of the workload files. This precise specification ensures accurate retrieval and utilization of the workload data.</p>
+<p>By adhering to this rigorous testing regimen, which includes capturing, reenacting, and comparing the operational workloads, you can confidently validate the consistency and fidelity of the migration between the Oracle and PostgreSQL environments.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
 </section>
 
 

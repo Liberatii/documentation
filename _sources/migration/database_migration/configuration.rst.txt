@@ -84,7 +84,8 @@ The ``stage`` field of ``dbt.migration_objects`` has the following meanings:
 
 
 
-You don't have to rerun everything from scratch if you fix anything. Just change stage column for ``dbt.migration_objects`` to the required value. For example, you've fixed table constraints on the table ``"DEMO"."DEPARTMENTS"``, just run:
+Absolutely, the advantage of the migration process is that it doesn't necessitate a complete reiteration from the start if adjustments are required. 
+Instead, modifications can be made efficiently without initiating an entire migration process. By simply adjusting the ``stage`` column within the ``dbt.migration_objects`` table to the appropriate value, you can effectuate the necessary changes. For instance, suppose you've rectified constraints pertaining to the "DEMO"."DEPARTMENTS" table. In this scenario, executing the following is all that's needed:
 
 .. code-block:: sql
    :linenos:

@@ -350,13 +350,13 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated August, 16 2023
+  Updated August, 17 2023
   <br/>
 </p>
                   
   <section id="schema-migration">
 <span id="id1"></span><h1>Schema migration<a class="headerlink" href="#schema-migration" title="Permalink to this heading">#</a></h1>
-<p>After initialisation is done we can start schema migration. It’s split into two stages, with names <code class="docutils literal notranslate"><span class="pre">schema</span></code> and <code class="docutils literal notranslate"><span class="pre">constraints</span></code>. The schema <code class="docutils literal notranslate"><span class="pre">stage</span></code> must run before <code class="docutils literal notranslate"><span class="pre">init</span></code> and <code class="docutils literal notranslate"><span class="pre">constraints</span></code> after <code class="docutils literal notranslate"><span class="pre">data</span></code>. The second stage is needed to create indexes, constraints and triggers. It’s run before the data stage to make the migration process faster and avoid triggers to break something in the database.</p>
+<p>After initialization is done we can start schema migration. It’s split into two stages, with names <code class="docutils literal notranslate"><span class="pre">schema</span></code> and <code class="docutils literal notranslate"><span class="pre">constraints</span></code>. The schema <code class="docutils literal notranslate"><span class="pre">stage</span></code> must run before <code class="docutils literal notranslate"><span class="pre">init</span></code> and <code class="docutils literal notranslate"><span class="pre">constraints</span></code> after <code class="docutils literal notranslate"><span class="pre">data</span></code>. The second stage is needed to create indexes, constraints and triggers. It’s run before the data stage to make the migration process faster and avoid triggers to break something in the database.</p>
 <p>Schema migration can be parallelised, for this just run whatever number of threads are needed the migration services will evenly schedule the jobs between the nodes.</p>
 <p>It’s also possible to skip some objects’ translation, by just updating <code class="docutils literal notranslate"><span class="pre">dbt.migration_objects</span></code> table’s <code class="docutils literal notranslate"><span class="pre">stage</span></code> field to <code class="docutils literal notranslate"><span class="pre">S</span></code>. All the objects dependent on this one won’t be translated too.</p>
 <p>We can also adjust original DDLs to remove or change anything not supported by Liberatii. For this just update DDL1 and DDL2 columns of the corresponding <code class="docutils literal notranslate"><span class="pre">dbt.migration_objects</span></code> rows before running. DDL1 is executed on the <code class="docutils literal notranslate"><span class="pre">schema</span></code> stage, and DDL2 on the <code class="docutils literal notranslate"><span class="pre">constraints</span></code> stage.</p>

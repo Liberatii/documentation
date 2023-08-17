@@ -350,7 +350,7 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated August, 16 2023
+  Updated August, 17 2023
   <br/>
 </p>
                   
@@ -399,7 +399,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">'i'</span></code> - the table check failed</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'K'</span></code> - the table is checked</p></li>
 </ul>
-<p>You don’t have to rerun everything from scratch if you fix anything. Just change stage column for <code class="docutils literal notranslate"><span class="pre">dbt.migration_objects</span></code> to the required value. For example, you’ve fixed table constraints on the table <code class="docutils literal notranslate"><span class="pre">&quot;DEMO&quot;.&quot;DEPARTMENTS&quot;</span></code>, just run:</p>
+<p>Absolutely, the advantage of the migration process is that it doesn’t necessitate a complete reiteration from the start if adjustments are required.
+Instead, modifications can be made efficiently without initiating an entire migration process. By simply adjusting the <code class="docutils literal notranslate"><span class="pre">stage</span></code> column within the <code class="docutils literal notranslate"><span class="pre">dbt.migration_objects</span></code> table to the appropriate value, you can effectuate the necessary changes. For instance, suppose you’ve rectified constraints pertaining to the “DEMO”.”DEPARTMENTS” table. In this scenario, executing the following is all that’s needed:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">update</span><span class="w"> </span><span class="n">dbt</span><span class="p">.</span><span class="n">migration_objects</span>
 <span class="linenos">2</span><span class="w">   </span><span class="k">set</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;R&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ddl2</span><span class="o">=</span><span class="s1">&#39;&lt;correct constraints&gt;&#39;</span>
 <span class="linenos">3</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="k">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DEMO&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DEPARTMENTS&#39;</span><span class="p">;</span>
