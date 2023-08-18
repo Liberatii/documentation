@@ -5,11 +5,11 @@ Database Migration
 
 
 An API for database migration is available. By default, the server operates within the same container as LGW. For a comprehensive API reference, please access the following 
-link: `Migration API <https://liberatii.github.io/documentation/migration-api/>`_
+link: `Migration API </documentation/migration-api/>`_
 
 Please note, however, that when deploying the managed application, you should replace "lgw" with the IP address of the deployed virtual machine.
 
-There is a tutorial in Jupiter notebook available at `MigrationHR.ipynb <https://drive.google.com/file/d/118Y4YqPTy6kuKnR-8z2wV9VVCbZIzlDM/view?usp=drive_link>`_
+There is a tutorial in Jupiter notebook available at `MigrationHR.ipynb </documentation/migration-api/MigrationHR.ipynb>`_
 
 .. note::
 
