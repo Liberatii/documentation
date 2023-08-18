@@ -13,7 +13,7 @@ There is a tutorial in Jupiter notebook available at `MigrationHR.ipynb </docume
 
 .. note::
 
-    To run the notebook your Python environment should have ``jupyterlab``, ``ipython-sql``, ``psycopg2`` (or ``psycopg2-binary``), ``cx_Oracle`` installed. And it also need ``curl`` command line utility in PATH environment variable.
+    To run the notebook your Python environment should have ``jupyterlab``, ``ipython-sql``, ``psycopg2`` (or ``psycopg2-binary``), ``cx_Oracle`` installed. And it also needs ``curl`` command line utility in PATH environment variable.
 
 
 .. toctree::
