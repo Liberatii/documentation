@@ -60,7 +60,7 @@ Once Azure Data Studio is downloaded and installed, the Liberatii Migration Asse
 |
 |
 
-The latest VSIX file can be downloaded from here. `The release page <https://drive.google.com/file/d/1Hq5GaYcotLlF-BJDDkPDzBtpEwk34w8p/view?usp=sharing>`_.
+The latest VSIX file can be downloaded from here. `The release page <https://drive.google.com/file/d/1J5Rj7fb0Rtt6q_jVmvxxHqhYiK9XvSqu/view?usp=sharing>`_.
 
 
 Connect to an Oracle database
