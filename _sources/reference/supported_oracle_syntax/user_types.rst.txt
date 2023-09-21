@@ -7,7 +7,7 @@ User Types
 **Declaring**
 +++++++++++++
 
-For declaring a variable of user type we use the prefix ``LBR$UT$`` for any user type and join all parts of a name with ``$`` for the complex names.  Also for variables of user types without initialization, we insert explicit initialization with a function call with the default constructor function.
+For declaring a variable of user type, we use the prefix ``LBR$UT$`` for any user type and join all parts of a name with ``$`` for the complex names.  Also, for variables of user types without initialization, we insert explicit initialization with a function call with the default constructor function.
 
 .. code-block:: sql
    :linenos:
@@ -19,7 +19,7 @@ For declaring a variable of user type we use the prefix ``LBR$UT$`` for any user
      NULL;
    END;
 
-|
+
 
 **In package**
 ++++++++++++++
@@ -27,7 +27,7 @@ For the type in a package, we change the name of the type to a ``<package_id>$<t
 create the same functions as for local except we change the name of the constructor function to a ``lbr$m$<package_id>$<type_id>``. This is 
 because of the translation of accessors ``DECLARE V P1.Rec = P1.Rec();`` will become ``DECLARE V P1$Rec = lbr$m$P1$Rec();``
 
-|
+
 
 **Records**
 +++++++++++
@@ -40,7 +40,7 @@ We replace the record type declaration with a ``CREATE TYPE``. We change the nam
 
 **3.** Default constructor function with ``$DEF`` at the end of the name. The default constructor calls the regular constructor.
 
-|
+
 
 **Anonymous block**
 
@@ -65,7 +65,7 @@ Create a type and function it in the ``PG_TEMP`` schema. Also, constructors, set
      END;
    END;
 
-|
+
 
 Not yet implemented:
 
@@ -73,28 +73,28 @@ Not yet implemented:
 
 **2.** Issues with default values and NULL values. Oracle doesn't treat NULL literal as the default value.
 
-|
+
 
 **Collections**
 +++++++++++++++
 
 We change the name to join its parts with the ``$`` symbol and add the ``lbr$ut``  prefix.
 
-|
+
 
 **Associative collection**
 
-When working with associative arrays we need to create an object with two PG arrays, one is for indexes, another is for values, for example:
+When working with associative arrays, we need to create an object with two PG arrays. One is for indexes, another is for values, for example:
 
 Since in Oracle, an associative array is created immediately with a variable (cannot be NULL) we need to check if it is NULL and create one if needed.
 
 After this is the FIRST method of an associative array:
 
-Because PG has very limited support for types polymorphism we need to generate the methods for each collection declaration. In the future, we can optimize this to generate only one method of key/value type combination. If the corresponding pair doesn't exist we generate another one and global. But for now, it is enough to generate each method for each collection type constructor.
+Because PG has very limited support for types polymorphism, we need to generate the methods for each collection declaration. In the future, we can optimize this to generate only one method of key/value type combination. If the corresponding pair doesn't exist, we generate another one and global. But for now, it is enough to generate each method for each collection type constructor.
 
-As associative arrays are always ordered we should order them manually in the setter.
+As associative arrays are always ordered, we should order them manually in the setter.
 
-|
+
 
 **In package**
 
@@ -114,11 +114,11 @@ For each package variable of collection type, we create an additional setter and
    END;
 
 
-|
+
 
 **Nested tables and Varrays**
 
-We convert Nested tables and Varrays to a Postgres Type as well. For VARRAY we store max length in addition to values.
+We convert Nested tables and Varrays to a Postgres Type as well. For VARRAY, we store max length in addition to values.
 
 .. code-block:: sql
    :linenos:
@@ -126,9 +126,9 @@ We convert Nested tables and Varrays to a Postgres Type as well. For VARRAY we s
    TYPE Foursome IS VARRAY(4) OF VARCHAR2(15);
 
 
-|
 
-For NESTED TABLE we store placeholders for deleted elements(the ORACLE ``DELETE`` method of the nested table just marks elements rather than deletes them).
+
+For NESTED TABLE, we store placeholders for deleted elements(the ORACLE ``DELETE`` method of the nested table just marks elements rather than deletes them).
 
 .. code-block:: sql
    :linenos:
@@ -136,11 +136,11 @@ For NESTED TABLE we store placeholders for deleted elements(the ORACLE ``DELETE`
    TYPE Roster IS TABLE OF VARCHAR2(15);
 
 
-|
+
 
 **FORALL loop**
 
-We emulate the FORALL loop with extended DML that is used inside of it. In extended DML we use subquery over bounds that are specified in FORALL bounds clause.
+We emulate the FORALL loop with extended DML that is used inside of it. In extended DML, we use subquery over bounds that are specified in FORALL bounds clause.
 
 .. code-block:: sql
    :linenos:
@@ -163,7 +163,7 @@ We emulate the FORALL loop with extended DML that is used inside of it. In exten
      insert into EMP (EMPNO,ENAME) values (prodList(i),'INSERTED');
 
 
-|
+
 
 **Not yet implemented**
 
@@ -173,7 +173,7 @@ We emulate the FORALL loop with extended DML that is used inside of it. In exten
 
 **3.** Array comparison. (Two nested table variables are equal if and only if they have the same set of elements (no ordering)).
 
-|
+
 
 **Objects**
 +++++++++++
@@ -184,5 +184,5 @@ Fields of the object are implemented similarly to records with setters and gette
 `Methods`:
 Not yet implemented.
 
-|
+
 

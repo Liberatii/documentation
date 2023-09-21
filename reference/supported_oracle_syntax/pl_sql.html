@@ -394,30 +394,18 @@
 <span class="linenos">22</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="procedures-call">
 <h2>Procedures call<a class="headerlink" href="#procedures-call" title="Permalink to this heading">#</a></h2>
-<p>We just added <code class="docutils literal notranslate"><span class="pre">CALL</span></code> keyword before calling procedures in PL/PGSQL block.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+<p>We just added <code class="docutils literal notranslate"><span class="pre">CALL</span></code> keyword before calling procedures in the PL/PGSQL block.</p>
 </section>
 <section id="type-attribute">
 <h2>%TYPE attribute<a class="headerlink" href="#type-attribute" title="Permalink to this heading">#</a></h2>
-<p>Postgres can handle this almost like Oracle does but it has a few limitations. Postgres cannot use <code class="docutils literal notranslate"><span class="pre">%TYPE</span></code> attribute in the column definition of table or type. So we substitute <code class="docutils literal notranslate"><span class="pre">%TYPE</span></code> attribute with the real column type by getting the column’s metadata from DB in this case.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+<p>Postgres can handle this almost like Oracle does, but it has a few limitations. Postgres cannot use <code class="docutils literal notranslate"><span class="pre">%TYPE</span></code> attribute in the column definition of table or type. So we substitute <code class="docutils literal notranslate"><span class="pre">%TYPE</span></code> attribute with the real column type by getting the column’s metadata from DB in this case.</p>
 </section>
 <section id="select-into">
 <h2>Select into<a class="headerlink" href="#select-into" title="Permalink to this heading">#</a></h2>
-<p>To ensure that we select only one row and that any related error is generated if we do not we use <code class="docutils literal notranslate"><span class="pre">STRICT</span></code> keyword.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+<p>To ensure that we select only one row and that any related error is generated if we do not, we use the <code class="docutils literal notranslate"><span class="pre">STRICT</span></code> keyword.</p>
 </section>
 </section>
 

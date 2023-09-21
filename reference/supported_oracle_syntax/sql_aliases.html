@@ -372,9 +372,6 @@
 <span class="linenos">6</span><span class="k">SELECT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">DUAL</span><span class="p">)</span><span class="w"> </span><span class="n">DTA$1</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>We add <code class="docutils literal notranslate"><span class="pre">AS</span></code> keyword before <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> item alias if it was missed.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Ora:</span>
 <span class="linenos">2</span>
@@ -385,14 +382,8 @@
 <span class="linenos">7</span><span class="k">SELECT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ONE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">DUAL</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p><strong>Issues</strong></p>
 <p>For missed select item aliases we should add aliases with names equal to the select item expression.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 
 

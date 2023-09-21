@@ -373,9 +373,6 @@
 <span class="linenos">2</span><span class="k">where</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">NAME</span><span class="p">(</span><span class="o">+</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">NAME</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t3</span><span class="p">.</span><span class="n">NAME</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="rownum-rowid-pseudo-columns">
 <h2><strong>ROWNUM/ROWID pseudo columns</strong><a class="headerlink" href="#rownum-rowid-pseudo-columns" title="Permalink to this heading">#</a></h2>
@@ -384,9 +381,6 @@
 <span class="linenos">2</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
 <span class="linenos">3</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ROWNUM</span></code> in <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> columns list is translated into a window function <code class="docutils literal notranslate"><span class="pre">row_number</span></code>.</p></li>
@@ -397,21 +391,11 @@
 <span class="linenos">2</span><span class="k">WHERE</span><span class="w"> </span><span class="n">ITEM_NUM</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">ROWNUM</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">ORDER_NUM</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p><code class="docutils literal notranslate"><span class="pre">ROWNUM</span></code> in <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> is translated into a runtime function call calculating the next value.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">UPDATE</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROWNUM</span><span class="p">,</span><span class="w"> </span><span class="n">manager_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROWNUM</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Other usages aren’t supported.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="create-sequence">
 <h2><strong>CREATE SEQUENCE</strong><a class="headerlink" href="#create-sequence" title="Permalink to this heading">#</a></h2>
@@ -419,28 +403,19 @@
 <p><strong>1.</strong> The limit for <code class="docutils literal notranslate"><span class="pre">MAX</span> <span class="pre">VALUE</span></code> in Postgres is 9223372036854775807.</p>
 <p><strong>2.</strong> Remove next clauses <code class="docutils literal notranslate"><span class="pre">NOORDER</span></code> <code class="docutils literal notranslate"><span class="pre">NOCACHE</span></code> <code class="docutils literal notranslate"><span class="pre">GLOBAL</span></code> <code class="docutils literal notranslate"><span class="pre">KEEP</span></code> <code class="docutils literal notranslate"><span class="pre">NOKEEP</span></code> <code class="docutils literal notranslate"><span class="pre">SESSION</span></code> <code class="docutils literal notranslate"><span class="pre">SCALE</span></code>.</p>
 <p><strong>3.</strong> Replace: <code class="docutils literal notranslate"><span class="pre">NOCYCLE</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">NO</span> <span class="pre">CYCLE</span></code>  <code class="docutils literal notranslate"><span class="pre">NOMINVALUE</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">NO</span> <span class="pre">MINVALUE</span></code>  <code class="docutils literal notranslate"><span class="pre">NOMAXVALUE</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">NO</span> <span class="pre">MAXVALUE</span></code></p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="unique-in-select-statement">
 <h2><strong>UNIQUE in Select statement</strong><a class="headerlink" href="#unique-in-select-statement" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code> is the Oracle’s synonym for <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code>. So we replace <code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code> with <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code>.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="pivot-clause">
 <h2>PIVOT clause<a class="headerlink" href="#pivot-clause" title="Permalink to this heading">#</a></h2>
-<p>For emulation, we use transform PIVOT into Decode form with aggregation and translate this:</p>
+<p>For emulation, we transform PIVOT into Decode form with aggregation and translate this:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span>
 <span class="linenos">2</span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">EXTRACT</span><span class="p">(</span><span class="k">YEAR</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">order_date</span><span class="p">)</span><span class="w"> </span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">order_mode</span><span class="p">,</span><span class="w"> </span><span class="n">order_total</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="p">)</span>
 <span class="linenos">3</span><span class="n">PIVOT</span>
 <span class="linenos">4</span><span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="n">order_total</span><span class="p">)</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">order_mode</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;direct&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Store</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;online&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Internet</span><span class="p">));</span>
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 </section>
 <section id="unpivot-clause">
@@ -459,19 +434,13 @@
 <span class="linenos">10</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>To achieve this result in PostgreSQL, we will define an array of values that will act as the values that represent each quarterly column, followed by an array that specifies each of the columns that correspond to those quarters. We will unnest both of those arrays, and that will give us paired values for each quarter and the amount of that quarter.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If the original query uses an asterisk we need to read the metadata and exclude columns that are used in UNPIVOT clause</p>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p><strong>Ignore NULLS</strong></p>
-<p>For ignoring NULLS we should wrap translated query into the top query with the condition.</p>
+<p>For ignoring NULLS, we should wrap the translated query into the top query with the condition.</p>
 <p>Oracle EXCLUDE NULLS.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">sale_stats</span>
 <span class="linenos"> 2</span><span class="w"> </span><span class="n">UNPIVOT</span><span class="w"> </span><span class="p">(</span><span class="w">   </span><span class="c1">--EXCLUDE NULLS by default or we can explicit specify</span>
@@ -485,9 +454,6 @@
 <span class="linenos">10</span><span class="w"> </span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Oracle unpivot multiple columns.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">sale_stats</span>
 <span class="linenos">2</span><span class="n">UNPIVOT</span><span class="w"> </span><span class="p">(</span>
@@ -499,9 +465,6 @@
 <span class="linenos">8</span><span class="w">    </span><span class="p">)</span>
 <span class="linenos">9</span><span class="p">);</span>
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 </section>
 </section>

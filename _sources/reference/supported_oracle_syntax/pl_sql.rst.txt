@@ -38,25 +38,25 @@ We wrap anonymous blocks with ``DO $$ ... $$`` and for procedures and functions 
      ...
    END;
 
-|
+
 
 Procedures call 
 +++++++++++++++
 
-We just added ``CALL`` keyword before calling procedures in PL/PGSQL block.
+We just added ``CALL`` keyword before calling procedures in the PL/PGSQL block.
 
-|
+
 
 %TYPE attribute
 +++++++++++++++
-Postgres can handle this almost like Oracle does but it has a few limitations. Postgres cannot use ``%TYPE`` attribute in the column definition of table or type. So we substitute ``%TYPE`` attribute with the real column type by getting the column's metadata from DB in this case.
+Postgres can handle this almost like Oracle does, but it has a few limitations. Postgres cannot use ``%TYPE`` attribute in the column definition of table or type. So we substitute ``%TYPE`` attribute with the real column type by getting the column's metadata from DB in this case.
 
-|
+
 
 Select into
 +++++++++++
 
-To ensure that we select only one row and that any related error is generated if we do not we use ``STRICT`` keyword.
+To ensure that we select only one row and that any related error is generated if we do not, we use the ``STRICT`` keyword.
 
-|
+
 

@@ -368,7 +368,7 @@
 <span id="id1"></span><h1>User Types<a class="headerlink" href="#user-types" title="Permalink to this heading">#</a></h1>
 <section id="declaring">
 <h2><strong>Declaring</strong><a class="headerlink" href="#declaring" title="Permalink to this heading">#</a></h2>
-<p>For declaring a variable of user type we use the prefix <code class="docutils literal notranslate"><span class="pre">LBR$UT$</span></code> for any user type and join all parts of a name with <code class="docutils literal notranslate"><span class="pre">$</span></code> for the complex names.  Also for variables of user types without initialization, we insert explicit initialization with a function call with the default constructor function.</p>
+<p>For declaring a variable of user type, we use the prefix <code class="docutils literal notranslate"><span class="pre">LBR$UT$</span></code> for any user type and join all parts of a name with <code class="docutils literal notranslate"><span class="pre">$</span></code> for the complex names.  Also, for variables of user types without initialization, we insert explicit initialization with a function call with the default constructor function.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">DECLARE</span>
 <span class="linenos">2</span><span class="w">  </span><span class="n">default_week</span><span class="w"> </span><span class="n">pack</span><span class="p">.</span><span class="n">rectype</span><span class="p">;</span>
 <span class="linenos">3</span><span class="w">  </span><span class="n">default_week2</span><span class="w"> </span><span class="n">global_col_type</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">global_col_type</span><span class="p">(</span><span class="n">N</span><span class="s1">&#39;MoMo&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="s1">&#39;TEST&#39;</span><span class="p">);</span>
@@ -377,18 +377,12 @@
 <span class="linenos">6</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="in-package">
 <h2><strong>In package</strong><a class="headerlink" href="#in-package" title="Permalink to this heading">#</a></h2>
 <p>For the type in a package, we change the name of the type to a <code class="docutils literal notranslate"><span class="pre">&lt;package_id&gt;$&lt;type_id&gt;</span></code> and
 create the same functions as for local except we change the name of the constructor function to a <code class="docutils literal notranslate"><span class="pre">lbr$m$&lt;package_id&gt;$&lt;type_id&gt;</span></code>. This is
 because of the translation of accessors <code class="docutils literal notranslate"><span class="pre">DECLARE</span> <span class="pre">V</span> <span class="pre">P1.Rec</span> <span class="pre">=</span> <span class="pre">P1.Rec();</span></code> will become <code class="docutils literal notranslate"><span class="pre">DECLARE</span> <span class="pre">V</span> <span class="pre">P1$Rec</span> <span class="pre">=</span> <span class="pre">lbr$m$P1$Rec();</span></code></p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="records">
 <h2><strong>Records</strong><a class="headerlink" href="#records" title="Permalink to this heading">#</a></h2>
@@ -396,9 +390,6 @@ because of the translation of accessors <code class="docutils literal notranslat
 <p><strong>1.</strong> Setter and getters for each field of records.</p>
 <p><strong>2.</strong> Constructor function with a type name without a prefix that creates a certain type. Fields are initialized here with default values.</p>
 <p><strong>3.</strong> Default constructor function with <code class="docutils literal notranslate"><span class="pre">$DEF</span></code> at the end of the name. The default constructor calls the regular constructor.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p><strong>Anonymous block</strong></p>
 <p>Create a type and function it in the <code class="docutils literal notranslate"><span class="pre">PG_TEMP</span></code> schema. Also, constructors, setters, and getters should be called from <code class="docutils literal notranslate"><span class="pre">PG_TEMP</span></code> schema. After the anonymous block, we should drop the type with the <code class="docutils literal notranslate"><span class="pre">CASCADE</span></code> option. The construction function should have parameters corresponding to the records attribute to transfer default values.</p>
 <p><cite>Example</cite></p>
@@ -417,31 +408,19 @@ because of the translation of accessors <code class="docutils literal notranslat
 <span class="linenos">13</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Not yet implemented:</p>
 <p><strong>1.</strong> NOT NULL attribute constraints.</p>
 <p><strong>2.</strong> Issues with default values and NULL values. Oracle doesn’t treat NULL literal as the default value.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="collections">
 <h2><strong>Collections</strong><a class="headerlink" href="#collections" title="Permalink to this heading">#</a></h2>
 <p>We change the name to join its parts with the <code class="docutils literal notranslate"><span class="pre">$</span></code> symbol and add the <code class="docutils literal notranslate"><span class="pre">lbr$ut</span></code>  prefix.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p><strong>Associative collection</strong></p>
-<p>When working with associative arrays we need to create an object with two PG arrays, one is for indexes, another is for values, for example:</p>
+<p>When working with associative arrays, we need to create an object with two PG arrays. One is for indexes, another is for values, for example:</p>
 <p>Since in Oracle, an associative array is created immediately with a variable (cannot be NULL) we need to check if it is NULL and create one if needed.</p>
 <p>After this is the FIRST method of an associative array:</p>
-<p>Because PG has very limited support for types polymorphism we need to generate the methods for each collection declaration. In the future, we can optimize this to generate only one method of key/value type combination. If the corresponding pair doesn’t exist we generate another one and global. But for now, it is enough to generate each method for each collection type constructor.</p>
-<p>As associative arrays are always ordered we should order them manually in the setter.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+<p>Because PG has very limited support for types polymorphism, we need to generate the methods for each collection declaration. In the future, we can optimize this to generate only one method of key/value type combination. If the corresponding pair doesn’t exist, we generate another one and global. But for now, it is enough to generate each method for each collection type constructor.</p>
+<p>As associative arrays are always ordered, we should order them manually in the setter.</p>
 <p><strong>In package</strong></p>
 <p>For the collection in a package, we change the name of the type to a <code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;$&lt;collection_name&gt;</span></code>  and create the same functions as for local, except we change the name of the constructor function to a <code class="docutils literal notranslate"><span class="pre">lbr$m$&lt;package_name&gt;$&lt;record_name&gt;</span></code>.</p>
 <p>For each package variable of collection type, we create an additional setter and getter. For example:</p>
@@ -454,26 +433,17 @@ because of the translation of accessors <code class="docutils literal notranslat
 <span class="linenos">7</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p><strong>Nested tables and Varrays</strong></p>
-<p>We convert Nested tables and Varrays to a Postgres Type as well. For VARRAY we store max length in addition to values.</p>
+<p>We convert Nested tables and Varrays to a Postgres Type as well. For VARRAY, we store max length in addition to values.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">TYPE</span><span class="w"> </span><span class="n">Foursome</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="n">VARRAY</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>For NESTED TABLE we store placeholders for deleted elements(the ORACLE <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> method of the nested table just marks elements rather than deletes them).</p>
+<p>For NESTED TABLE, we store placeholders for deleted elements(the ORACLE <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> method of the nested table just marks elements rather than deletes them).</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">TYPE</span><span class="w"> </span><span class="n">Roster</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p><strong>FORALL loop</strong></p>
-<p>We emulate the FORALL loop with extended DML that is used inside of it. In extended DML we use subquery over bounds that are specified in FORALL bounds clause.</p>
+<p>We emulate the FORALL loop with extended DML that is used inside of it. In extended DML, we use subquery over bounds that are specified in FORALL bounds clause.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">forall</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">prodList</span><span class="p">.</span><span class="k">first</span><span class="p">..</span><span class="n">prodList</span><span class="p">.</span><span class="k">last</span>
 <span class="linenos">2</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="n">EMP</span>
 <span class="linenos">3</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">ENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;UP&#39;</span><span class="o">||</span><span class="s1">&#39;DATED&#39;</span>
@@ -488,16 +458,10 @@ because of the translation of accessors <code class="docutils literal notranslat
 <span class="linenos">2</span><span class="w">  </span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">EMP</span><span class="w"> </span><span class="p">(</span><span class="n">EMPNO</span><span class="p">,</span><span class="n">ENAME</span><span class="p">)</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="n">prodList</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="s1">&#39;INSERTED&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p><strong>Not yet implemented</strong></p>
 <p><strong>1.</strong> Multiset conditions ().</p>
 <p><strong>2.</strong> Calling methods that modify arrays for multidimensional arrays (DELETE, EXTEND).</p>
 <p><strong>3.</strong> Array comparison. (Two nested table variables are equal if and only if they have the same set of elements (no ordering)).</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="objects">
 <h2><strong>Objects</strong><a class="headerlink" href="#objects" title="Permalink to this heading">#</a></h2>
@@ -505,9 +469,6 @@ because of the translation of accessors <code class="docutils literal notranslat
 Fields of the object are implemented similarly to records with setters and getters for the corresponding field.</p>
 <p><cite>Methods</cite>:
 Not yet implemented.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 </section>
 

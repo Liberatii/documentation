@@ -4,7 +4,7 @@
 Testing
 +++++++
 
-The testing phase involves several distinct steps, each contributing to the meticulous verification of the migration process. Post data migration, the migration service undertakes a crucial validation process by computing hash sums for all data within the table. Additionally, you have the option to supply a collection of queries, allowing for a thorough comparison of their result sets.
+The testing phase involves several distinct steps, each contributing to the meticulous verification of the migration process. Post-data migration, the migration service undertakes a crucial validation process by computing hash sums for all data within the table. Additionally, you have the option to supply a collection of queries, allowing for a thorough comparison of their result sets.
 
 However, the most robust approach to verification entails the reenactment of Oracle workload files on both the Oracle snapshot database and the PostgreSQL database, followed by a meticulous comparison of the outcomes. This procedure necessitates the utilization of a dedicated Oracle staging sandbox database. Here's a concise overview of this verification process:
 
@@ -18,5 +18,3 @@ However, the most robust approach to verification entails the reenactment of Ora
 
 By adhering to this rigorous testing regimen, which includes capturing, reenacting, and comparing the operational workloads, you can confidently validate the consistency and fidelity of the migration between the Oracle and PostgreSQL environments.
 
-|
-|

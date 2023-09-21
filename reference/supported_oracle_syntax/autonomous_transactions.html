@@ -363,7 +363,7 @@
   <section id="autonomous-transactions">
 <span id="id1"></span><h1>Autonomous transactions<a class="headerlink" href="#autonomous-transactions" title="Permalink to this heading">#</a></h1>
 <p>Autonomous transactions emulated due to execution SQL via PostgreSQL dblink. We have  to use dblink_fdw to create the remote server and user mapping.</p>
-<p>In addition, we create a wrapper for an autonomous function(procedure) with we call helper function <code class="docutils literal notranslate"><span class="pre">dbt.autonous_exec</span></code> with function parameters.</p>
+<p>In addition, we create a wrapper for an autonomous function(procedure) with the call of helper function <code class="docutils literal notranslate"><span class="pre">dbt.autonous_exec</span></code> with function parameters.</p>
 <p>Oracle</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">prc_log_errors</span><span class="w"> </span><span class="p">(</span><span class="n">v_error_code</span><span class="w">      </span><span class="k">IN</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">,</span>
 <span class="linenos"> 2</span><span class="w">                                            </span><span class="n">v_error_msg</span><span class="w">       </span><span class="k">IN</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">,</span>
@@ -392,9 +392,6 @@
 <ul class="simple">
 <li><p>Outer transaction temp objects aren’t visible in the autonomous transaction.</p></li>
 </ul>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 
 

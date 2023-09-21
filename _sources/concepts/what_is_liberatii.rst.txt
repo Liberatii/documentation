@@ -18,4 +18,4 @@ The platform consists of three primary software components:
 
 Together, these components provide a comprehensive framework, making the Liberatii Data Platform a reliable choice for modern database migrations.
 
-|
+

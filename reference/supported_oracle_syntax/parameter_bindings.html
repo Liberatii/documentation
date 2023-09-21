@@ -363,7 +363,7 @@
   <section id="parameter-bindings">
 <span id="id1"></span><h1>Parameter bindings<a class="headerlink" href="#parameter-bindings" title="Permalink to this heading">#</a></h1>
 <p>Postgres doesn’t have output parameters bindings, and all the data should be received only by the result set bindings. For this,
-if PL/SQL batch has bindings we wrap it into a function with <code class="docutils literal notranslate"><span class="pre">INOUT</span></code> parameters - <code class="docutils literal notranslate"><span class="pre">pg_temp.lbr$batch$p</span></code>. And
+if the PL/SQL batch has bindings we wrap it into a function with <code class="docutils literal notranslate"><span class="pre">INOUT</span></code> parameters - <code class="docutils literal notranslate"><span class="pre">pg_temp.lbr$batch$p</span></code>. And
 call it receiving the record, as a result, set <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">pg_temp.lbr$batch$p(?,?)</span></code>. Or <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">pg_temp.lbr$batch$p(?)</span></code> in case there is just one bind. This way we can bind result sets.</p>
 </section>
 

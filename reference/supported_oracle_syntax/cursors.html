@@ -383,9 +383,6 @@
 <span class="linenos">13</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>Explicit cursors declaration</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">DECLARE</span>
 <span class="linenos">2</span><span class="w">  </span><span class="k">CURSOR</span><span class="w"> </span><span class="n">cParam</span><span class="p">(</span><span class="n">p1</span><span class="w"> </span><span class="nb">NUMBER</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">c1</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="w"> </span><span class="k">IS</span>
@@ -397,9 +394,6 @@
 <span class="linenos">8</span><span class="k">END</span><span class="p">;</span>
 <span class="linenos">9</span><span class="o">/</span>
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 <p>Cursor attributes</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">DECLARE</span>
@@ -432,9 +426,6 @@
 <span class="linenos">28</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p><code class="docutils literal notranslate"><span class="pre">%ROWTYPE</span></code> of cursor</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">DECLARE</span>
 <span class="linenos"> 2</span><span class="w">  </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">IS</span>
@@ -455,9 +446,6 @@
 <span class="linenos">17</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <section id="refcursor-in-package">
 <h2>REFCURSOR in package<a class="headerlink" href="#refcursor-in-package" title="Permalink to this heading">#</a></h2>
 <p>For cursor type in the package, we create composite type and corresponding setters and getters for each cursor attribute</p>
@@ -467,9 +455,6 @@
 <span class="linenos">3</span><span class="w">  </span><span class="k">TYPE</span><span class="w"> </span><span class="n">c_TeamList</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">REF</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">r_TeamList</span><span class="p">;</span>
 <span class="linenos">4</span><span class="k">end</span><span class="w"> </span><span class="n">APP_LIBUTILS</span><span class="p">;</span>
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 <p>The opening cursor of package retype. We create a temp simple variable of REFCURSOR type for passing it to OPEN of FETCH statement and write it back after the operation</p>
 <p>Oracle DB</p>
@@ -483,9 +468,6 @@
 <span class="linenos">8</span><span class="w">     </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span>
 <span class="linenos">9</span><span class="w">   </span><span class="k">END</span><span class="w"> </span><span class="p">;</span>
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 </section>
 </section>

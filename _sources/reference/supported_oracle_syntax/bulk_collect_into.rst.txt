@@ -3,7 +3,7 @@
 BULK COLLECT INTO
 =================
 
-To emulate ``BULK COLLECT INTO`` clause we create an aggregate function for each collection type
+To emulate ``BULK COLLECT INTO``, clause we create an aggregate function for each collection type
 
 This is an example of creating an aggregate for associative collection type:
 
@@ -11,7 +11,7 @@ This is an example of creating an aggregate for associative collection type:
 SELECT BULK COLLECT INTO
 ++++++++++++++++++++++++
 
-To emulate select bulk collect we call aggregate for each value and insert them into the temporary record variable. After selecting we assign each field to the corresponding collection variable.
+To emulate select bulk collect, we call aggregate for each value and insert them into the temporary record variable. After selecting we assign each field to the corresponding collection variable.
 
 .. code-block:: sql
    :linenos:
@@ -26,12 +26,12 @@ To emulate select bulk collect we call aggregate for each value and insert them 
        ...
    END;
 
-|
+
 
 SELECT BULK COLLECT INTO ROWTYPE
 ++++++++++++++++++++++++++++++++
 
-Emulation of select bulk collect into %ROWTYPE collection is similar to regular select bulk collect but we must specify an asterisk with the source name(alias).
+Emulation of select bulk collect into %ROWTYPE collection is similar to regular select bulk collect, but we must specify an asterisk with the source name(alias).
 
 .. code-block:: sql
    :linenos:
@@ -47,13 +47,13 @@ Emulation of select bulk collect into %ROWTYPE collection is similar to regular 
      ...
    END;
 
-|
+
 
 
 FETCH BULK COLLECT INTO 
 +++++++++++++++++++++++
 
-To aggregate values from the cursor we create a fetch loop and store each fetched column in ``elem`` field of the corresponding collection variable. To aggregate values we're using ``lbr$accum`` function without actual aggregate.
+To aggregate values from the cursor, we create a fetch loop and store each fetched column in ``elem`` field of the corresponding collection variable. To aggregate values, we're using ``lbr$accum`` function without actual aggregate.
 
 .. code-block:: sql
    :linenos:
@@ -73,12 +73,12 @@ To aggregate values from the cursor we create a fetch loop and store each fetche
         CLOSE emp_cur;
         ...
 
-|
+
 
 FETCH BULK COLLECT INTO ROWTYPE
 +++++++++++++++++++++++++++++++
 
-Emulation of fetch bulk collect into %ROWTYPE collection is similar to regular fetch bulk collect but we should use temporary record variable(for some reason using .elem field as with table type doesn't work in PG).
+Emulation of fetch bulk collect into %ROWTYPE collection is similar to regular fetch bulk collect, but we should use temporary record variable(for some reason, using .elem field as with table type doesn't work in PG).
 
 .. code-block:: sql
    :linenos:
@@ -94,6 +94,5 @@ Emulation of fetch bulk collect into %ROWTYPE collection is similar to regular f
        CLOSE emp_cur;
        ....
 
-|
 
 

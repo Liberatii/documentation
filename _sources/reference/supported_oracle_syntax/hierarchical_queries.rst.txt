@@ -22,7 +22,7 @@ Oracle
     WHERE department_id = 80
    CONNECT BY PRIOR employee_id = manager_id;
 
-|
+
 
 LEVEL
 +++++
@@ -40,7 +40,7 @@ Oracle
     WHERE department_id = 80
     CONNECT BY PRIOR employee_id = manager_id;
 
-|
+
 
 START WITH
 ++++++++++
@@ -57,7 +57,7 @@ Oracle
    START WITH employee_id = 100
    CONNECT BY PRIOR employee_id = manager_id
 
-|
+
 
 ORDER SIBLINGS BY
 +++++++++++++++++
@@ -77,7 +77,7 @@ Oracle
    CONNECT BY PRIOR employee_id = manager_id
    ORDER SIBLINGS BY last_name;
 
-|
+
 
 CONNECT_BY_PATH
 +++++++++++++++
@@ -98,13 +98,13 @@ Oracle
     START WITH last_name = 'Hunold'
    CONNECT BY PRIOR employee_id = manager_id AND LEVEL <= 4;
 
-|
+
 
 
 CONNECT_BY_ISCYCLE
 ++++++++++++++++++
 
-To emulate CONNECT_BY_ISCYCLE  we store child columns in an array and check if the parent column value exists in this array. Also, we init CONNECT_BY_ISCYCLE  column with 0.
+To emulate CONNECT_BY_ISCYCLE,  we store child columns in an array and check if the parent column value exists in this array. Also, we init CONNECT_BY_ISCYCLE  column with 0.
 
 Oracle
 
@@ -118,5 +118,5 @@ Oracle
     START WITH last_name = 'Hunold'
    CONNECT BY NOCYCLE PRIOR employee_id = manager_id AND LEVEL <= 4;
 
-|
+
 

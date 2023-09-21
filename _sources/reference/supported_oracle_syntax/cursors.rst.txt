@@ -24,7 +24,7 @@ Cursor type and ref cursors
      NULL;
    END;
 
-|
+
 
 Explicit cursors declaration
    
@@ -41,7 +41,7 @@ Explicit cursors declaration
    END;
    /
 
-|
+
 
 Cursor attributes
 
@@ -77,7 +77,7 @@ Cursor attributes
      CLOSE c1;
    END;
 
-|
+
 
 ``%ROWTYPE`` of cursor
 
@@ -102,7 +102,7 @@ Cursor attributes
      );
    END;
  
-|
+
 
 REFCURSOR in package
 ++++++++++++++++++++
@@ -119,7 +119,7 @@ OracleDB
      TYPE c_TeamList IS REF CURSOR RETURN r_TeamList;
    end APP_LIBUTILS;
 
-|
+
 
 
 The opening cursor of package retype. We create a temp simple variable of REFCURSOR type for passing it to OPEN of FETCH statement and write it back after the operation
@@ -139,6 +139,6 @@ Oracle DB
         end if;
       END ;
 
-|
+
 
  

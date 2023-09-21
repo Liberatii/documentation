@@ -362,8 +362,8 @@
                   
   <section id="initialization">
 <span id="id1"></span><h1>Initialization<a class="headerlink" href="#initialization" title="Permalink to this heading">#</a></h1>
-<p>In the first stage, the migration framework collects schema and various properties of the source database and stores them in the target database. This information will be used in all other stages of the migration, such as object dependencies, tables/index sizes and so on.</p>
-<p>This step is required and it must run before any other stage. It cannot be parallelised, but it’s pretty quick.</p>
+<p>In the first stage, the migration framework collects schema and various properties of the source database and stores them in the target database. This information will be used in all other stages of the migration, such as object dependencies, tables/index sizes, and so on.</p>
+<p>This step is required and it must run before any other stage. It cannot be parallelized, but it’s pretty quick.</p>
 <p>To run it specify its name in <code class="docutils literal notranslate"><span class="pre">stage</span></code> <code class="docutils literal notranslate"><span class="pre">init</span></code> of /operation POST method.</p>
 </section>
 

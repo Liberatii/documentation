@@ -378,7 +378,7 @@
 <p><strong>2.</strong> The SQL statements that form the database schema (this may be minimized)</p>
 <p><strong>3.</strong> SQL statements stripped of strings and number values</p>
 <p><strong>4.</strong> Minimized statements that fail to translate in Liberatii Gateway</p>
-<p>As all information is either minimised or stripped the JSON files should contain no sensitive information.</p>
+<p>As all information is either minimized or stripped, the JSON files should contain no sensitive information.</p>
 </section>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
@@ -395,21 +395,16 @@
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/assessment_01.png"><img alt="../../_images/assessment_01.png" src="../../_images/assessment_01.png" style="width: 100%;" /></a>
 </figure>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
 <p>The latest VSIX file can be downloaded from here. <a class="reference external" href="https://drive.google.com/file/d/1J5Rj7fb0Rtt6q_jVmvxxHqhYiK9XvSqu/view?usp=sharing">The release page</a>.</p>
 </section>
 <section id="connect-to-an-oracle-database">
 <h2>Connect to an Oracle database<a class="headerlink" href="#connect-to-an-oracle-database" title="Permalink to this heading">#</a></h2>
-<p>When connecting to a live database this extension requires the <a class="reference external" href="https://learn.microsoft.com/en-us/sql/azure-data-studio/extensions/extension-for-oracle?view=sql-server-ver16">Extension for Oracle</a> is installed to provide connections to the Oracle Databases. It is therefore limited to Oracle 11.2 and above.</p>
+<p>When connecting to a live database, this extension requires the <a class="reference external" href="https://learn.microsoft.com/en-us/sql/azure-data-studio/extensions/extension-for-oracle?view=sql-server-ver16">Extension for Oracle</a> to be installed to provide connections to the Oracle Databases. It is, therefore, limited to Oracle 11.2 and above.</p>
 <p>A connection to an Oracle must already be setup:</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/assessment_02.png"><img alt="../../_images/assessment_02.png" src="../../_images/assessment_02.png" style="width: 100%;" /></a>
 </figure>
 <div class="line-block">
-<div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 <p>A new assessment project can now be created using this database and selecting schema to assess:</p>
@@ -417,7 +412,6 @@
 <a class="reference internal image-reference" href="../../_images/assessment_03.png"><img alt="../../_images/assessment_03.png" src="../../_images/assessment_03.png" style="width: 100%;" /></a>
 </figure>
 <div class="line-block">
-<div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 </section>
@@ -429,9 +423,8 @@
 </figure>
 <div class="line-block">
 <div class="line"><br /></div>
-<div class="line"><br /></div>
 </div>
-<p>Assessment projects created in this way can only use SQL files to supply DDL (Data Definition Lanugage) and DML (Data Manipulation Language) for assessment.</p>
+<p>Assessment projects created in this way can only use SQL files to supply DDL (Data Definition Language) and DML (Data Manipulation Language) for assessment.</p>
 </section>
 <section id="read-database-information">
 <h2>Read Database Information<a class="headerlink" href="#read-database-information" title="Permalink to this heading">#</a></h2>
@@ -441,33 +434,27 @@
 </figure>
 <div class="line-block">
 <div class="line"><br /></div>
-<div class="line"><br /></div>
 </div>
 </section>
 <section id="assess-the-schema">
 <h2>Assess the schema<a class="headerlink" href="#assess-the-schema" title="Permalink to this heading">#</a></h2>
-<p>The schema can be assessed by downloading the DDL (Data Definition Language) statements from the database using dumped DDL file. If you want
+<p>The schema can be assessed by downloading the DDL (Data Definition Language) statements from the database using a dumped DDL file. If you want
 to use a live connection click on the “Download” button and the assessment will start.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/assessment_06.png"><img alt="../../_images/assessment_06.png" src="../../_images/assessment_06.png" style="width: 100%;" /></a>
 </figure>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
 <p>Same for using dumped DDL files. Click the “Load” button and select the DDLs file to assess.</p>
-<p>The DDL is processed using the same parser as found in Liberatii Gateway and any errors encountered during this stage will be displayed in the Errors table.</p>
-<p>By clicking the “Save” button it is possible to save the results of the schema assessment as .json file for further analyzing or sending the Liberatii team for improvements</p>
+<p>The DDL is processed using the same parser as found in Liberatii Gateway, and any errors encountered during this stage will be displayed in the Errors table.</p>
+<p>By clicking the “Save” button it is possible to save the results of the schema assessment as a .json file for further analyzing or sending the Liberatii team for improvements</p>
 </section>
 <section id="examining-dml-data-manipulation-language-statements">
 <h2>Examining DML (Data Manipulation Language) statements<a class="headerlink" href="#examining-dml-data-manipulation-language-statements" title="Permalink to this heading">#</a></h2>
-<p>After the schema is downloaded any DML statements used by applications attached to the database can be examined. This can be performed by
+<p>After the schema is downloaded, any DML statements used by applications attached to the database can be examined. This can be performed by
 downloading DML currently executing in the database (“Download” button) or by providing files of DML statements used by database applications (“Load” button).</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/assessment_07.png"><img alt="../../_images/assessment_07.png" src="../../_images/assessment_07.png" style="width: 100%;" /></a>
 </figure>
 <div class="line-block">
-<div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 <p>The DML assessment will parse all DML statements and determine any other database objects that they reference. All statements are made canonical by replacing any values with dummy values so that two statements that differ only in their data are considered identical.</p>
@@ -494,22 +481,21 @@ downloading DML currently executing in the database (“Download” button) or b
 </tr>
 </tbody>
 </table>
-<p>The following tables will present the function, table and type objects referenced by the statements.</p>
-<p>By clicking the “Save” button it is possible to save the results of the DML assessment as .json file for further analyzing or sending the Liberatii team for improvements</p>
+<p>The following tables will present the function, table, and type objects referenced by the statements.</p>
+<p>By clicking the “Save” button, it is possible to save the results of the DML assessment as a .json file for further analyzing or sending the Liberatii team for improvements</p>
 </section>
 <section id="running-a-detailed-assessment">
 <h2>Running a detailed assessment<a class="headerlink" href="#running-a-detailed-assessment" title="Permalink to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>NOTE: On the Windows platform this page is still under development and will be available in next versions.</p>
+<p>NOTE: On the Windows platform, this page is still under development and will be available in the next versions.</p>
 </div>
 <p>The detailed assessment is run by connecting the extension to an instance of Liberatii Gateway. Each DDL and DML statement is run against a real gateway to determine whether the statement is supported.</p>
-<p>To perform this assessment you must download <a class="reference external" href="https://drive.google.com/file/d/1wcKx9yfxsxJL0p_IhUgHqz72Xk0taHmW/view?usp=sharing">Liberatii Gateway container</a> and put it under <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> directory. If “Process DML and minimal supporting DDL” is selected then only the DDL statements required by the DML statements supplied or downloaded in the previous step will be used.</p>
+<p>To perform this assessment, you must download <a class="reference external" href="https://drive.google.com/file/d/1wcKx9yfxsxJL0p_IhUgHqz72Xk0taHmW/view?usp=sharing">Liberatii Gateway container</a> and put it under <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> directory. If “Process DML and minimal supporting DDL” is selected, then only the DDL statements required by the DML statements supplied or downloaded in the previous step will be used.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/assessment_08.png"><img alt="../../_images/assessment_08.png" src="../../_images/assessment_08.png" style="width: 100%;" /></a>
 </figure>
 <div class="line-block">
-<div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 <p>The result table provides the following information:</p>
@@ -532,10 +518,6 @@ downloading DML currently executing in the database (“Download” button) or b
 </tr>
 </tbody>
 </table>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
 </section>
 </section>
 

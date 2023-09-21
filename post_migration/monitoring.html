@@ -359,46 +359,25 @@
                   
   <section id="monitoring">
 <span id="id1"></span><h1>Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this heading">#</a></h1>
-<p>Log Analytics workspace and Data collection rule can be used for monitoring the instance of Liberatii Gateway. For this choose the component Log <strong>Analytics workspace</strong> in managed resource group of deployment. Then select tab <strong>logs</strong>. There you can query data from <cite>Syslog</cite>:</p>
+<p>Log Analytics workspace and Data collection rule can be used for monitoring the instance of Liberatii Gateway. For this, choose the component Log <strong>Analytics workspace</strong> in the managed resource group of deployment. Then select tab <strong>logs</strong>. There you can query data from <cite>Syslog</cite>:</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../_images/monitoring_01.png"><img alt="../_images/monitoring_01.png" src="../_images/monitoring_01.png" style="width: 100%;" /></a>
 </figure>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-<p>To use <strong>Data collection rule</strong> chose this component in managed resource group. Then go to Data source tab and select <strong>Performance Counters</strong>. There you can set necessary items and rates.</p>
+<p>To use the <strong>Data collection rule</strong>, choose this component in the managed resource group. Then go to the <strong>Data source</strong> tab and select <strong>Performance Counters</strong>. There you can set necessary items and rates.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../_images/monitoring_02.png"><img alt="../_images/monitoring_02.png" src="../_images/monitoring_02.png" style="width: 100%;" /></a>
 </figure>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-<p>To save changes click on <strong>Next</strong> and then <strong>Save</strong> buttons. After this back to <strong>Log Analytics</strong> (as described before) and then query Pref instead of <cite>Syslog</cite>:</p>
+<p>To save changes, click on <strong>Next</strong> and then <strong>Save</strong> buttons. After this back to <strong>Log Analytics</strong> (as described before) and then query Pref instead of <cite>Syslog</cite>:</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../_images/monitoring_03.png"><img alt="../_images/monitoring_03.png" src="../_images/monitoring_03.png" style="width: 100%;" /></a>
 </figure>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
-<p>The visualization of query results can be found on tab <strong>Chart</strong>:</p>
+<p>The visualization of query results can be found on the tab <strong>Chart</strong>:</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../_images/monitoring_04.png"><img alt="../_images/monitoring_04.png" src="../_images/monitoring_04.png" style="width: 100%;" /></a>
 </figure>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>WARNING: It requires some time to make info accessible in <strong>Log Analytics</strong>. So there could be a delay between doing some action on VM and their reflection in results of querying <cite>Syslog</cite> or/and <cite>Pref</cite>.</p>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line"><br /></div>
-<div class="line"><br /></div>
 </div>
 </section>
 

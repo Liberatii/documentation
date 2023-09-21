@@ -362,15 +362,12 @@
                   
   <section id="packages">
 <span id="id1"></span><h1>Packages<a class="headerlink" href="#packages" title="Permalink to this heading">#</a></h1>
-<p>For each variable declaration, Liberatii generates a corresponding setter and getter, the write and read data to a single row temporal
+<p>For each variable declaration, Liberatii generates a corresponding setter and getter, which write and read data to a single-row temporal
 table. Variables declared in the package’s declaration are stored in <code class="docutils literal notranslate"><span class="pre">lbr$s0$&lt;package</span> <span class="pre">name&gt;</span></code> table, and variables declared in its body are stored in <code class="docutils literal notranslate"><span class="pre">lbr$s1$&lt;package</span> <span class="pre">name&gt;</span></code>.</p>
-<p>The setter/getter names are <code class="docutils literal notranslate"><span class="pre">lbr$s$&lt;package</span> <span class="pre">name&gt;$&lt;variable</span> <span class="pre">name&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">lbr$g$&lt;package</span> <span class="pre">name&gt;$&lt;variable</span> <span class="pre">name&gt;</span></code>. For functions, without parameters, we also generate a getter that calls a function. They are created in the schema where the package is created.</p>
+<p>The setter/getter names are <code class="docutils literal notranslate"><span class="pre">lbr$s$&lt;package</span> <span class="pre">name&gt;$&lt;variable</span> <span class="pre">name&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">lbr$g$&lt;package</span> <span class="pre">name&gt;$&lt;variable</span> <span class="pre">name&gt;</span></code>. For functions without parameters, we also generate a getter that calls a function. They are created in the schema where the package is created.</p>
 <p>Each subroutine (and other declaration) is moved into the schema scope and gets its name’s prefix <code class="docutils literal notranslate"><span class="pre">lbr$m$&lt;package</span> <span class="pre">name&gt;$&lt;method</span> <span class="pre">name&gt;</span></code>. For functions, we also generate a getter that calls the function without arguments.</p>
 <p>For each package, Liberatii generates two initialization functions, separately for body <code class="docutils literal notranslate"><span class="pre">lbr$init$&lt;package</span> <span class="pre">name&gt;</span></code> and a declaration <code class="docutils literal notranslate"><span class="pre">lbr$init0$&lt;package</span> <span class="pre">name&gt;</span></code>. The second calls the first. They are called if the tables for storing state don’t exist. The procedures also copy the package body initialization code if there is any.</p>
 <p>Local package variables are replaced with the setter/getter calls. All the other package’s objects usages get the <code class="docutils literal notranslate"><span class="pre">lbr$m</span></code> prefix.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 
 

@@ -363,7 +363,7 @@
   <section id="configuration">
 <span id="id1"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h1>
 <p>The comprehensive migration process is strategically divided into the following pivotal stages:</p>
-<p><strong>1. Initialization (init)</strong>: This initiates by extracting vital meta-data from the source database. Subsequently, this information is meticulously stored within the target database through dedicated tables, as elaborated further below.</p>
+<p><strong>1. Initialization (init)</strong>: This initiates by extracting vital metadata from the source database. Subsequently, this information is meticulously stored within the target database through dedicated tables, as elaborated further below.</p>
 <p><strong>2. Schema Migration (schema)</strong>: This phase is dedicated to the migration of the schema. It executes all Data Definition Language (DDL) statements from the source database on the target database, ensuring the seamless transition of the essential structure.</p>
 <p><strong>3. Data Migration (data)</strong>: Herein, the core data migration transpires. The process diligently transfers data from the source to the target, meticulously safeguarding the integrity and fidelity of the information.</p>
 <p><strong>4. Data Consistency Check (check)</strong>: A vital verification step, this phase computes hash sums for all data involved. By comparing these hash sums between the source and target, data consistency is rigorously validated.</p>
@@ -373,7 +373,7 @@
 <p><strong>8. Continuous Data Change Synchronization (sync)</strong>: The final stage orchestrates Change Data Capture (CDC) synchronization between the databases. This ongoing process ensures that any alterations in the source are promptly propagated to the target, maintaining a real-time, synchronized state.</p>
 <p>Each stage contributes fundamentally to a seamless and meticulous database migration, ensuring that the transition is not only accomplished successfully but also with uncompromising integrity.</p>
 <p>So the command will not reload schema information from the source DB so that you can change anything right in <code class="docutils literal notranslate"><span class="pre">dbt.migration_objects</span> <span class="pre">table</span></code>.</p>
-<p>The table can be updated during the migration. This way we can skip some objects migration, fix the DDLs (in DDL1/DDL2 columns), restart migration of some of the objects,  generate a migration report and so on.</p>
+<p>The table can be updated during the migration. This way we can skip some objects migration, fix the DDLs (in DDL1/DDL2 columns), restart migration of some of the objects,  generate a migration report, and so on.</p>
 <p>The table contains the following columns:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> - the type of the object</p></li>
@@ -389,7 +389,7 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">'S'</span></code> - skip this object</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'I'</span></code> - an object scheduled for migration</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">'r'</span></code> - an error happened during initialisation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'r'</span></code> - an error happened during initialization</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'P'</span></code> - this object is currently translating</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'D'</span></code> - this object’s schema is migrated</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'E'</span></code> - an error happened during schema migration for this object (the error message in the <code class="docutils literal notranslate"><span class="pre">error</span></code> column)</p></li>
@@ -418,9 +418,6 @@ Instead, modifications can be made efficiently without initiating an entire migr
 <span class="linenos">2</span><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="n">dbt</span><span class="p">.</span><span class="n">migration_objects</span>
 <span class="linenos">3</span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="k">type</span><span class="p">;</span>
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 </section>
 

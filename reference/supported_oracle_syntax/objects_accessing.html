@@ -368,7 +368,7 @@
 <span id="id1"></span><h1>Objects accessing<a class="headerlink" href="#objects-accessing" title="Permalink to this heading">#</a></h1>
 <p>As we don’t know actual object types, all we really need is to know is object declared in the current scope(PL/SQL block or query block). We convert each object accessor into a function call. There are two types of object access:</p>
 <ul class="simple">
-<li><p>Static access- access to a property of the object that is not declared in a current scope (Package property for example)</p></li>
+<li><p>Static access- access to a property of the object that is not declared in a current scope (Package property, for example)</p></li>
 <li><p>Variable access - access to a property of the object that is declared in the current scope.</p></li>
 </ul>
 <p>So for each type or package that is created, we create additional functions with a specific prefix for each object access type.</p>
@@ -393,9 +393,6 @@
 <span class="linenos">10</span>CREATE FUNCTION lbr$m$pack$func1(); --method call
 <span class="linenos">11</span>CREATE FUNCTION lbr$g$pack$func1(); --getter for f1 that calls f1() inside
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 </section>
 <section id="types">
@@ -427,16 +424,10 @@
 <span class="linenos">15</span>CREATE FUNCTION lbr$j$func1(type);          --getter for f1 that calls f1() inside
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="objects-accessors-chains">
 <h2><strong>Objects accessors chains</strong><a class="headerlink" href="#objects-accessors-chains" title="Permalink to this heading">#</a></h2>
-<p>First, we check if the start object is declared in a current scope (PL/SQL block or query block). And then we convert an accessor chain into a chain of corresponding function calls.  Also, we convert each access by index into <code class="docutils literal notranslate"><span class="pre">lbr$call</span></code> function.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+<p>First, we check if the start object is declared in a current scope (PL/SQL block or query block). Then we convert an accessor chain into a chain of corresponding function calls.  Also, we convert each access by index into <code class="docutils literal notranslate"><span class="pre">lbr$call</span></code> function.</p>
 </section>
 </section>
 

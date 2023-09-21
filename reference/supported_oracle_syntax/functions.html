@@ -374,7 +374,7 @@
 </section>
 <section id="functions-with-out-parameters">
 <h2><strong>Functions with OUT parameters</strong><a class="headerlink" href="#functions-with-out-parameters" title="Permalink to this heading">#</a></h2>
-<p>Postgres supports functions with OUT parameters but they should invoke in a different manner than regular functions.  Output parameters in Postgres automatically make function returns kind of record with fields equal to OUT parameters. So we’ll add an additional OUT parameter for the function result.</p>
+<p>Postgres supports functions with OUT parameters, but they should be invoked in a different manner than regular functions.  Output parameters in Postgres automatically make function returns kind of record with fields equal to OUT parameters. So we’ll add an additional OUT parameter for the function result.</p>
 <p>Declaration example:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--OracleDB</span>
 <span class="linenos">2</span><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nb">number</span><span class="p">,</span><span class="n">b</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="nb">number</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="nb">number</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">number</span><span class="w"> </span><span class="k">is</span>
@@ -385,10 +385,7 @@
 <span class="linenos">7</span><span class="w"> </span><span class="k">end</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>For invoke we create a temporal variable and select into it the result from a function. Also, replace function call with variable and before expression put select into with a real function call.</p>
+<p>For invoke, we create a temporal variable and select into it the result from a function. Also, replace function call with variable and before expression put select into with a real function call.</p>
 <p>Invoking example:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--OracleDB</span>
 <span class="linenos">2</span><span class="k">declare</span>
@@ -401,10 +398,9 @@
 <span class="linenos">9</span><span class="k">end</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p><strong>Limitations</strong></p>
+</section>
+<section id="limitations">
+<h2><strong>Limitations</strong><a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
 <p>One of the limitations of this approach is multiple invoke of the function in a single expression with changing INOUT variables.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--OracleDB</span>
 <span class="linenos"> 2</span><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nb">number</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="nb">number</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">number</span><span class="w"> </span><span class="k">is</span>
@@ -426,13 +422,10 @@
 <span class="linenos">18</span><span class="k">end</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="function-with-no-arguments">
 <h2><strong>Function with no arguments</strong><a class="headerlink" href="#function-with-no-arguments" title="Permalink to this heading">#</a></h2>
-<p>If the function doesn’t have any argument or has all defaults, Oracle can call this function without parentheses. In Postgres, you always should have parentheses. As we don’t have type inference we create synonyms which add parentheses to a call.</p>
+<p>If the function doesn’t have any argument or has all defaults, Oracle can call this function without parentheses. In Postgres, you should always have parentheses. As we don’t have type inference, we create synonyms that add parentheses to a call.</p>
 <p>OracleDB</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">CREATE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">test_func</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">test_table</span><span class="p">.</span><span class="n">id</span><span class="o">%</span><span class="k">TYPE</span>
 <span class="linenos"> 2</span><span class="k">IS</span>
@@ -447,14 +440,11 @@
 <span class="linenos">11</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">test_func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">7777</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="no-data-found-inside-functions">
 <h2><strong>NO_DATA_FOUND inside functions</strong><a class="headerlink" href="#no-data-found-inside-functions" title="Permalink to this heading">#</a></h2>
-<p>In Oracle, NO_DATA_FOUND  is an error and a state at the same time depending on what is calling function.</p>
-<p>If the function is called by PlSQL, NO_DATA_FOUND is considered to be an error and an exception is risen. If the function is called by SQL, NO_DATA_FOUND is considered to be a state and no exception is risen. In PostgreSQL, it is always an error. To emulate this for functions that can rise <code class="docutils literal notranslate"><span class="pre">NO_DATA_FOUND</span></code> (rise explicitly or in <code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">into</span></code>) we create a special wrapper with the original function name to suppress an error. In the original function, we change the name to this template <code class="docutils literal notranslate"><span class="pre">lbr$&lt;function_name&gt;$throw_no_data</span></code> and call this in PLSQL instead of the original name.</p>
+<p>In Oracle, NO_DATA_FOUND  is an error and a state at the same time, depending on what is calling function is.</p>
+<p>If the function is called by PlSQL, NO_DATA_FOUND is considered to be an error and an exception is raised. If the function is called by SQL, NO_DATA_FOUND is considered to be a state and no exception is raised. In PostgreSQL, it is always an error. To emulate this for functions that can rise <code class="docutils literal notranslate"><span class="pre">NO_DATA_FOUND</span></code> (rise explicitly or in <code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">into</span></code>), we create a special wrapper with the original function name to suppress an error. In the original function, we change the name to this template <code class="docutils literal notranslate"><span class="pre">lbr$&lt;function_name&gt;$throw_no_data</span></code> and call this in PLSQL instead of the original name.</p>
 <p>OracleDB</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">CREATE</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w">  </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">no_data_func</span>
 <span class="linenos">2</span><span class="k">RETURN</span><span class="w"> </span><span class="n">VARCHAR2</span>
@@ -464,9 +454,6 @@
 <span class="linenos">6</span><span class="w">  </span><span class="k">RETURN</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="linenos">7</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 </section>
 <section id="pipelined-functions">
@@ -497,14 +484,11 @@
 <span class="linenos">22</span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">test_func</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 <section id="nested-functions">
 <h2><strong>Nested functions</strong><a class="headerlink" href="#nested-functions" title="Permalink to this heading">#</a></h2>
-<p>To support this feature we declare each nested function in the top scope before the parent block/function.</p>
-<p>Each nested function has a name <code class="docutils literal notranslate"><span class="pre">&lt;parent_function/block_id&gt;$nested_func_id</span></code>. Also for each nested function, we capture closure variables from the outer scope and insert them in the function’s call.</p>
+<p>To support this feature, we declare each nested function in the top scope before the parent block/function.</p>
+<p>Each nested function has a name <code class="docutils literal notranslate"><span class="pre">&lt;parent_function/block_id&gt;$nested_func_id</span></code>. Also, for each nested function, we capture closure variables from the outer scope and insert them in the function’s call.</p>
 <p>Each anonymous nested function we create in <code class="docutils literal notranslate"><span class="pre">pg_temp</span></code> schema.</p>
 <p><cite>Examples</cite></p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Block</span>
@@ -558,9 +542,6 @@
 <span class="linenos">49</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </section>
 </section>
 
@@ -603,6 +584,7 @@
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#not-implemented"><strong>Not Implemented</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-with-out-parameters"><strong>Functions with OUT parameters</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations"><strong>Limitations</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-with-no-arguments"><strong>Function with no arguments</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no-data-found-inside-functions"><strong>NO_DATA_FOUND inside functions</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelined-functions"><strong>Pipelined functions</strong></a></li>
