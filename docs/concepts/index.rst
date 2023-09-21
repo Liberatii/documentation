@@ -11,7 +11,6 @@ Concepts
 - :ref:`software_architecture`
 
 |
-|
 
 
 

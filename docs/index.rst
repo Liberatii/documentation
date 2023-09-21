@@ -30,8 +30,7 @@ As you go through this guide, you'll find:
 
 It's best to go through the guide from start to finish to get a complete picture.
 
-|
-|
+
 
 .. toctree::
    :hidden:

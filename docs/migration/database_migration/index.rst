@@ -9,7 +9,7 @@ link: `Migration API </migration-api/>`_
 
 Please note, however, that when deploying the managed application, you should replace "lgw" with the IP address of the deployed virtual machine.
 
-There is a tutorial in Jupyter notebook available at `MigrationHR.ipynb </tutorial/MigrationHR.ipynb>`_
+There is a tutorial in Jupyter Notebook available at `MigrationHR.ipynb </tutorial/MigrationHR.ipynb>`_
 
 .. note::
 

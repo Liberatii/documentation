@@ -5,7 +5,7 @@ Configuration
 
 The comprehensive migration process is strategically divided into the following pivotal stages:
 
-**1. Initialization (init)**: This initiates by extracting vital meta-data from the source database. Subsequently, this information is meticulously stored within the target database through dedicated tables, as elaborated further below.
+**1. Initialization (init)**: This initiates by extracting vital metadata from the source database. Subsequently, this information is meticulously stored within the target database through dedicated tables, as elaborated further below.
 
 **2. Schema Migration (schema)**: This phase is dedicated to the migration of the schema. It executes all Data Definition Language (DDL) statements from the source database on the target database, ensuring the seamless transition of the essential structure.
 
@@ -26,7 +26,7 @@ Each stage contributes fundamentally to a seamless and meticulous database migra
 
 So the command will not reload schema information from the source DB so that you can change anything right in ``dbt.migration_objects table``.
 
-The table can be updated during the migration. This way we can skip some objects migration, fix the DDLs (in DDL1/DDL2 columns), restart migration of some of the objects,  generate a migration report and so on.
+The table can be updated during the migration. This way we can skip some objects migration, fix the DDLs (in DDL1/DDL2 columns), restart migration of some of the objects,  generate a migration report, and so on.
 
 The table contains the following columns:
 
@@ -52,7 +52,7 @@ The ``stage`` field of ``dbt.migration_objects`` has the following meanings:
 
 - ``'I'`` - an object scheduled for migration
 
-- ``'r'`` - an error happened during initialisation
+- ``'r'`` - an error happened during initialization
 
 - ``'P'`` - this object is currently translating
 
@@ -106,5 +106,5 @@ It's also fairly simple to migrate the reports, like:
      from dbt.migration_objects 
    group by error, type;
 
-|
+
 

@@ -15,7 +15,7 @@ Outer Join operators like ``(+)`` are translated into ``OUTER JOIN`` ANSI SQL Sy
    SELECT * FROM Table1 t1, Table2 t2, Table3 t3 
    where t1.NAME(+) = t2.NAME and t1.NAME = t3.NAME;
 
-|
+
 
 **ROWNUM/ROWID pseudo columns**
 +++++++++++++++++++++++++++++++
@@ -30,7 +30,7 @@ Outer Join operators like ``(+)`` are translated into ``OUTER JOIN`` ANSI SQL Sy
     WHERE department_id = 20;
 
 
-|
+
 
 - ``ROWNUM`` in ``SELECT`` columns list is translated into a window function ``row_number``.
 
@@ -45,7 +45,7 @@ For example:
    WHERE ITEM_NUM < 10 AND ROWNUM < 6 AND ORDER_NUM > 100;
 
 
-|
+
 
 ``ROWNUM`` in ``UPDATE`` is translated into a runtime function call calculating the next value.
 
@@ -55,12 +55,12 @@ For example:
    UPDATE employees SET employee_id = ROWNUM, manager_id = ROWNUM;
 
 
-|
+
 
 Other usages aren't supported.
 
-|
-|
+
+
 
 **CREATE SEQUENCE**
 +++++++++++++++++++
@@ -73,19 +73,19 @@ PostgreSQL has ``CREATE SEQUENCE`` syntax with some differences:
 
 **3.** Replace: ``NOCYCLE`` -> ``NO CYCLE``  ``NOMINVALUE`` -> ``NO MINVALUE``  ``NOMAXVALUE`` -> ``NO MAXVALUE``
 
-|
+
 
 **UNIQUE in Select statement**
 ++++++++++++++++++++++++++++++
 
 ``UNIQUE`` is the Oracle's synonym for ``DISTINCT``. So we replace ``UNIQUE`` with ``DISTINCT``.
 
-|
+
 
 PIVOT clause
 ++++++++++++
 
-For emulation, we use transform PIVOT into Decode form with aggregation and translate this:
+For emulation, we transform PIVOT into Decode form with aggregation and translate this:
 
 .. code-block:: sql
    :linenos:
@@ -95,7 +95,7 @@ For emulation, we use transform PIVOT into Decode form with aggregation and tran
    PIVOT
    (SUM(order_total) FOR order_mode IN ('direct' AS Store, 'online' AS Internet));
 
-|
+
 
 **UNPIVOT clause**
 ++++++++++++++++++
@@ -118,7 +118,7 @@ Example:
        )
     );
  
-|
+
 
 To achieve this result in PostgreSQL, we will define an array of values that will act as the values that represent each quarterly column, followed by an array that specifies each of the columns that correspond to those quarters. We will unnest both of those arrays, and that will give us paired values for each quarter and the amount of that quarter.
 
@@ -126,11 +126,11 @@ To achieve this result in PostgreSQL, we will define an array of values that wil
 
    If the original query uses an asterisk we need to read the metadata and exclude columns that are used in UNPIVOT clause
 
-|
+
 
 **Ignore NULLS**
 
-For ignoring NULLS we should wrap translated query into the top query with the condition.
+For ignoring NULLS, we should wrap the translated query into the top query with the condition.
 
 Oracle EXCLUDE NULLS.
 
@@ -148,7 +148,7 @@ Oracle EXCLUDE NULLS.
        )
     );
 
-|
+
 
 Oracle unpivot multiple columns.
 
@@ -165,5 +165,5 @@ Oracle unpivot multiple columns.
        )
    );
 
-|
+
 

@@ -7,7 +7,7 @@ Autonomous transactions
 
 Autonomous transactions emulated due to execution SQL via PostgreSQL dblink. We have  to use dblink_fdw to create the remote server and user mapping.
 
-In addition, we create a wrapper for an autonomous function(procedure) with we call helper function ``dbt.autonous_exec`` with function parameters.
+In addition, we create a wrapper for an autonomous function(procedure) with the call of helper function ``dbt.autonous_exec`` with function parameters.
 
 Oracle
 
@@ -38,6 +38,3 @@ Oracle
 Not yet implemented:
 
 - Outer transaction temp objects aren't visible in the autonomous transaction.
-
-|
-

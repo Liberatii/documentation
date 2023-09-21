@@ -6,7 +6,7 @@ Objects accessing
 
 As we don't know actual object types, all we really need is to know is object declared in the current scope(PL/SQL block or query block). We convert each object accessor into a function call. There are two types of object access:
 
-- Static access- access to a property of the object that is not declared in a current scope (Package property for example)
+- Static access- access to a property of the object that is not declared in a current scope (Package property, for example)
 
 - Variable access - access to a property of the object that is declared in the current scope.
 
@@ -45,7 +45,7 @@ Pseudocode examples:
    CREATE FUNCTION lbr$g$pack$func1(); --getter for f1 that calls f1() inside
 
 
-|
+
 
 **Types**
 +++++++++
@@ -89,14 +89,14 @@ Pseudocode examples:
    CREATE FUNCTION lbr$n$func1(type);          --method call
    CREATE FUNCTION lbr$j$func1(type);          --getter for f1 that calls f1() inside
 
-|
+
 
 **Objects accessors chains**
 ++++++++++++++++++++++++++++
 
-First, we check if the start object is declared in a current scope (PL/SQL block or query block). And then we convert an accessor chain into a chain of corresponding function calls.  Also, we convert each access by index into ``lbr$call`` function.
+First, we check if the start object is declared in a current scope (PL/SQL block or query block). Then we convert an accessor chain into a chain of corresponding function calls.  Also, we convert each access by index into ``lbr$call`` function.
 
-|
+
 
 
 

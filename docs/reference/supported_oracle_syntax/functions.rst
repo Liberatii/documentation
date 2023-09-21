@@ -17,7 +17,7 @@ Functions
 **Functions with OUT parameters**
 +++++++++++++++++++++++++++++++++
 
-Postgres supports functions with OUT parameters but they should invoke in a different manner than regular functions.  Output parameters in Postgres automatically make function returns kind of record with fields equal to OUT parameters. So we'll add an additional OUT parameter for the function result.
+Postgres supports functions with OUT parameters, but they should be invoked in a different manner than regular functions.  Output parameters in Postgres automatically make function returns kind of record with fields equal to OUT parameters. So we'll add an additional OUT parameter for the function result.
 
 Declaration example:
 
@@ -32,9 +32,9 @@ Declaration example:
        return(100);
     end;
 
-|
 
-For invoke we create a temporal variable and select into it the result from a function. Also, replace function call with variable and before expression put select into with a real function call.
+
+For invoke, we create a temporal variable and select into it the result from a function. Also, replace function call with variable and before expression put select into with a real function call.
 
 Invoking example:
 
@@ -52,9 +52,10 @@ Invoking example:
    end;
 
 
-|
+
 
 **Limitations**
++++++++++++++++
 
 One of the limitations of this approach is multiple invoke of the function in a single expression with changing INOUT variables.
 
@@ -81,12 +82,12 @@ One of the limitations of this approach is multiple invoke of the function in a 
    end;
 
 
-|
+
 
 **Function with no arguments**
 ++++++++++++++++++++++++++++++
 
-If the function doesn't have any argument or has all defaults, Oracle can call this function without parentheses. In Postgres, you always should have parentheses. As we don't have type inference we create synonyms which add parentheses to a call.
+If the function doesn't have any argument or has all defaults, Oracle can call this function without parentheses. In Postgres, you should always have parentheses. As we don't have type inference, we create synonyms that add parentheses to a call.
 
 OracleDB
 
@@ -106,14 +107,14 @@ OracleDB
     WHERE test_func = -7777;
 
 
-|
+
 
 **NO_DATA_FOUND inside functions**
 ++++++++++++++++++++++++++++++++++
 
-In Oracle, NO_DATA_FOUND  is an error and a state at the same time depending on what is calling function.
+In Oracle, NO_DATA_FOUND  is an error and a state at the same time, depending on what is calling function is.
 
-If the function is called by PlSQL, NO_DATA_FOUND is considered to be an error and an exception is risen. If the function is called by SQL, NO_DATA_FOUND is considered to be a state and no exception is risen. In PostgreSQL, it is always an error. To emulate this for functions that can rise ``NO_DATA_FOUND`` (rise explicitly or in ``select into``) we create a special wrapper with the original function name to suppress an error. In the original function, we change the name to this template ``lbr$<function_name>$throw_no_data`` and call this in PLSQL instead of the original name.
+If the function is called by PlSQL, NO_DATA_FOUND is considered to be an error and an exception is raised. If the function is called by SQL, NO_DATA_FOUND is considered to be a state and no exception is raised. In PostgreSQL, it is always an error. To emulate this for functions that can rise ``NO_DATA_FOUND`` (rise explicitly or in ``select into``), we create a special wrapper with the original function name to suppress an error. In the original function, we change the name to this template ``lbr$<function_name>$throw_no_data`` and call this in PLSQL instead of the original name.
 
 OracleDB
 
@@ -129,7 +130,7 @@ OracleDB
    END;
 
 
-|
+
 
 **Pipelined functions**
 +++++++++++++++++++++++
@@ -164,14 +165,14 @@ OracleDB
        RETURN;
      END test_func;
 
-|
+
 
 **Nested functions**
 ++++++++++++++++++++
 
-To support this feature we declare each nested function in the top scope before the parent block/function.
+To support this feature, we declare each nested function in the top scope before the parent block/function.
 
-Each nested function has a name ``<parent_function/block_id>$nested_func_id``. Also for each nested function, we capture closure variables from the outer scope and insert them in the function's call.
+Each nested function has a name ``<parent_function/block_id>$nested_func_id``. Also, for each nested function, we capture closure variables from the outer scope and insert them in the function's call.
 
 Each anonymous nested function we create in ``pg_temp`` schema. 
 
@@ -230,5 +231,5 @@ Each anonymous nested function we create in ``pg_temp`` schema.
      END;
    END;
 
-|
+
 

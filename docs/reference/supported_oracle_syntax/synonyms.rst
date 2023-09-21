@@ -17,5 +17,5 @@ OracleDB
    Drop SYNONYM countries;
    /
 
-|
+
 

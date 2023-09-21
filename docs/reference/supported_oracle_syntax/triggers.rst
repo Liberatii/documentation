@@ -28,7 +28,7 @@ Oracle DB
    END;
    /
 
-|
+
  
 
 Also, PostgreSQL triggers don't have trigger conditions inside the trigger's body. We emulate them with TP_OP special variable:
@@ -44,7 +44,7 @@ Also, PostgreSQL triggers don't have trigger conditions inside the trigger's bod
    * - UPDATING
    * - UPDATING(column_id)
 
-|
+
 
 For dropping triggers, Postgres should know the table on which it was created.
 
@@ -63,11 +63,11 @@ OracleDB
 
 **2.** System triggers don't support this yet (can be emulated with Postgres event triggers).
 
-**3.** PostgreSQL doesn't support referencing NEW pseudo records in DELETE trigger's WHEN clause and OLD pseudo-record in INSERT trigger's WHEN clause (referencing them in the trigger's function body is ok).
+**3.** PostgreSQL doesn't support referencing NEW pseudo records in the DELETE trigger's WHEN clause and OLD pseudo-records in the INSERT trigger's WHEN clause (referencing them in the trigger's function body is ok).
 
 **4.** UPDATE(column) in the STATEMENT trigger doesn't support it.
 
-|
+
 
 
  

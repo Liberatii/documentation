@@ -76,4 +76,4 @@ Oracle:
 
 **2.** BLOB, RAW(n),  LONG RAW maps to BYTEA or to a Large object if stored data larger 1 GB limit.  We map to BYTEA by default.
 
-|
+

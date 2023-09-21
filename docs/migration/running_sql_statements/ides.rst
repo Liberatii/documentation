@@ -13,8 +13,6 @@ To seamlessly replace the JDBC driver in DBeaver, adhere to these systematic gui
     :width: 80%
     :align: center
 
-|
-|
 
 **2.** Click on **New Driver** to initiate the process.
 
@@ -22,8 +20,6 @@ To seamlessly replace the JDBC driver in DBeaver, adhere to these systematic gui
     :width: 80%
     :align: center
 
-|
-|
 
 **3.** Fill in the details as demonstrated in the provided image.
 
@@ -31,8 +27,6 @@ To seamlessly replace the JDBC driver in DBeaver, adhere to these systematic gui
     :width: 80%
     :align: center
 
-|
-|
 
 **4.** Integrate the Liberatti JDBC Driver as an additional driver.
 
@@ -40,8 +34,6 @@ To seamlessly replace the JDBC driver in DBeaver, adhere to these systematic gui
     :width: 80%
     :align: center
 
-|
-|
 
 **5.** Utilize the Find class button to locate and select the ``liberatii.jdbc`` class.
 
@@ -49,8 +41,6 @@ To seamlessly replace the JDBC driver in DBeaver, adhere to these systematic gui
     :width: 80%
     :align: center
 
-|
-|
 
 **6.** When establishing a new connection, opt for the ``Liberatti LGW driver``.
 
@@ -58,8 +48,6 @@ To seamlessly replace the JDBC driver in DBeaver, adhere to these systematic gui
     :width: 80%
     :align: center
 
-|
-|
 
 **7.** Input the requisite connection parameters such as host, port, database name, username, and password.
 
@@ -67,8 +55,6 @@ To seamlessly replace the JDBC driver in DBeaver, adhere to these systematic gui
     :width: 80%
     :align: center
 
-|
-|
 
 **8.** To validate the connection, click the **Test Connection** button.
 
@@ -76,14 +62,10 @@ To seamlessly replace the JDBC driver in DBeaver, adhere to these systematic gui
     :width: 80%
     :align: center
 
-|
-|
 
 .. warning::
 
     WARNING: It's essential to note that DBeaver doesn't inherently understand the Oracle syntax of queries. Consequently, you can't directly execute an entire query buffer. For simpler queries, a potential approach involves selecting them all and pressing **Alt-X**. However, for intricate queries (such as PL/SQL DDLs), it's advisable to choose a single statement and press **Ctrl (Command on Mac)-Enter** to execute.
 
-|
-|
-|
+
 
