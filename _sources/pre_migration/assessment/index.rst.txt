@@ -47,6 +47,7 @@ Before you begin assessing your Oracle database for migration, you need to
 
 - Obtain permission to connect and query an Oracle database.
 
+- (**Optional**) Ensure that your environment has docker available
 
 Install the extension
 +++++++++++++++++++++
@@ -170,22 +171,45 @@ The following tables will present the function, table, and type objects referenc
 By clicking the "Save" button, it is possible to save the results of the DML assessment as a .json file for further analyzing or sending the Liberatii team for improvements
 
 
+.. _Running a detailed assessment:
+
 Running a detailed assessment
 +++++++++++++++++++++++++++++
 
 .. note::
 
-   NOTE: On the Windows platform, this page is still under development and will be available in the next versions.
+   NOTE: This requires a docker environment to be present. The :doc:`guide to installing docker</reference/docker>` details installation procedures on a variety of platforms.
 
 
 The detailed assessment is run by connecting the extension to an instance of Liberatii Gateway. Each DDL and DML statement is run against a real gateway to determine whether the statement is supported.
 
-To perform this assessment, you must download `Liberatii Gateway container <https://drive.google.com/file/d/1wcKx9yfxsxJL0p_IhUgHqz72Xk0taHmW/view?usp=sharing>`_ and put it under ``/tmp`` directory. If "Process DML and minimal supporting DDL" is selected, then only the DDL statements required by the DML statements supplied or downloaded in the previous step will be used.
+Installing the docker containers
+--------------------------------
+
+To perform this assessment, you must download the latest :code:`pgtranslator` and :code:`postgres` containers:
+
+* `Liberatii Gateway container <https://drive.google.com/file/d/1wcKx9yfxsxJL0p_IhUgHqz72Xk0taHmW/view?usp=sharing>`_ 
+* `PostgreSQL container <unlinked>`_
+
+Then install them using:
+
+.. code-block::
+   :caption: Container install
+
+    docker load -i pgtranslator.tar.gz
+    docker load -i postgres.tar.gz
+
+Running the assessment
+----------------------
+
+The following options will affect the way in which the DDL is processed:
+
+* "Process DML and minimal supporting DDL" will only process the DDL statements required by the DML statements supplied or downloaded in the previous step. This option is useful if only the currently running applications are in scope to be migrated.
+* "Use numerics instead of ints/shorts" will change the translator options to cast to the postgres :code:`numeric` type rather than using :code:`int` and :code:`short`. This option is useful if the code to be migrated makes heavy use of numerical processing without precise casting.
 
 .. figure:: images/assessment_08.png
     :width: 100%
     :align: center
-
 
 |
 
@@ -200,15 +224,4 @@ The result table provides the following information:
      - **Reduced**
    * - The SQL statement
      - The error that occurred
-     - A minimised statement that also produces this error
-
-
-
-
-
-
-
-
-
-
-
+     - A minimized statement that also produces this error

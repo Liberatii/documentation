@@ -357,7 +357,7 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated September, 21 2023
+  Updated September, 27 2023
   <br/>
 </p>
                   
@@ -387,6 +387,7 @@
 <li><p>Verify that your source environment is supported.</p></li>
 <li><p>Download and install <a class="reference external" href="https://learn.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio">Azure Data Studio</a> in your environment.</p></li>
 <li><p>Obtain permission to connect and query an Oracle database.</p></li>
+<li><p>(<strong>Optional</strong>) Ensure that your environment has docker available</p></li>
 </ul>
 </section>
 <section id="install-the-extension">
@@ -485,13 +486,35 @@ downloading DML currently executing in the database (“Download” button) or b
 <p>By clicking the “Save” button, it is possible to save the results of the DML assessment as a .json file for further analyzing or sending the Liberatii team for improvements</p>
 </section>
 <section id="running-a-detailed-assessment">
-<h2>Running a detailed assessment<a class="headerlink" href="#running-a-detailed-assessment" title="Permalink to this heading">#</a></h2>
+<span id="id2"></span><h2>Running a detailed assessment<a class="headerlink" href="#running-a-detailed-assessment" title="Permalink to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>NOTE: On the Windows platform, this page is still under development and will be available in the next versions.</p>
+<p>NOTE: This requires a docker environment to be present. The <a class="reference internal" href="../../reference/docker.html"><span class="doc">guide to installing docker</span></a> details installation procedures on a variety of platforms.</p>
 </div>
 <p>The detailed assessment is run by connecting the extension to an instance of Liberatii Gateway. Each DDL and DML statement is run against a real gateway to determine whether the statement is supported.</p>
-<p>To perform this assessment, you must download <a class="reference external" href="https://drive.google.com/file/d/1wcKx9yfxsxJL0p_IhUgHqz72Xk0taHmW/view?usp=sharing">Liberatii Gateway container</a> and put it under <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> directory. If “Process DML and minimal supporting DDL” is selected, then only the DDL statements required by the DML statements supplied or downloaded in the previous step will be used.</p>
+<section id="installing-the-docker-containers">
+<h3>Installing the docker containers<a class="headerlink" href="#installing-the-docker-containers" title="Permalink to this heading">#</a></h3>
+<p>To perform this assessment, you must download the latest <code class="code docutils literal notranslate"><span class="pre">pgtranslator</span></code> and <code class="code docutils literal notranslate"><span class="pre">postgres</span></code> containers:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://drive.google.com/file/d/1wcKx9yfxsxJL0p_IhUgHqz72Xk0taHmW/view?usp=sharing">Liberatii Gateway container</a></p></li>
+<li><p><a class="reference external" href="unlinked">PostgreSQL container</a></p></li>
+</ul>
+<p>Then install them using:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Container install</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">docker</span> <span class="n">load</span> <span class="o">-</span><span class="n">i</span> <span class="n">pgtranslator</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+ <span class="n">docker</span> <span class="n">load</span> <span class="o">-</span><span class="n">i</span> <span class="n">postgres</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="running-the-assessment">
+<h3>Running the assessment<a class="headerlink" href="#running-the-assessment" title="Permalink to this heading">#</a></h3>
+<p>The following options will affect the way in which the DDL is processed:</p>
+<ul class="simple">
+<li><p>“Process DML and minimal supporting DDL” will only process the DDL statements required by the DML statements supplied or downloaded in the previous step. This option is useful if only the currently running applications are in scope to be migrated.</p></li>
+<li><p>“Use numerics instead of ints/shorts” will change the translator options to cast to the postgres <code class="code docutils literal notranslate"><span class="pre">numeric</span></code> type rather than using <code class="code docutils literal notranslate"><span class="pre">int</span></code> and <code class="code docutils literal notranslate"><span class="pre">short</span></code>. This option is useful if the code to be migrated makes heavy use of numerical processing without precise casting.</p></li>
+</ul>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/assessment_08.png"><img alt="../../_images/assessment_08.png" src="../../_images/assessment_08.png" style="width: 100%;" /></a>
 </figure>
@@ -514,10 +537,11 @@ downloading DML currently executing in the database (“Download” button) or b
 <tbody>
 <tr class="row-even"><td><p>The SQL statement</p></td>
 <td><p>The error that occurred</p></td>
-<td><p>A minimised statement that also produces this error</p></td>
+<td><p>A minimized statement that also produces this error</p></td>
 </tr>
 </tbody>
 </table>
+</section>
 </section>
 </section>
 
@@ -566,7 +590,11 @@ downloading DML currently executing in the database (“Download” button) or b
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-database-information">Read Database Information</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assess-the-schema">Assess the schema</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-dml-data-manipulation-language-statements">Examining DML (Data Manipulation Language) statements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-detailed-assessment">Running a detailed assessment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-detailed-assessment">Running a detailed assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-docker-containers">Installing the docker containers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-assessment">Running the assessment</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
