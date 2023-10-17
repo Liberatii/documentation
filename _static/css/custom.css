@@ -402,13 +402,17 @@ div.link-copied{
     font-weight: bold;
 }
 
-li::marker {
+.simple {
+    margin-left: 1.5em;
+}
+
+ul li::marker {
     content: "\2022";
     color: #FF6A26;
     font-weight: bold;
 }
 
-ul.simple li p {
+.simple li p {
     margin-left: 0.5em;
 }
 
@@ -765,3 +769,4 @@ div.responsive-table{
 h1, h2, h3, h4, h5, h6{
     color: #212123;
 }
+

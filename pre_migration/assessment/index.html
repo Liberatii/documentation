@@ -357,7 +357,7 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated October, 11 2023
+  Updated October, 17 2023
   <br/>
 </p>
                   
@@ -379,9 +379,8 @@
 <p><strong>3.</strong> SQL statements stripped of strings and number values</p>
 <p><strong>4.</strong> Minimized statements that fail to translate in Liberatii Gateway</p>
 <p>As all information is either minimized or stripped, the JSON files should contain no sensitive information.</p>
-</section>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h3>
 <p>Before you begin assessing your Oracle database for migration, you need to</p>
 <ul class="simple">
 <li><p>Verify that your source environment is supported.</p></li>
@@ -391,7 +390,7 @@
 </ul>
 </section>
 <section id="install-the-extension">
-<h2>Install the extension<a class="headerlink" href="#install-the-extension" title="Permalink to this heading">#</a></h2>
+<h3>Install the extension<a class="headerlink" href="#install-the-extension" title="Permalink to this heading">#</a></h3>
 <p>Once Azure Data Studio is downloaded and installed, the Liberatii Migration Assessment extension can be installed by downloading the VSIX file and selecting “Install from VSIX…” from the ADS extension menu.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/assessment_01.png"><img alt="../../_images/assessment_01.png" src="../../_images/assessment_01.png" style="width: 100%;" /></a>
@@ -399,7 +398,7 @@
 <p>The latest VSIX file can be downloaded from here. <a class="reference external" href="https://drive.google.com/file/d/1J5Rj7fb0Rtt6q_jVmvxxHqhYiK9XvSqu/view?usp=sharing">The release page</a>.</p>
 </section>
 <section id="connect-to-an-oracle-database">
-<h2>Connect to an Oracle database<a class="headerlink" href="#connect-to-an-oracle-database" title="Permalink to this heading">#</a></h2>
+<h3>Connect to an Oracle database<a class="headerlink" href="#connect-to-an-oracle-database" title="Permalink to this heading">#</a></h3>
 <p>When connecting to a live database, this extension requires the <a class="reference external" href="https://learn.microsoft.com/en-us/sql/azure-data-studio/extensions/extension-for-oracle?view=sql-server-ver16">Extension for Oracle</a> to be installed to provide connections to the Oracle Databases. It is, therefore, limited to Oracle 11.2 and above.</p>
 <p>A connection to an Oracle must already be setup:</p>
 <figure class="align-center">
@@ -417,7 +416,7 @@
 </div>
 </section>
 <section id="create-an-assessment-without-a-live-database">
-<h2>Create an assessment without a live database<a class="headerlink" href="#create-an-assessment-without-a-live-database" title="Permalink to this heading">#</a></h2>
+<h3>Create an assessment without a live database<a class="headerlink" href="#create-an-assessment-without-a-live-database" title="Permalink to this heading">#</a></h3>
 <p>An assessment project can be created without a database connection by selecting “None” as the database connection:</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/assessment_04.png"><img alt="../../_images/assessment_04.png" src="../../_images/assessment_04.png" style="width: 100%;" /></a>
@@ -428,7 +427,7 @@
 <p>Assessment projects created in this way can only use SQL files to supply DDL (Data Definition Language) and DML (Data Manipulation Language) for assessment.</p>
 </section>
 <section id="read-database-information">
-<h2>Read Database Information<a class="headerlink" href="#read-database-information" title="Permalink to this heading">#</a></h2>
+<h3>Read Database Information<a class="headerlink" href="#read-database-information" title="Permalink to this heading">#</a></h3>
 <p>Database information is downloaded automatically as the first step of the assessment:</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/assessment_05.png"><img alt="../../_images/assessment_05.png" src="../../_images/assessment_05.png" style="width: 100%;" /></a>
@@ -438,7 +437,7 @@
 </div>
 </section>
 <section id="assess-the-schema">
-<h2>Assess the schema<a class="headerlink" href="#assess-the-schema" title="Permalink to this heading">#</a></h2>
+<h3>Assess the schema<a class="headerlink" href="#assess-the-schema" title="Permalink to this heading">#</a></h3>
 <p>The schema can be assessed by downloading the DDL (Data Definition Language) statements from the database using a dumped DDL file. If you want
 to use a live connection click on the “Download” button and the assessment will start.</p>
 <figure class="align-center">
@@ -449,7 +448,7 @@ to use a live connection click on the “Download” button and the assessment w
 <p>By clicking the “Save” button it is possible to save the results of the schema assessment as a .json file for further analyzing or sending the Liberatii team for improvements</p>
 </section>
 <section id="examining-dml-data-manipulation-language-statements">
-<h2>Examining DML (Data Manipulation Language) statements<a class="headerlink" href="#examining-dml-data-manipulation-language-statements" title="Permalink to this heading">#</a></h2>
+<h3>Examining DML (Data Manipulation Language) statements<a class="headerlink" href="#examining-dml-data-manipulation-language-statements" title="Permalink to this heading">#</a></h3>
 <p>After the schema is downloaded, any DML statements used by applications attached to the database can be examined. This can be performed by
 downloading DML currently executing in the database (“Download” button) or by providing files of DML statements used by database applications (“Load” button).</p>
 <figure class="align-center">
@@ -486,14 +485,14 @@ downloading DML currently executing in the database (“Download” button) or b
 <p>By clicking the “Save” button, it is possible to save the results of the DML assessment as a .json file for further analyzing or sending the Liberatii team for improvements</p>
 </section>
 <section id="running-a-detailed-assessment">
-<span id="id2"></span><h2>Running a detailed assessment<a class="headerlink" href="#running-a-detailed-assessment" title="Permalink to this heading">#</a></h2>
+<span id="id2"></span><h3>Running a detailed assessment<a class="headerlink" href="#running-a-detailed-assessment" title="Permalink to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>NOTE: This requires a docker environment to be present. The <a class="reference internal" href="../../reference/docker.html"><span class="doc">guide to installing docker</span></a> details installation procedures on a variety of platforms.</p>
 </div>
 <p>The detailed assessment is run by connecting the extension to an instance of Liberatii Gateway. Each DDL and DML statement is run against a real gateway to determine whether the statement is supported.</p>
 <section id="installing-the-docker-containers">
-<h3>Installing the docker containers<a class="headerlink" href="#installing-the-docker-containers" title="Permalink to this heading">#</a></h3>
+<h4>Installing the docker containers<a class="headerlink" href="#installing-the-docker-containers" title="Permalink to this heading">#</a></h4>
 <p>To perform this assessment, you must download the latest <code class="code docutils literal notranslate"><span class="pre">pgtranslator</span></code> and <code class="code docutils literal notranslate"><span class="pre">postgres</span></code> containers:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://drive.google.com/file/d/1wcKx9yfxsxJL0p_IhUgHqz72Xk0taHmW/view?usp=sharing">Liberatii Gateway container</a></p></li>
@@ -509,7 +508,7 @@ downloading DML currently executing in the database (“Download” button) or b
 </div>
 </section>
 <section id="running-the-assessment">
-<h3>Running the assessment<a class="headerlink" href="#running-the-assessment" title="Permalink to this heading">#</a></h3>
+<h4>Running the assessment<a class="headerlink" href="#running-the-assessment" title="Permalink to this heading">#</a></h4>
 <p>The following options will affect the way in which the DDL is processed:</p>
 <ul class="simple">
 <li><p>“Process DML and minimal supporting DDL” will only process the DDL statements required by the DML statements supplied or downloaded in the previous step. This option is useful if only the currently running applications are in scope to be migrated.</p></li>
@@ -541,6 +540,99 @@ downloading DML currently executing in the database (“Download” button) or b
 </tr>
 </tbody>
 </table>
+</section>
+</section>
+</section>
+<section id="driver-assessment">
+<h2>Driver Assessment<a class="headerlink" href="#driver-assessment" title="Permalink to this heading">#</a></h2>
+<p>In order to connect an application to Postgres via Liberatii Gateway it is necessary
+to replace the <strong>database connector</strong> with a Liberatii connector.</p>
+<p>Liberatii supply connectors for <a class="reference internal" href="../../reference/database_connector/index.html#database-connector"><span class="std std-ref">common connector technologies</span></a>, e.g.
+<a class="reference internal" href="../../reference/database_connector/jdbc.html#jdbc"><span class="std std-ref">JDBC</span></a>, <a class="reference internal" href="../../reference/database_connector/odbc.html#odbc"><span class="std std-ref">ODBC</span></a> and <a class="reference internal" href="../../reference/database_connector/oci.html#oci"><span class="std std-ref">OCI</span></a>. In order to correctly switch the connector the
+technology in use must be determined and the driver <strong>traced</strong>.</p>
+<section id="finding-the-connector-technology">
+<h3>Finding the connector technology<a class="headerlink" href="#finding-the-connector-technology" title="Permalink to this heading">#</a></h3>
+<p>Finding the connector technology will vary greatly between applications. The easiest
+method is to find a <strong>Connection Properties</strong>, or similarly named, setting in the
+database configuration of the application. This is likely to required a
+<strong>Connection String</strong> of the following format:</p>
+<table class="table">
+<colgroup>
+<col style="width: 70.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Connection string</strong></p></th>
+<th class="head"><p><strong>Driver information</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">jdbc:oracle:thin:&#64;192.168.100.10:1521:service</span></code></p></td>
+<td><p>JDBC “thin” driver</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">jdbc:oracle:oci8:&#64;//192.168.100.10:1521/service</span></code></p></td>
+<td><p>JDBC “thick” driver</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Driver={Microsoft</span> <span class="pre">ODBC</span> <span class="pre">for</span> <span class="pre">Oracle};CONNECTSTRING=(DESCRIPTION=...)</span></code></p></td>
+<td><p>ODBC driver using a “TNS” connection string</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Username/password&#64;//192.168.100.10:1521/service</span></code></p></td>
+<td><p>OCI driver</p></td>
+</tr>
+</tbody>
+</table>
+<p>Many applications may build their own connection string by asking for the components
+(hostname, port, etc…) individually. It is also possible to search the filesystem
+to find specific files indicating a particular driver is in use:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Filename</strong></p></th>
+<th class="head"><p><strong>Pattern</strong></p></th>
+<th class="head"><p><strong>Driver</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ojdbc6.jar</span></code></p></td>
+<td><p>Search for <code class="docutils literal notranslate"><span class="pre">ojdbc*.jar</span></code></p></td>
+<td><p>Oracle Thin JDBC driver for JDK 6</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">oci.dll</span></code></p></td>
+<td><p>Search for <code class="docutils literal notranslate"><span class="pre">oci.dll</span></code> (<code class="docutils literal notranslate"><span class="pre">liboci.so</span></code> on Linux)</p></td>
+<td><p>Oracle OCI Driver</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sqora32.dll</span></code></p></td>
+<td><p>Search for <code class="docutils literal notranslate"><span class="pre">*sqora*</span></code></p></td>
+<td><p>Oracle ODBC Driver</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tracing-the-driver">
+<h3>Tracing the driver<a class="headerlink" href="#tracing-the-driver" title="Permalink to this heading">#</a></h3>
+<p>Once the driver is determined it is important to trace the driver to ensure that the functionality
+required by the application is correctly implemented by the Liberatii Connector.</p>
+<section id="oci">
+<h4>OCI<a class="headerlink" href="#oci" title="Permalink to this heading">#</a></h4>
+<p>The OCI driver can be traced by replacing the driver with the Liberatii supplied tracing driver. This can
+be done by performing the following steps:</p>
+<ol class="arabic simple">
+<li><p>In the application folder, rename the <code class="docutils literal notranslate"><span class="pre">oci.dll</span></code> file to <code class="docutils literal notranslate"><span class="pre">ociora.dll</span></code></p></li>
+<li><p>Copy the Liberatii supplied <code class="docutils literal notranslate"><span class="pre">oci.dll</span></code> into the application folder</p></li>
+<li><p>Run the application</p></li>
+</ol>
+<p>This will produce an <code class="docutils literal notranslate"><span class="pre">oci.db</span></code> file that can be sent to Liberatii containing a trace of the
+function calls made by the application. <strong>It does not contain any senstive data</strong>.</p>
+</section>
+<section id="jdbc-thick-drivers">
+<h4>JDBC Thick drivers<a class="headerlink" href="#jdbc-thick-drivers" title="Permalink to this heading">#</a></h4>
+<p>In the case of JDBC Thick drivers the same technique the <code class="docutils literal notranslate"><span class="pre">oci.dll</span></code> file can also be traced as in the
+previous section.</p>
+</section>
 </section>
 </section>
 </section>
@@ -582,17 +674,28 @@ downloading DML currently executing in the database (“Download” button) or b
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-assessment-extension-for-azure-data-studio">Migration Assessment extension for Azure Data Studio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-extension">Install the extension</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-an-oracle-database">Connect to an Oracle database</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-assessment-without-a-live-database">Create an assessment without a live database</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-database-information">Read Database Information</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assess-the-schema">Assess the schema</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-dml-data-manipulation-language-statements">Examining DML (Data Manipulation Language) statements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-detailed-assessment">Running a detailed assessment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-docker-containers">Installing the docker containers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-assessment">Running the assessment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-assessment-extension-for-azure-data-studio">Migration Assessment extension for Azure Data Studio</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-extension">Install the extension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-an-oracle-database">Connect to an Oracle database</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-assessment-without-a-live-database">Create an assessment without a live database</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-database-information">Read Database Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assess-the-schema">Assess the schema</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-dml-data-manipulation-language-statements">Examining DML (Data Manipulation Language) statements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-detailed-assessment">Running a detailed assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-docker-containers">Installing the docker containers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-assessment">Running the assessment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#driver-assessment">Driver Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-connector-technology">Finding the connector technology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracing-the-driver">Tracing the driver</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#oci">OCI</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jdbc-thick-drivers">JDBC Thick drivers</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

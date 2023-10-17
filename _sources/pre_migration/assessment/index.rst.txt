@@ -3,9 +3,8 @@
 Technical Assessment
 ====================
 
-
 Migration Assessment extension for Azure Data Studio
-++++++++++++++++++++++++++++++++++++++++++++++++++++
+----------------------------------------------------
 
 The Liberatii Assessment extension enables you to assess an Oracle Database to determine its compatibility with `Liberatii Gateway <https://www.liberatii.com/>`_.
 
@@ -184,7 +183,7 @@ Running a detailed assessment
 The detailed assessment is run by connecting the extension to an instance of Liberatii Gateway. Each DDL and DML statement is run against a real gateway to determine whether the statement is supported.
 
 Installing the docker containers
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To perform this assessment, you must download the latest :code:`pgtranslator` and :code:`postgres` containers:
 
@@ -200,7 +199,7 @@ Then install them using:
     docker load -i postgres.tar.gz
 
 Running the assessment
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 The following options will affect the way in which the DDL is processed:
 
@@ -225,3 +224,82 @@ The result table provides the following information:
    * - The SQL statement
      - The error that occurred
      - A minimized statement that also produces this error
+
+Driver Assessment
+-----------------
+
+In order to connect an application to Postgres via Liberatii Gateway it is necessary
+to replace the **database connector** with a Liberatii connector.
+
+Liberatii supply connectors for :ref:`common connector technologies <database_connector>`, e.g.
+:ref:`jdbc`, :ref:`odbc` and :ref:`oci`. In order to correctly switch the connector the
+technology in use must be determined and the driver **traced**.
+
+Finding the connector technology
+++++++++++++++++++++++++++++++++
+
+Finding the connector technology will vary greatly between applications. The easiest
+method is to find a **Connection Properties**, or similarly named, setting in the
+database configuration of the application. This is likely to required a
+**Connection String** of the following format:
+
+.. list-table::
+   :widths: 70 30
+   :header-rows: 1
+
+   * - **Connection string**
+     - **Driver information**
+   * - ``jdbc:oracle:thin:@192.168.100.10:1521:service``
+     - JDBC "thin" driver
+   * - ``jdbc:oracle:oci8:@//192.168.100.10:1521/service``
+     - JDBC "thick" driver
+   * - ``Driver={Microsoft ODBC for Oracle};CONNECTSTRING=(DESCRIPTION=...)``
+     - ODBC driver using a "TNS" connection string
+   * - ``Username/password@//192.168.100.10:1521/service``
+     - OCI driver
+
+Many applications may build their own connection string by asking for the components
+(hostname, port, etc...) individually. It is also possible to search the filesystem
+to find specific files indicating a particular driver is in use:
+
+.. list-table::
+   :widths: 50 50 50
+   :header-rows: 1
+
+   * - **Filename**
+     - **Pattern**
+     - **Driver**
+   * - ``ojdbc6.jar``
+     - Search for ``ojdbc*.jar``
+     - Oracle Thin JDBC driver for JDK 6 
+   * - ``oci.dll``
+     - Search for ``oci.dll`` (``liboci.so`` on Linux)
+     - Oracle OCI Driver
+   * - ``sqora32.dll``
+     - Search for ``*sqora*``
+     - Oracle ODBC Driver
+
+Tracing the driver
+++++++++++++++++++
+
+Once the driver is determined it is important to trace the driver to ensure that the functionality
+required by the application is correctly implemented by the Liberatii Connector.
+
+OCI
+~~~
+
+The OCI driver can be traced by replacing the driver with the Liberatii supplied tracing driver. This can
+be done by performing the following steps:
+
+1. In the application folder, rename the ``oci.dll`` file to ``ociora.dll``
+2. Copy the Liberatii supplied ``oci.dll`` into the application folder
+3. Run the application
+
+This will produce an ``oci.db`` file that can be sent to Liberatii containing a trace of the
+function calls made by the application. **It does not contain any senstive data**.
+
+JDBC Thick drivers
+~~~~~~~~~~~~~~~~~~
+
+In the case of JDBC Thick drivers the same technique the ``oci.dll`` file can also be traced as in the
+previous section.
