@@ -225,6 +225,8 @@ The result table provides the following information:
      - The error that occurred
      - A minimized statement that also produces this error
 
+.. _driver-assessment:
+
 Driver Assessment
 -----------------
 
