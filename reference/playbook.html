@@ -1,0 +1,912 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Migration Playbook &#8212; Liberatii Gateway</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reference/playbook';</script>
+    <link rel="shortcut icon" href="../_static/dark-theme-logo.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search docs..."
+         aria-label="Search docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/light-theme-logo.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/light-theme-logo.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">Liberatii Docs</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search docs..."
+         aria-label="Search docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item"><!--This will display the content on the right side of the navbar.-->
+<!--
+<a class="link-1 link-nounderline" href="#">Visit Website</a>
+<a class="btn link-2 link-nounderline" href="#" role="button">Schedule a demo</a>
+--></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search docs..."
+         aria-label="Search docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><!--This will display the content on the right side of the navbar.-->
+<!--
+<a class="link-1 link-nounderline" href="#">Visit Website</a>
+<a class="btn link-2 link-nounderline" href="#" role="button">Schedule a demo</a>
+--></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links">
+<!--  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>-->
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../concepts/index.html">Concepts</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/what_is_liberatii.html">What is Liberatii Data Platform?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/migration_journey.html">Migration journey with Liberatii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/software_architecture.html">Software Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pre_migration/index.html">Pre-migration</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pre_migration/assessment/index.html">Technical Assessment</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../migration/index.html">Migration</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../migration/azure/index.html">Azure Deployment</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../migration/database_migration/index.html">Database Migration</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/initialization.html">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/schema_migration.html">Schema migration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/data_migration.html">Data migration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/verification.html">Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/synchronising_databases.html">Synchronising Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/database_migration/testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../migration/running_sql_statements/index.html">Running SQL Statements</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../migration/running_sql_statements/applications.html">Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/running_sql_statements/ides.html">IDEs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../migration/running_sql_statements/using_psql.html">Using psql</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../post_migration/index.html">Post-migration</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../post_migration/monitoring.html">Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../post_migration/manual_translation_table.html">Manual translation table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../post_migration/tuning.html">Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../post_migration/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="supported_systems.html">Supported databases and client applications</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="database_connector/index.html">Liberatii database connector</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="database_connector/jdbc.html">JDBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="database_connector/odbc.html">ODBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="database_connector/oci.html">OCI</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="supported_oracle_syntax/index.html">Supported Oracle SQL and PL/SQL Syntax</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/type_mapping.html">Type Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/pl_sql.html">PL/SQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/string_literals.html">String literals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/sql_aliases.html">SQL Aliases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/pl_sql_block.html">Plsql Blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/functions.html">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/objects_accessing.html">Objects accessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/user_types.html">User Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/parameter_bindings.html">Parameter bindings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/packages.html">Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/sql.html">SQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/cursors.html">CURSORS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/triggers.html">TRIGGERS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/synonyms.html">SYNONYMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/autonomous_transactions.html">Autonomous transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/hierarchical_queries.html">Hierarchical queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supported_oracle_syntax/bulk_collect_into.html">BULK COLLECT INTO</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gateway_configuration.html">Gateway configuration</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        Liberatii Docs
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Migration Playbook</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main"><p class="last-updated">
+  Updated October, 18 2023
+  <br/>
+</p>
+                  
+  <section id="migration-playbook">
+<span id="playbook"></span><h1>Migration Playbook<a class="headerlink" href="#migration-playbook" title="Permalink to this heading">#</a></h1>
+<p>This document provides information and links to the actions that the Customer, Liberatii or
+both parties should perform to ensure an Oracle database and associated application are
+migrated quickly and successfully.</p>
+<img alt="Overview of the process" class="align-center" src="../_images/overview.png" />
+<p>Each section will contain:</p>
+<ul class="simple">
+<li><p>Outcomes: The results of the section</p></li>
+<li><p>Customer, Liberatii or joint actions: Work that must be completed to generate the results</p></li>
+<li><p>Notes, references and troubleshooting information</p></li>
+</ul>
+<section id="pre-requisites">
+<h2>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this heading">#</a></h2>
+<p>A machine with:</p>
+<ul class="simple">
+<li><p>Azure Data Studio</p></li>
+<li><p>The Oracle, PostgreSQL and Liberatii Assessment extensions</p></li>
+<li><p>Docker installed</p></li>
+<li><p>The Liberatii Docker containers</p></li>
+</ul>
+<p>If these machines are not already set up this process is covered in the
+<a class="reference internal" href="../pre_migration/assessment/index.html#assessment"><span class="std std-ref">technical assessment</span></a> with specific instructions for the
+docker containers <a class="reference internal" href="docker.html"><span class="doc">here</span></a>.</p>
+</section>
+<section id="assessment">
+<h2>Assessment<a class="headerlink" href="#assessment" title="Permalink to this heading">#</a></h2>
+<p>The assessment phase has two produces two reports: an assessment of the Oracle
+database and an assessment of the Application driver. These reports will determine
+their suitability for migration to Liberatii Gateway.</p>
+<p>The database assessment gathers enough information for Liberatii to ensure that the translator
+covers all functionality required by the applications under test and to construct a
+specification for a target Postgres database. This provides high confidence that the
+migrated applications will behave as expected.</p>
+<p>The application driver assessment records a trace of the functionality required
+by the application. This ensures that the replacement Liberatii driver will allow
+the application to function correctly.</p>
+<img alt="Overview of the assessment process" class="align-center" src="../_images/step1.png" />
+<p>The database assessment report can be anonymized so that even column and table names are removed.</p>
+<section id="outcomes">
+<h3>Outcomes<a class="headerlink" href="#outcomes" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A report that Liberatii can use to create a build plan and upgrade the translator to
+support the target applications.</p></li>
+<li><p>Understanding of the Application Driver type (OCI, JDBC or ODBC)</p></li>
+<li><p>In the case of OCI or thick JDBC applications, a database file (oci.db) of functionality</p></li>
+</ul>
+</section>
+<section id="customer-actions">
+<h3>Customer Actions<a class="headerlink" href="#customer-actions" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Connect Azure Data Studio to the Oracle database</p></li>
+<li><p>Run the Liberatii Assessment</p></li>
+<li><p>Send the resulting report to Liberatii</p></li>
+</ol>
+<p>The full technical assessment guide can be found <a class="reference internal" href="../pre_migration/assessment/index.html#assessment"><span class="std std-ref">here</span></a> with
+specific information concerning how to install docker <a class="reference internal" href="docker.html"><span class="doc">here</span></a>.</p>
+<ol class="arabic simple" start="4">
+<li><p>Perform the <a class="reference internal" href="../pre_migration/assessment/index.html#driver-assessment"><span class="std std-ref">Driver Assessment</span></a></p></li>
+</ol>
+<p>The driver assessment will determine the type of driver and, if applicable,
+create a database of driver functionality.</p>
+</section>
+</section>
+<section id="plan-and-build">
+<h2>Plan and Build<a class="headerlink" href="#plan-and-build" title="Permalink to this heading">#</a></h2>
+<p>During the plan and build step Liberatii will work with the customer to produce
+a plan to construct an environment suitable for running the migrated applications.</p>
+<img alt="Overview of the plan and build process" class="align-center" src="../_images/step2.png" />
+<p>This step constructs the <strong>migration notebook</strong>, a live document that tracks the
+progress of the migration. It contains tools to facilitate the remaining steps: schema
+migration, data transfer and testing.</p>
+<p>The notebook references the <strong>migration success criteria</strong>, a spreadsheet produced
+in this step that contains technical proofpoints to ensure that the migration
+meets the needs of the customer. During each stage it is essential that the
+customer and Liberatii agree that the relevant criteria can be signed off.</p>
+<p>The following criteria will be supplied in the <strong>success criteria</strong> document that should
+be acknowledged and agreed upon by both parties:</p>
+<ul class="simple">
+<li><p>Scalability</p></li>
+<li><p>Integration with the existing IT ecosystem</p></li>
+</ul>
+<p>A sample of the success criteria can be downloaded
+<a class="reference external" href="https://docs.liberatii.com/playbook/success-criteria-template.xlsx">here</a>
+and a sample migration notebook can be downloaded
+<a class="reference external" href="https://docs.liberatii.com/playbook/migration-template.ipynb">here</a>.</p>
+<section id="id2">
+<h3>Outcomes<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A Postgres environment suitable for the target applications</p></li>
+<li><p>A Liberatii Gateway connected to the Postgres environment</p></li>
+<li><p>A Liberatii Data Platform that can control the Gateway</p></li>
+<li><p>The migration notebook</p></li>
+<li><p>The migration success criteria</p></li>
+</ul>
+</section>
+<section id="liberatii-actions">
+<h3>Liberatii Actions<a class="headerlink" href="#liberatii-actions" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Correct any issues that were detected by the Assessment</p></li>
+<li><p>Create a build plan for the Postgres Database and Liberatii Gateway</p></li>
+</ol>
+</section>
+<section id="joint-actions">
+<h3>Joint Actions<a class="headerlink" href="#joint-actions" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple" start="3">
+<li><p>Deploy the Postgres Database according to the build plan</p></li>
+<li><p>Deploy the latest Liberatii Gateway and Liberatii Data Platform</p></li>
+</ol>
+</section>
+</section>
+<section id="schema-conversion">
+<h2>Schema Conversion<a class="headerlink" href="#schema-conversion" title="Permalink to this heading">#</a></h2>
+<p>The schema conversion takes place by extracting the DDL from the source
+Oracle database and running it through Liberatii Gateway.</p>
+<img alt="Overview of the schema conversion step" class="align-center" src="../_images/step3.png" />
+<p><strong>Criteria:</strong></p>
+<ul class="simple">
+<li><p>Data Types</p></li>
+<li><p>Code Objects</p></li>
+<li><p>DDL Statements</p></li>
+</ul>
+<section id="id3">
+<h3>Customer Actions<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>The <strong>success criteria</strong> document provides guidance to understand the
+requirements of this stage in the “Functional Compatibility (database)” section.
+When assessing the schema migration it is essential that both parties agree
+on the scope of the transformation. This includes the Data Types, Code Objects
+and DDL statements defined in the required schemas and referenced by the
+application and associated tests.</p>
+<p>The Liberatii Data Platform can be instructed to perform the schema
+migration as follows:</p>
+<ol class="arabic simple">
+<li><p>Open the notebook available on the Liberatii Data Platform
+(This may be the same IP as the Liberatii Gateway, depending on the
+environment construction)</p></li>
+<li><p>Ensure that the details are correct:</p>
+<ol class="arabic simple">
+<li><p>The Username, Password, IP address and Port of the Postgres Database</p></li>
+<li><p>The IP address of the Liberatii Gateway</p></li>
+</ol>
+</li>
+<li><p>Run the “Test connectivity” steps, if these do not succeed, double check
+the previous details and the machine’s status in the Azure console</p></li>
+<li><p>Run the “Configuration” and “Schema Migration” steps</p></li>
+<li><p>Examine the results of the “dbt.migration_objects” table</p></li>
+</ol>
+<p>This step can be performed by connecting Azure Data Studio to the target
+Postgres database and examining the table. Alternatively, the query can
+also be run using the notebook.</p>
+</section>
+<section id="joint-actions-troubleshooting">
+<h3>Joint Actions - Troubleshooting<a class="headerlink" href="#joint-actions-troubleshooting" title="Permalink to this heading">#</a></h3>
+<p>At this stage schema errors should be rare, as they will have been picked up
+by the assessment tool before this stage began. However, if they do occur
+they can most likely to corrected by some simple modifications to the schema
+data. Alternatively, some objects may not be required for the proper functioning
+of the application and can be ignored.</p>
+<ol class="arabic simple">
+<li><p>Examine the “dbt.migration_objects” table to find any objects that failed to migrate</p></li>
+</ol>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Examining the migration table</span><a class="headerlink" href="#id9" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">select</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">ddl1</span> <span class="kn">from</span> <span class="nn">dbt.migration_objects</span> <span class="n">where</span> <span class="n">error</span> <span class="o">&lt;&gt;</span> <span class="s1">&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Examine the cause of the error:</p></li>
+</ol>
+<section id="required-type-casts-missing">
+<h4>Required type casts missing<a class="headerlink" href="#required-type-casts-missing" title="Permalink to this heading">#</a></h4>
+<p>The error will appear as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ERROR</span><span class="p">:</span>  <span class="n">function</span> <span class="n">someFunctionName</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+<span class="n">LINE</span> <span class="o">.</span><span class="p">:</span> <span class="n">select</span> <span class="n">someFunctionName</span><span class="p">(</span><span class="o">...</span>
+<span class="n">HINT</span><span class="p">:</span>   <span class="n">No</span> <span class="n">function</span> <span class="n">matches</span> <span class="n">the</span> <span class="n">given</span> <span class="n">name</span> <span class="ow">and</span> <span class="n">argument</span> <span class="n">types</span><span class="o">.</span>
+        <span class="n">You</span> <span class="n">might</span> <span class="n">need</span> <span class="n">to</span> <span class="n">add</span> <span class="n">explicit</span> <span class="nb">type</span> <span class="n">casts</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The list of possible function overloads and their arguments can be viewed using the
+following query:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">routines</span><span class="o">.</span><span class="n">routine_name</span><span class="p">,</span> <span class="n">parameters</span><span class="o">.</span><span class="n">data_type</span><span class="p">,</span> <span class="n">parameters</span><span class="o">.</span><span class="n">ordinal_position</span>
+<span class="n">FROM</span> <span class="n">information_schema</span><span class="o">.</span><span class="n">routines</span>
+<span class="n">LEFT</span> <span class="n">JOIN</span> <span class="n">information_schema</span><span class="o">.</span><span class="n">parameters</span> <span class="n">ON</span> <span class="n">routines</span><span class="o">.</span><span class="n">specific_name</span><span class="o">=</span><span class="n">parameters</span><span class="o">.</span><span class="n">specific_name</span>
+<span class="n">WHERE</span> <span class="n">routines</span><span class="o">.</span><span class="n">routine_name</span> <span class="n">ilike</span> <span class="s1">&#39;someFunctionName&#39;</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">routines</span><span class="o">.</span><span class="n">routine_name</span><span class="p">,</span> <span class="n">parameters</span><span class="o">.</span><span class="n">ordinal_position</span>
+</pre></div>
+</div>
+<p>By wrapping the parameter in a cast, e.g.  <code class="code docutils literal notranslate"><span class="pre">CAST(expression</span> <span class="pre">AS</span> <span class="pre">INTEGER)</span></code> it is
+often possible to overcome this error.</p>
+</section>
+</section>
+</section>
+<section id="data-transfer">
+<h2>Data Transfer<a class="headerlink" href="#data-transfer" title="Permalink to this heading">#</a></h2>
+<p>The data transfer stage is performed using the <strong>Migration Notebook</strong>. This must only
+be performed once the <strong>Schema Conversion</strong> has taken place and the results are
+correct.</p>
+<img alt="Overview of the schema conversion step" class="align-center" src="../_images/step4.png" />
+<p><strong>Criteria:</strong></p>
+<ul class="simple">
+<li><p>Data Migration</p></li>
+</ul>
+<section id="id4">
+<h3>Customer Actions<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Instruct the Liberatii Data Platform to transfer the data</p></li>
+</ol>
+<p>This is performed using the notebook to perform the following actions:</p>
+<ol class="arabic simple">
+<li><p>A one-time data transfer</p></li>
+<li><p>Migration of the database constraints</p></li>
+<li><p>Verification of the transferred data</p></li>
+<li><p>Setup of the <strong>Change Data Capture</strong> pipeline</p></li>
+<li><p>Examine the results of the transfer</p></li>
+</ol>
+<p>This requires the following steps:</p>
+<ol class="arabic simple">
+<li><p>Ensure that the data verification is correct by examining the results in the “dbt.migration_objects” table</p></li>
+<li><p>Ensure that the Change-Data-Capture pipeline is functional by querying its status using the notebook.</p></li>
+</ol>
+</section>
+<section id="id5">
+<h3>Joint Actions - Troubleshooting<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>Data Transfer and synchronization can fail for a number of reasons, including:</p>
+<ul class="simple">
+<li><p>Network connectivity issues</p></li>
+<li><p>Data formatting issues</p></li>
+<li><p>Verification issues</p></li>
+<li><p>DDL parsing issues</p></li>
+</ul>
+<p>There are troubleshooting steps in the notebook that demonstrate modification of the
+configuration parameters to improve data throughput under different network conditions
+and data volumes. If these steps are exhausted then connectivity issues may be
+addressed by monitoring the network activity in the appropriate cloud console or
+local network logs.</p>
+<p>If the data cannot be transferred as there is a mismatch in types then the operation
+will be marked as failed, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Started</span> <span class="n">operation</span> <span class="nb">id</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">Started</span> <span class="n">operation</span> <span class="nb">id</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">Operation</span> <span class="n">complete</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="n">Failed</span>
+</pre></div>
+</div>
+<p>The block following this in the migration notebook will provide a log of error messages.
+The detail of the messages can be increased by adjusting the <cite>verbose</cite> configuration parameter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">s</span> \
+     <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> \
+     <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{{ &quot;value&quot;: 4 }}&#39;</span> \
+     <span class="p">{</span><span class="n">PLATFORM</span><span class="p">}</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">verbose</span>
+</pre></div>
+</div>
+<p>Verification issues are most often caused by concurrent modifications to the source database
+during the initial data transfer. If this occurs then there are two options that can be
+employed:</p>
+<ul class="simple">
+<li><p>Restart the procedure from a <strong>read-only snapshot</strong> of the database</p></li>
+<li><p>Perform the synchronization from a <strong>read-only snapshot</strong> of the database, then return to the verification stage</p></li>
+</ul>
+<p>The second option may be useful if the volume of data is very high and performing a second
+transfer would be costly.</p>
+</section>
+</section>
+<section id="test">
+<h2>Test<a class="headerlink" href="#test" title="Permalink to this heading">#</a></h2>
+<p>The testing phase of the project can be performed using
+<a class="reference external" href="https://docs.oracle.com/en/database/oracle/oracle-database/21/ratug/introduction-to-database-replay.html">Oracle Workload Replay</a>. This allows a replay taken
+from the <strong>production</strong> database to tested against Postgres virtualised by
+Liberatii and Oracle simultaneously. This produces a table of statements with
+their latencies and checksums when running on both Oracle and Liberatii.</p>
+<img alt="Overview of the testing step" class="align-center" src="../_images/step5.png" />
+<p>In addition to this, the customer should also run any test harnesses
+that they have and perform user testing on the application.</p>
+<p>Criteria:</p>
+<ul class="simple">
+<li><p>DML and DQL statements</p></li>
+<li><p>Database Driver API compatibility</p></li>
+<li><p>Latency and throughput</p></li>
+<li><p>Query performance</p></li>
+<li><p>Query optimisation (see later section)</p></li>
+<li><p>Error Handling</p></li>
+<li><p>Fitness for purpose</p></li>
+<li><p>Downtime required for production switchover</p></li>
+</ul>
+<section id="id6">
+<h3>Customer Actions<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Create a workload replay with the application running on Oracle</p></li>
+</ol>
+<p>This is performed using the following SQL:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">OR</span> <span class="n">REPLACE</span> <span class="n">DIRECTORY</span> <span class="n">REPLAY_DIR</span> <span class="n">AS</span> <span class="s1">&#39;/tmp/replay_dir&#39;</span><span class="p">;</span>
+ <span class="n">BEGIN</span>
+ <span class="n">DBMS_WORKLOAD_CAPTURE</span><span class="o">.</span><span class="n">START_CAPTURE</span> <span class="p">(</span>
+     <span class="n">name</span>             <span class="o">=&gt;</span> <span class="s1">&#39;CAPTURE&#39;</span><span class="p">,</span>
+     <span class="nb">dir</span>              <span class="o">=&gt;</span> <span class="s1">&#39;REPLAY_DIR&#39;</span><span class="p">,</span>
+     <span class="n">duration</span>         <span class="o">=&gt;</span> <span class="n">NULL</span><span class="p">,</span>
+     <span class="n">capture_sts</span>      <span class="o">=&gt;</span> <span class="n">TRUE</span><span class="p">,</span>
+     <span class="n">sts_cap_interval</span> <span class="o">=&gt;</span> <span class="mi">300</span><span class="p">);</span>
+ <span class="n">END</span><span class="p">;</span>
+ <span class="o">/</span>
+</pre></div>
+</div>
+<p>The application can then be run for a period of time that covers as much of its
+functionality as possible. Finally, the capture can be completed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BEGIN</span>
+    <span class="n">DBMS_WORKLOAD_CAPTURE</span><span class="o">.</span><span class="n">FINISH_CAPTURE</span> <span class="p">();</span>
+<span class="n">END</span><span class="p">;</span>
+<span class="o">/</span>
+</pre></div>
+</div>
+<p>This will create a replay capture in the <code class="code docutils literal notranslate"><span class="pre">/tmp/replay</span></code> folder that may
+be transferred to the Liberatii Data Platform and sandbox Oracle system for testing.</p>
+</section>
+<section id="joint-action-workload-replay">
+<h3>Joint Action - Workload replay<a class="headerlink" href="#joint-action-workload-replay" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Transfer and preparation</p></li>
+</ol>
+<p>The workload must then be transferred to the sandbox Oracle system or run in
+cloned PDB. The following SQL will prepare this replay:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BEGIN</span>
+ <span class="n">DBMS_WORKLOAD_REPLAY</span><span class="o">.</span><span class="n">PROCESS_CAPTURE</span> <span class="p">(</span>
+     <span class="n">capture_dir</span> <span class="o">=&gt;</span> <span class="s1">&#39;REPLAY_DIR&#39;</span><span class="p">);</span>
+ <span class="n">DBMS_WORKLOAD_REPLAY</span><span class="o">.</span><span class="n">INITIALIZE_REPLAY</span><span class="p">(</span>
+     <span class="n">replay_name</span><span class="o">=&gt;</span> <span class="s1">&#39;CAPTURE&#39;</span><span class="p">,</span>
+     <span class="n">replay_dir</span> <span class="o">=&gt;</span> <span class="s1">&#39;REPLAY_DIR&#39;</span><span class="p">);</span>
+ <span class="n">DBMS_WORKLOAD_REPLAY</span><span class="o">.</span><span class="n">PREPARE_REPLAY</span> <span class="p">(</span>
+     <span class="n">synchronization</span> <span class="o">=&gt;</span> <span class="n">TRUE</span><span class="p">,</span>
+     <span class="n">capture_sts</span> <span class="o">=&gt;</span> <span class="n">TRUE</span><span class="p">,</span>
+     <span class="n">sts_cap_interval</span> <span class="o">=&gt;</span> <span class="mi">300</span><span class="p">);</span>
+ <span class="n">END</span><span class="p">;</span>
+ <span class="o">/</span>
+</pre></div>
+</div>
+<p>Once this is complete the <code class="code docutils literal notranslate"><span class="pre">/tmp/replay</span></code> folder can be sent to Liberatii so
+a workload replay can be performed.</p>
+<ol class="arabic simple" start="2">
+<li><p>Replaying the workload</p></li>
+</ol>
+<p>Once Liberatii have a prepared workload replay a snapshot of the target database
+can be created and the workload replayed via the Liberatii Data Platform.</p>
+<p>This is automated through the <code class="code docutils literal notranslate"><span class="pre">replay</span></code> stage of the platform but may require
+careful control of the target database and synchronisation pipelines.</p>
+<ol class="arabic simple" start="3">
+<li><p>Review results</p></li>
+</ol>
+<p>The results of the replay are stored in the <code class="code docutils literal notranslate"><span class="pre">dbt.replay</span></code> table where they
+may be checked. If any statements produce different results they should be
+run directly against both systems to understand the differences. If the latency
+is too high for certain statements then this will have to be analyzed in detail.</p>
+</section>
+<section id="joint-action-query-optimisation">
+<h3>Joint Action - Query Optimisation<a class="headerlink" href="#joint-action-query-optimisation" title="Permalink to this heading">#</a></h3>
+<p>Any queries that perform too slowly should be refactored to suit their new
+environment. This is a joint action with the customer to determine the limits
+of what the queries must accomplish and agree to any modifications.</p>
+</section>
+</section>
+<section id="cut-over">
+<h2>Cut over<a class="headerlink" href="#cut-over" title="Permalink to this heading">#</a></h2>
+<p>The final stage in the migration is to perform the cut over. This requires replacing
+the application driver with a <a class="reference internal" href="database_connector/index.html"><span class="doc">Liberatii Database Connector</span></a>.</p>
+<img alt="Overview of the cut over step" class="align-center" src="../_images/step6.png" />
+<p>At this stage the Change-Data-Capture pipeline can be reversed to keep the Oracle system
+up to date with the virtualised target database.</p>
+<p>Criteria:</p>
+<ul class="simple">
+<li><p>Manageability and Support</p></li>
+</ul>
+<section id="id7">
+<h3>Customer Actions<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Replace the Database Connector with the Liberatii connector</p></li>
+</ol>
+<p>Information on this process can be found in the <a class="reference internal" href="../pre_migration/assessment/index.html#driver-assessment"><span class="std std-ref">Driver Assessment</span></a>. Further information can be found in the <a class="reference internal" href="database_connector/index.html"><span class="doc">Liberatii Connector Reference</span></a>.</p>
+</section>
+<section id="id8">
+<h3>Joint Actions<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Reverse the Change-Data-Capture pipeline.</p></li>
+</ol>
+<p>At the selected time of cut over, the customer can change the application
+connection string at the same time that Liberatii reverse the Change-Data-Capture
+pipeline.</p>
+<p>This may be automated through the <code class="code docutils literal notranslate"><span class="pre">cutover</span></code> stage of the migration
+tool. However, as this needs careful synchronisation to minimise disruption this is
+best performed as a joint action under careful observation.</p>
+<ol class="arabic simple" start="2">
+<li><p>Analysis and Feedback</p></li>
+</ol>
+<p>Once the application cut over is complete the application and databases should
+be monitored for an agreed period of time to ensure that the migration is
+satisfactory.</p>
+<ol class="arabic simple" start="3">
+<li><p>Agree on and understand support and diagnostic mechanisms</p></li>
+</ol>
+<p>Liberatii and the customer will agree on the set of procedures for supporting
+and understanding the application. These are detailed in the <strong>success criteria</strong>
+and will be marked off when both parties are satisfied with the processes and procedures
+in place.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-requisites">Pre-requisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment">Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outcomes">Outcomes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customer-actions">Customer Actions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-and-build">Plan and Build</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Outcomes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#liberatii-actions">Liberatii Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-actions">Joint Actions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-conversion">Schema Conversion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Customer Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-actions-troubleshooting">Joint Actions - Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#required-type-casts-missing">Required type casts missing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer">Data Transfer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Customer Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Joint Actions - Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test">Test</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Customer Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-action-workload-replay">Joint Action - Workload replay</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-action-query-optimisation">Joint Action - Query Optimisation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cut-over">Cut over</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Customer Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Joint Actions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner"></div>
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src="../_static/js/custom.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><p class="version">
+ Latest version V1.2.0
+</p></div>
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023 Liberatii. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><!--
+<a class="policy-links desktop" href="#">
+  Security
+</a>
+
+<a class="policy-links mobile" href="#">
+  Security
+</a>
+
+<span class="mx-1 divider">|</span>
+
+<a class="policy-links desktop" href="#">
+  Privacy & Cookies Policy
+</a>
+
+<a class="policy-links mobile" href="#">
+  Cookies
+</a>
+
+<span class="mx-1 divider">|</span>
+
+<a class="policy-links desktop" href="#">
+  Terms of Service
+</a>
+
+<a class="policy-links mobile" href="#">
+  ToS
+</a>
+
+<span class="mx-1 divider">|</span>
+
+<a class="social-media me-1" href="#">
+  <i class="fa-brands fa-linkedin-in"></i>
+</a>
+
+<a class="social-media" href="#">
+  <i class="fa-brands fa-twitter"></i>
+</a>
+--></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
