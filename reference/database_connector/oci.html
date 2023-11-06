@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -36,9 +36,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -121,6 +121,7 @@
   
   
   
+  
     
     
     
@@ -174,6 +175,10 @@
   
   
 
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
   
 </div>
 
@@ -356,12 +361,34 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated October, 18 2023
+  Updated November, 06 2023
   <br/>
 </p>
                   
   <section id="oci">
 <span id="id1"></span><h1>OCI<a class="headerlink" href="#oci" title="Permalink to this heading">#</a></h1>
+<p>The <a class="reference external" href="https://www.oracle.com/uk/database/technologies/instant-client.html">OCI Instant Client</a>
+is a C API/library which is used by Oracle client applications to run queries
+on an Oracle DB instance. Oracle provides an implementation of the OCI C API
+that connects to Oracle.</p>
+<p>Applications can dynamically load a shared library, <code class="code docutils literal notranslate"><span class="pre">liboci.so</span></code> or
+<code class="code docutils literal notranslate"><span class="pre">oci.dll</span></code>, to connect to the Oracle Database.</p>
+<section id="the-liberatii-driver">
+<h2>The Liberatii Driver<a class="headerlink" href="#the-liberatii-driver" title="Permalink to this heading">#</a></h2>
+<p>The Liberatii Driver provides a replacement shared library, <code class="code docutils literal notranslate"><span class="pre">liboci.so</span></code>
+or <code class="code docutils literal notranslate"><span class="pre">oci.dll</span></code>, that can be used directly in place of the existing
+<code class="code docutils literal notranslate"><span class="pre">oci.dll</span></code> or <code class="code docutils literal notranslate"><span class="pre">liboci.so</span></code>. This is performed by simply replacing
+the existing shared library with the replacement supplied by Liberatii.</p>
+</section>
+<section id="tracing-the-existing-driver">
+<h2>Tracing the existing driver<a class="headerlink" href="#tracing-the-existing-driver" title="Permalink to this heading">#</a></h2>
+<p>This driver implements the OCI C API as far as required by common applications.
+It is recommended that the existing <code class="docutils literal notranslate"><span class="pre">oci.dll</span></code> or <code class="docutils literal notranslate"><span class="pre">liboci.so</span></code> is traced prior
+to replacement. This will help Liberatii ensure that the replacement driver
+implements the functionality required by the application.</p>
+<p>The <a class="reference internal" href="../../pre_migration/assessment/index.html#oci-tracing"><span class="std std-ref">Technical Assessment</span></a> provides instructions on this
+process.</p>
+</section>
 </section>
 
 
@@ -393,6 +420,21 @@
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-liberatii-driver">The Liberatii Driver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracing-the-existing-driver">Tracing the existing driver</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -406,8 +448,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <script src="../../_static/js/custom.js"></script>
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">

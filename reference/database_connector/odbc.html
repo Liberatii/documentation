@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -36,9 +36,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -121,6 +121,7 @@
   
   
   
+  
     
     
     
@@ -174,6 +175,10 @@
   
   
 
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
   
 </div>
 
@@ -356,12 +361,124 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated October, 18 2023
+  Updated November, 06 2023
   <br/>
 </p>
                   
   <section id="odbc">
 <span id="id1"></span><h1>ODBC<a class="headerlink" href="#odbc" title="Permalink to this heading">#</a></h1>
+<p>The <strong>Open Database Connectivity (ODBC)</strong> is a standard API that allows applications
+to access databases independent of the database used. The system uses an ODBC Data
+Source Manager to control database drivers and administer access to databases.</p>
+<p>Applications can either use a <strong>Data Source Name (DSN)</strong> which references a
+configuration controlled by the manager, or can supply the same information via
+a connection string.</p>
+<section id="the-liberatii-driver">
+<h2>The Liberatii Driver<a class="headerlink" href="#the-liberatii-driver" title="Permalink to this heading">#</a></h2>
+<p>The Liberatii ODBC Driver is built on the open source <a class="reference external" href="https://odbc.postgresql.org/">psqlODBC driver</a>
+with modifications to support Oracle-specific parameters and the Liberatii Gateway.</p>
+</section>
+<section id="replacing-odbc-drivers-on-windows">
+<h2>Replacing ODBC Drivers on Windows<a class="headerlink" href="#replacing-odbc-drivers-on-windows" title="Permalink to this heading">#</a></h2>
+<section id="installation">
+<h3>1. Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h3>
+<p>The replacement driver is supported on Windows Server 2012 (Windows 8) and above and is
+available as an <a class="reference external" href="https://drive.google.com/file/d/1bE9tDZqLkhf5t29SWjbxL1xbPC_ELrOQ/view?usp=share_link">MSI Package</a>.</p>
+</section>
+<section id="changing-the-target-database">
+<h3>2. Changing the target database<a class="headerlink" href="#changing-the-target-database" title="Permalink to this heading">#</a></h3>
+<p>Applications can connect using a <strong>Data Source Name (DSN)</strong> that references system-wide
+connection settings or by specifying the connection settings directly in a connection string.</p>
+<p>Finding the system-wide DSN or connection string used by the application varies between applications.
+Applications will have a method of changing the connection via its settings interface or
+configuration files. A <strong>DSN</strong> is a short, human-readable, name whereas a connection string is
+a semicolon-separated list of connection parameters.</p>
+<section id="using-a-system-wide-dsn">
+<h4>1. Using a System-Wide DSN<a class="headerlink" href="#using-a-system-wide-dsn" title="Permalink to this heading">#</a></h4>
+<p>If the application uses a <strong>DSN</strong> the ODBC Data Source Administrator can be used to
+modify this DSN. This tool can be found by searching for it in the start-menu or
+by typing <code class="code docutils literal notranslate"><span class="pre">Win+R</span></code> then <code class="code docutils literal notranslate"><span class="pre">odbcad32</span></code>. This tools can configure and add new System DSNs:</p>
+<img alt="ODBC Administrator" class="align-center" src="../../_images/odbc_admin.png" />
+<p>Select the data source used by the application then select <code class="code docutils literal notranslate"><span class="pre">Configure</span></code>. This will
+provide a dialog that can modify the <code class="code docutils literal notranslate"><span class="pre">Server</span></code> to point to the Liberatii Gateway
+via its IP Address or hostname.</p>
+<img alt="ODBC Configuration" class="align-center" src="../../_images/odbc_configure.png" />
+<p>To change the ODBC Driver in use for this connection select <code class="code docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">DSN</span></code> to open the
+driver up/downgrade dialog. The <code class="code docutils literal notranslate"><span class="pre">PostgreSQL</span> <span class="pre">Unicode</span> <span class="pre">LGW</span></code> or <code class="code docutils literal notranslate"><span class="pre">PostgreSQL</span> <span class="pre">Unicode</span> <span class="pre">LGW(x64)</span></code>
+driver should be selected as appropriate for your system:</p>
+<img alt="ODBC Administrator" class="align-center" src="../../_images/odbc_driver.png" />
+</section>
+<section id="using-a-connection-string">
+<h4>2. Using a connection string<a class="headerlink" href="#using-a-connection-string" title="Permalink to this heading">#</a></h4>
+<p>If the application specifies the database connection using a <strong>connection string</strong> this can be
+modified to look as follows:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Connection string</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">Driver</span><span class="o">=</span><span class="p">{</span><span class="n">PostgreSQL</span> <span class="n">Unicode</span> <span class="n">LGW</span><span class="p">(</span><span class="n">x64</span><span class="p">)};</span><span class="n">Server</span><span class="o">=</span><span class="mf">10.13.0.10</span><span class="p">;</span><span class="n">Port</span><span class="o">=</span><span class="mi">5432</span><span class="p">;</span><span class="n">Database</span><span class="o">=</span><span class="n">Database1</span><span class="p">;</span><span class="n">Uid</span><span class="o">=</span><span class="n">Name</span><span class="p">;</span><span class="n">Pwd</span><span class="o">=</span><span class="n">Password</span><span class="p">;</span><span class="n">sslmode</span><span class="o">=</span><span class="n">disable</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">Username</span></code>, <code class="code docutils literal notranslate"><span class="pre">Password</span></code>, and <code class="code docutils literal notranslate"><span class="pre">Database</span></code> should match those used by the Oracle connection.
+The <code class="code docutils literal notranslate"><span class="pre">Database</span></code> must match the Oracle SID, specified as <code class="code docutils literal notranslate"><span class="pre">SERVICE_NAME</span></code>, <code class="code docutils literal notranslate"><span class="pre">Server</span></code> or following the <code class="code docutils literal notranslate"><span class="pre">/</span></code>
+if <code class="code docutils literal notranslate"><span class="pre">DBQ</span></code> is specified:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Connection string</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="c1"># SERVICE_NAME:</span>
+ <span class="n">SERVER</span><span class="o">=</span><span class="p">(</span><span class="n">DESCRIPTION</span><span class="o">=</span><span class="p">(</span><span class="n">ADDRESS</span><span class="o">=</span><span class="p">(</span><span class="n">PROTOCOL</span><span class="o">=</span><span class="n">TCP</span><span class="p">)(</span><span class="n">HOST</span><span class="o">=</span><span class="n">MyHost</span><span class="p">)(</span><span class="n">PORT</span><span class="o">=</span><span class="n">MyPort</span><span class="p">))(</span><span class="n">CONNECT_DATA</span><span class="o">=</span><span class="p">(</span><span class="n">SERVICE_NAME</span><span class="o">=</span><span class="n">MyOracleSID</span><span class="p">)));</span><span class="n">uid</span><span class="o">=</span><span class="n">myUsername</span><span class="p">;</span><span class="n">pwd</span><span class="o">=</span><span class="n">myPassword</span><span class="p">;</span>
+
+ <span class="c1"># Server:</span>
+ <span class="n">Driver</span><span class="o">=</span><span class="p">{</span><span class="n">Oracle</span> <span class="ow">in</span> <span class="n">OraClient11g_home1</span><span class="p">};</span><span class="n">Server</span><span class="o">=</span><span class="n">serverSID</span><span class="p">;</span><span class="n">Uid</span><span class="o">=</span><span class="n">myUsername</span><span class="p">;</span> <span class="n">Pwd</span><span class="o">=</span><span class="n">myPassword</span><span class="p">;</span>
+
+ <span class="c1"># DBQ:</span>
+ <span class="n">Driver</span><span class="o">=</span><span class="p">(</span><span class="n">Oracle</span> <span class="ow">in</span> <span class="n">XEClient</span><span class="p">);</span><span class="n">dbq</span><span class="o">=</span><span class="mf">111.21.31.99</span><span class="p">:</span><span class="mi">1521</span><span class="o">/</span><span class="n">XE</span><span class="p">;</span><span class="n">Uid</span><span class="o">=</span><span class="n">myUsername</span><span class="p">;</span><span class="n">Pwd</span><span class="o">=</span><span class="n">myPassword</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="replacing-odbc-drivers-on-linux">
+<h2>Replacing ODBC Drivers on Linux<a class="headerlink" href="#replacing-odbc-drivers-on-linux" title="Permalink to this heading">#</a></h2>
+<section id="id2">
+<h3>1. Installation<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>The replacement driver is supported on Redhat Linux 7.0 and above and is available as an
+<a class="reference external" href="https://drive.google.com/file/d/1bE9tDZqLkhf5t29SWjbxL1xbPC_ELrOQ/view?usp=share_link">RPM Package</a>. This
+can be installed through the system package manager <code class="code docutils literal notranslate"><span class="pre">yum</span></code> or <code class="code docutils literal notranslate"><span class="pre">dnf</span></code>.</p>
+<p>If the application is using <code class="code docutils literal notranslate"><span class="pre">unixODBC</span></code>, the installation can be verified buy running <code class="code docutils literal notranslate"><span class="pre">odbcinst</span> <span class="pre">-q</span> <span class="pre">-d</span></code>.</p>
+</section>
+<section id="id3">
+<h3>2. Changing the target database<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>Linux applications will generally use a <strong>DSN</strong> name configured in the <code class="code docutils literal notranslate"><span class="pre">unixODBC</span></code> or
+<code class="code docutils literal notranslate"><span class="pre">iODBC</span></code> configuration file: <code class="code docutils literal notranslate"><span class="pre">odbc.ini</span></code> or similar. This will vary between distributions
+but will most likely be in one of the following locations:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">~/.odbc.ini</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/etc/odbc.ini</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">/opt/redhat/odbc.ini</span></code></p></li>
+</ul>
+<p>This file can be modified to use the Liberatii PostgreSQL driver by specifying the shared library installed
+by the Liberatii RPM package:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Connection block in odbc.ini</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Liberatii</span> <span class="n">Gateway</span><span class="p">]</span>
+<span class="n">Driver</span>     <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">lgwpsqlodbc</span><span class="o">.</span><span class="n">so</span>
+<span class="n">ServerName</span> <span class="o">=</span> <span class="mf">10.13.0.10</span>
+<span class="n">ServerName</span> <span class="o">=</span> <span class="n">localhost</span>
+<span class="n">Port</span>       <span class="o">=</span> <span class="mi">5432</span>
+<span class="n">Database</span>   <span class="o">=</span> <span class="n">Database1</span>
+<span class="n">UserName</span>   <span class="o">=</span> <span class="n">Name1</span>
+<span class="n">Password</span>   <span class="o">=</span> <span class="n">Password</span>
+<span class="n">ServerType</span> <span class="o">=</span> <span class="n">Postgres</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">#</a></h2>
+<p>The source code for the Liberatii modifications is available here:</p>
+<p><a class="reference external" href="https://drive.google.com/file/d/1D70xQEtRsXYqKQI8eh4AB6UcTD9ZotLc/view?usp=share_link">Source Code</a></p>
+</section>
 </section>
 
 
@@ -393,6 +510,35 @@
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-liberatii-driver">The Liberatii Driver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-odbc-drivers-on-windows">Replacing ODBC Drivers on Windows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">1. Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-target-database">2. Changing the target database</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-system-wide-dsn">1. Using a System-Wide DSN</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-connection-string">2. Using a connection string</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-odbc-drivers-on-linux">Replacing ODBC Drivers on Linux</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1. Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2. Changing the target database</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -406,8 +552,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   <script src="../../_static/js/custom.js"></script>
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
