@@ -1,6 +1,6 @@
 .. _cursors:
 
-CURSORS
+Cursors
 =======
 
 Postgres has cursor variables with which we can implement most of the Oracle cursors
@@ -10,7 +10,8 @@ Cursor type and ref cursors
 .. code-block:: sql
    :linenos:
 
-   DECLARE
+    --Oracle
+    DECLARE
      TYPE empcurtyp IS REF CURSOR RETURN employees%ROWTYPE;  -- strong type
      TYPE genericcurtyp IS REF CURSOR;                       -- weak type
    
@@ -31,13 +32,14 @@ Explicit cursors declaration
 .. code-block:: sql
    :linenos:
 
-   DECLARE
-     CURSOR cParam(p1 NUMBER, p2 VARCHAR2) RETURN c1%ROWTYPE IS
+    --Oracle
+    DECLARE
+     CURSOR cparam(p1 NUMBER, p2 VARCHAR2) RETURN c1%ROWTYPE IS
        SELECT * FROM departments
        WHERE p1 = department_id AND p2 = department_name;
    
    BEGIN
-     OPEN cParam(123, 'st_clerk');
+     OPEN cparam(123, 'st_clerk');
    END;
    /
 
@@ -48,6 +50,7 @@ Cursor attributes
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    DECLARE
      CURSOR c1 RETURN departments%ROWTYPE IS  -- Define c1,
        SELECT * FROM departments;              -- repeating return type
@@ -84,6 +87,7 @@ Cursor attributes
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    DECLARE
      CURSOR c IS
        SELECT first_name, last_name, phone_number
@@ -109,26 +113,24 @@ REFCURSOR in package
 
 For cursor type in the package, we create composite type and corresponding setters and getters for each cursor attribute
 
-OracleDB
-
 .. code-block:: sql
    :linenos:
 
-   CREATE OR REPLACE package APP_LIBUTILS is
+   --Oracle
+   CREATE OR REPLACE PACKAGE app_libutils is
      -- Ref Cursors Types
-     TYPE c_TeamList IS REF CURSOR RETURN r_TeamList;
-   end APP_LIBUTILS;
+     TYPE c_team_list IS REF CURSOR RETURN r_team_list;
+   END app_libutils;
 
 
 
 
 The opening cursor of package retype. We create a temp simple variable of REFCURSOR type for passing it to OPEN of FETCH statement and write it back after the operation
 
-Oracle DB
-
 .. code-block:: sql
    :linenos:
 
+   --Oracle
     DECLARE
         TeamList c_TeamList;
      BEGIN

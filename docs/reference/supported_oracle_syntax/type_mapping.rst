@@ -57,11 +57,10 @@ We cover a few notable differences in translation:
 
 **1.** Oracle char datatypes have BYTE and CHAR notation for sizing. Where BYTE corresponds to length in bytes and CHAR to length in characters. Postgre has only char length. We ignore BYTE and CHAR notation. There will be no error for 1 to 1 Byte to Char translation. Just the length on Postgres will be bigger than it's needed. Default values depend on the session variable NLS_LENGTH_SEMANTICS.
 
-Oracle:
-
-.. code-block:: 
+.. code-block:: sql 
    :linenos:
 
+   --Oracle
    DECLARE  
      var1 VARCHAR2(1 char) := 'й'; 
      var2 VARCHAR2(1 char) := 'q'; 

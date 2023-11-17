@@ -32,13 +32,13 @@ Pseudocode examples:
 .. code-block:: 
    :linenos:
 
-   --ORACLE 
+   --Oracle
    CREATE PACKAGE pack {
      fld1 integer;
      function func1();
    }
    
-   --PG
+   --PostgreSQL
    CREATE FUNCTION lbr$g$pack$fld1();  --getter
    CREATE FUNCTION lbr$s$pack$fld1(integer);  --setter
    CREATE FUNCTION lbr$m$pack$func1(); --method call
@@ -73,7 +73,7 @@ Pseudocode examples:
 .. code-block:: 
    :linenos:
 
-   --ORACLE
+   --Oracle
    CREATE TYPE type {
      fld1 integer;
      function func1()

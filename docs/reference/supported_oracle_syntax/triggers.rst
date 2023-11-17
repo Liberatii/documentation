@@ -1,6 +1,6 @@
 .. _triggers:
 
-TRIGGERS
+Triggers
 ========
 
 The main difference between Oracle and Postgres triggers is the PostgreSQL trigger's function which is invoked by a trigger.
@@ -11,11 +11,10 @@ The main difference between Oracle and Postgres triggers is the PostgreSQL trigg
 
 `Postgres trigger functions <https://www.postgresql.org/docs/current/plpgsql-trigger.html>`_
 
-Oracle DB
-
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    CREATE TRIGGER after_tr_test
    AFTER INSERT OR UPDATE OR DELETE
    ON tr_test
@@ -48,11 +47,10 @@ Also, PostgreSQL triggers don't have trigger conditions inside the trigger's bod
 
 For dropping triggers, Postgres should know the table on which it was created.
 
-OracleDB
-
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    DROP TRIGGER trigg;
 
 |
