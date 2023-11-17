@@ -284,16 +284,15 @@
 <li class="toctree-l3"><a class="reference internal" href="pl_sql.html">PL/SQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="string_literals.html">String literals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql_aliases.html">SQL Aliases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pl_sql_block.html">Plsql Blocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="objects_accessing.html">Objects accessing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_types.html">User Types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="parameter_bindings.html">Parameter bindings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="packages.html">Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql.html">SQL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cursors.html">CURSORS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="triggers.html">TRIGGERS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synonyms.html">SYNONYMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cursors.html">Cursors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="triggers.html">Triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synonyms.html">Synonyms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="autonomous_transactions.html">Autonomous transactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hierarchical_queries.html">Hierarchical queries</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">BULK COLLECT INTO</a></li>
@@ -343,7 +342,7 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL Syntax</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL syntax</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">BULK COLLECT INTO</li>
   </ul>
@@ -361,78 +360,82 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated November, 06 2023
+  Updated November, 17 2023
   <br/>
 </p>
                   
   <section id="bulk-collect-into">
 <span id="id1"></span><h1>BULK COLLECT INTO<a class="headerlink" href="#bulk-collect-into" title="Permalink to this heading">#</a></h1>
-<p>To emulate <code class="docutils literal notranslate"><span class="pre">BULK</span> <span class="pre">COLLECT</span> <span class="pre">INTO</span></code>, clause we create an aggregate function for each collection type</p>
+<p>To emulate the BULK COLLECT INTO clause, we create an aggregate function for each collection type.</p>
 <p>This is an example of creating an aggregate for associative collection type:</p>
 <section id="select-bulk-collect-into">
 <h2>SELECT BULK COLLECT INTO<a class="headerlink" href="#select-bulk-collect-into" title="Permalink to this heading">#</a></h2>
 <p>To emulate select bulk collect, we call aggregate for each value and insert them into the temporary record variable. After selecting we assign each field to the corresponding collection variable.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">DECLARE</span>
-<span class="linenos">2</span><span class="p">...</span>
-<span class="linenos">3</span><span class="k">BEGIN</span>
-<span class="linenos">4</span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">empno</span><span class="p">,</span><span class="w"> </span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p">,</span><span class="w"> </span><span class="n">hiredate</span><span class="p">,</span><span class="w"> </span><span class="n">sal</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">deptno</span>
-<span class="linenos">5</span><span class="w">    </span><span class="n">BULK</span><span class="w"> </span><span class="n">COLLECT</span>
-<span class="linenos">6</span><span class="w">       </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_empno</span><span class="p">,</span><span class="w"> </span><span class="n">t_ename</span><span class="p">,</span><span class="w"> </span><span class="n">t_job</span><span class="p">,</span><span class="w"> </span><span class="n">t_hiredate</span><span class="p">,</span><span class="w"> </span><span class="n">t_sal</span><span class="p">,</span><span class="w"> </span><span class="n">t_comm</span><span class="p">,</span><span class="w"> </span><span class="n">t_deptno</span>
-<span class="linenos">7</span><span class="w">       </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">;</span>
-<span class="linenos">8</span><span class="w">    </span><span class="p">...</span>
-<span class="linenos">9</span><span class="k">END</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="k">DECLARE</span>
+<span class="linenos"> 3</span><span class="p">...</span>
+<span class="linenos"> 4</span><span class="k">BEGIN</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">empno</span><span class="p">,</span><span class="w"> </span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p">,</span><span class="w"> </span><span class="n">hiredate</span><span class="p">,</span><span class="w"> </span><span class="n">sal</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">deptno</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="n">BULK</span><span class="w"> </span><span class="n">COLLECT</span>
+<span class="linenos"> 7</span><span class="w">       </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_empno</span><span class="p">,</span><span class="w"> </span><span class="n">t_ename</span><span class="p">,</span><span class="w"> </span><span class="n">t_job</span><span class="p">,</span><span class="w"> </span><span class="n">t_hiredate</span><span class="p">,</span><span class="w"> </span><span class="n">t_sal</span><span class="p">,</span><span class="w"> </span><span class="n">t_comm</span><span class="p">,</span><span class="w"> </span><span class="n">t_deptno</span>
+<span class="linenos"> 8</span><span class="w">       </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="p">...</span>
+<span class="linenos">10</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="select-bulk-collect-into-rowtype">
 <h2>SELECT BULK COLLECT INTO ROWTYPE<a class="headerlink" href="#select-bulk-collect-into-rowtype" title="Permalink to this heading">#</a></h2>
 <p>Emulation of select bulk collect into %ROWTYPE collection is similar to regular select bulk collect, but we must specify an asterisk with the source name(alias).</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">declare</span>
-<span class="linenos"> 2</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">emp_tbl</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">emp</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
-<span class="linenos"> 3</span><span class="w">    </span><span class="n">t_emp</span><span class="w">           </span><span class="n">EMP_TBL</span><span class="p">;</span>
-<span class="linenos"> 4</span><span class="k">BEGIN</span>
-<span class="linenos"> 5</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
-<span class="linenos"> 6</span><span class="w">    </span><span class="n">BULK</span><span class="w"> </span><span class="n">COLLECT</span>
-<span class="linenos"> 7</span><span class="w">       </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_emp</span>
-<span class="linenos"> 8</span><span class="w">        </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">;</span>
-<span class="linenos"> 9</span><span class="w">  </span><span class="p">...</span>
-<span class="linenos">10</span><span class="k">END</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="k">DECLARE</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">emp_tbl</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">emp</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="n">t_emp</span><span class="w">        </span><span class="n">emp_tbl</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="k">BEGIN</span>
+<span class="linenos"> 6</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="n">BULK</span><span class="w"> </span><span class="n">COLLECT</span>
+<span class="linenos"> 8</span><span class="w">       </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_emp</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">  </span><span class="p">...</span>
+<span class="linenos">11</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="fetch-bulk-collect-into">
 <h2>FETCH BULK COLLECT INTO<a class="headerlink" href="#fetch-bulk-collect-into" title="Permalink to this heading">#</a></h2>
 <p>To aggregate values from the cursor, we create a fetch loop and store each fetched column in <code class="docutils literal notranslate"><span class="pre">elem</span></code> field of the corresponding collection variable. To aggregate values, we’re using <code class="docutils literal notranslate"><span class="pre">lbr$accum</span></code> function without actual aggregate.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">declare</span>
-<span class="linenos"> 2</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">deptno_tbl</span><span class="w">    </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">deptno</span><span class="o">%</span><span class="k">TYPE</span><span class="w">    </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
-<span class="linenos"> 3</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">dname_tbl</span><span class="w">    </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">dname</span><span class="o">%</span><span class="k">TYPE</span><span class="w">    </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
-<span class="linenos"> 4</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">loc_tbl</span><span class="w">      </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">loc</span><span class="o">%</span><span class="k">TYPE</span><span class="w">      </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
-<span class="linenos"> 5</span><span class="w">    </span><span class="n">t_deptno</span><span class="w">           </span><span class="n">deptno_TBL</span><span class="p">;</span>
-<span class="linenos"> 6</span><span class="w">    </span><span class="n">t_dname</span><span class="w">           </span><span class="n">dname_TBL</span><span class="p">;</span>
-<span class="linenos"> 7</span><span class="w">    </span><span class="n">t_loc</span><span class="w">             </span><span class="n">loc_TBL</span><span class="p">;</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="w">    </span><span class="k">CURSOR</span><span class="w"> </span><span class="n">emp_cur</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="p">;</span>
-<span class="linenos">10</span><span class="k">BEGIN</span>
-<span class="linenos">11</span><span class="w">    </span><span class="k">OPEN</span><span class="w"> </span><span class="n">emp_cur</span><span class="p">;</span>
-<span class="linenos">12</span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">emp_cur</span><span class="w"> </span><span class="n">BULK</span><span class="w"> </span><span class="n">COLLECT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_deptno</span><span class="p">,</span><span class="w"> </span><span class="n">t_dname</span><span class="p">,</span><span class="w"> </span><span class="n">t_loc</span><span class="p">;</span>
-<span class="linenos">13</span><span class="w">     </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">emp_cur</span><span class="p">;</span>
-<span class="linenos">14</span><span class="w">     </span><span class="p">...</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="k">DECLARE</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">deptno_tbl</span><span class="w">   </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">deptno</span><span class="o">%</span><span class="k">TYPE</span><span class="w">   </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">dname_tbl</span><span class="w">    </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">dname</span><span class="o">%</span><span class="k">TYPE</span><span class="w">    </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">loc_tbl</span><span class="w">      </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">loc</span><span class="o">%</span><span class="k">TYPE</span><span class="w">      </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="n">t_deptno</span><span class="w">          </span><span class="n">deptno_TBL</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="n">t_dname</span><span class="w">           </span><span class="n">dname_TBL</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="n">t_loc</span><span class="w">             </span><span class="n">loc_TBL</span><span class="p">;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">    </span><span class="k">CURSOR</span><span class="w"> </span><span class="n">emp_cur</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="p">;</span>
+<span class="linenos">11</span><span class="k">BEGIN</span>
+<span class="linenos">12</span><span class="w">    </span><span class="k">OPEN</span><span class="w"> </span><span class="n">emp_cur</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">emp_cur</span><span class="w"> </span><span class="n">BULK</span><span class="w"> </span><span class="n">COLLECT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_deptno</span><span class="p">,</span><span class="w"> </span><span class="n">t_dname</span><span class="p">,</span><span class="w"> </span><span class="n">t_loc</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w">     </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">emp_cur</span><span class="p">;</span>
+<span class="linenos">15</span><span class="w">     </span><span class="p">...</span>
 </pre></div>
 </div>
 </section>
 <section id="fetch-bulk-collect-into-rowtype">
 <h2>FETCH BULK COLLECT INTO ROWTYPE<a class="headerlink" href="#fetch-bulk-collect-into-rowtype" title="Permalink to this heading">#</a></h2>
 <p>Emulation of fetch bulk collect into %ROWTYPE collection is similar to regular fetch bulk collect, but we should use temporary record variable(for some reason, using .elem field as with table type doesn’t work in PG).</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">declare</span>
-<span class="linenos"> 2</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">emp_tbl</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">emp</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
-<span class="linenos"> 3</span><span class="w">    </span><span class="n">t_emp</span><span class="w">           </span><span class="n">EMP_TBL</span><span class="p">;</span>
-<span class="linenos"> 4</span><span class="w">    </span><span class="k">CURSOR</span><span class="w"> </span><span class="n">emp_cur</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">;</span>
-<span class="linenos"> 5</span><span class="k">BEGIN</span>
-<span class="linenos"> 6</span><span class="w">    </span><span class="k">OPEN</span><span class="w"> </span><span class="n">emp_cur</span><span class="p">;</span>
-<span class="linenos"> 7</span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">emp_cur</span><span class="w"> </span><span class="n">BULK</span><span class="w"> </span><span class="n">COLLECT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_emp</span><span class="p">;</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="w">    </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">emp_cur</span><span class="p">;</span>
-<span class="linenos">10</span><span class="w">    </span><span class="p">....</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="k">DECLARE</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="k">TYPE</span><span class="w"> </span><span class="n">emp_tbl</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">emp</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">BINARY_INTEGER</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="n">t_emp</span><span class="w">        </span><span class="n">emp_tbl</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="k">CURSOR</span><span class="w"> </span><span class="n">emp_cur</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="k">BEGIN</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="k">OPEN</span><span class="w"> </span><span class="n">emp_cur</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">emp_cur</span><span class="w"> </span><span class="n">BULK</span><span class="w"> </span><span class="n">COLLECT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t_emp</span><span class="p">;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">    </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">emp_cur</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">    </span><span class="p">....</span>
 </pre></div>
 </div>
 </section>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>CURSORS &#8212; Liberatii Gateway</title>
+    <title>Cursors &#8212; Liberatii Gateway</title>
   
   
   
@@ -58,7 +58,7 @@
     <link rel="shortcut icon" href="../../_static/dark-theme-logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="TRIGGERS" href="triggers.html" />
+    <link rel="next" title="Triggers" href="triggers.html" />
     <link rel="prev" title="SQL" href="sql.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -284,16 +284,15 @@
 <li class="toctree-l3"><a class="reference internal" href="pl_sql.html">PL/SQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="string_literals.html">String literals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql_aliases.html">SQL Aliases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pl_sql_block.html">Plsql Blocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="objects_accessing.html">Objects accessing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_types.html">User Types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="parameter_bindings.html">Parameter bindings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="packages.html">Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql.html">SQL</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">CURSORS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="triggers.html">TRIGGERS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synonyms.html">SYNONYMS</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Cursors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="triggers.html">Triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synonyms.html">Synonyms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="autonomous_transactions.html">Autonomous transactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hierarchical_queries.html">Hierarchical queries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bulk_collect_into.html">BULK COLLECT INTO</a></li>
@@ -343,9 +342,9 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL Syntax</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL syntax</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">CURSORS</li>
+    <li class="breadcrumb-item active" aria-current="page">Cursors</li>
   </ul>
 </nav>
 </div>
@@ -361,113 +360,117 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated November, 06 2023
+  Updated November, 17 2023
   <br/>
 </p>
                   
   <section id="cursors">
-<span id="id1"></span><h1>CURSORS<a class="headerlink" href="#cursors" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1>Cursors<a class="headerlink" href="#cursors" title="Permalink to this heading">#</a></h1>
 <p>Postgres has cursor variables with which we can implement most of the Oracle cursors</p>
 <p>Cursor type and ref cursors</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">DECLARE</span>
-<span class="linenos"> 2</span><span class="w">  </span><span class="k">TYPE</span><span class="w"> </span><span class="n">empcurtyp</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">REF</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">employees</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="p">;</span><span class="w">  </span><span class="c1">-- strong type</span>
-<span class="linenos"> 3</span><span class="w">  </span><span class="k">TYPE</span><span class="w"> </span><span class="n">genericcurtyp</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">REF</span><span class="w"> </span><span class="k">CURSOR</span><span class="p">;</span><span class="w">                       </span><span class="c1">-- weak type</span>
-<span class="linenos"> 4</span>
-<span class="linenos"> 5</span><span class="w">  </span><span class="n">cursor1</span><span class="w">  </span><span class="n">empcurtyp</span><span class="p">;</span><span class="w">       </span><span class="c1">-- strong cursor variable</span>
-<span class="linenos"> 6</span><span class="w">  </span><span class="n">cursor2</span><span class="w">  </span><span class="n">genericcurtyp</span><span class="p">;</span><span class="w">   </span><span class="c1">-- weak cursor variable</span>
-<span class="linenos"> 7</span><span class="w">  </span><span class="n">my_cursor</span><span class="w"> </span><span class="n">SYS_REFCURSOR</span><span class="p">;</span><span class="w">  </span><span class="c1">-- weak cursor variable</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="w">  </span><span class="k">TYPE</span><span class="w"> </span><span class="n">deptcurtyp</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">REF</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">departments</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="p">;</span><span class="w">  </span><span class="c1">-- strong type</span>
-<span class="linenos">10</span><span class="w">  </span><span class="n">dept_cv</span><span class="w"> </span><span class="n">deptcurtyp</span><span class="p">;</span><span class="w">  </span><span class="c1">-- strong cursor variable</span>
-<span class="linenos">11</span><span class="k">BEGIN</span>
-<span class="linenos">12</span><span class="w">  </span><span class="k">NULL</span><span class="p">;</span>
-<span class="linenos">13</span><span class="k">END</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="k">DECLARE</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">TYPE</span><span class="w"> </span><span class="n">empcurtyp</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">REF</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">employees</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="p">;</span><span class="w">  </span><span class="c1">-- strong type</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="k">TYPE</span><span class="w"> </span><span class="n">genericcurtyp</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">REF</span><span class="w"> </span><span class="k">CURSOR</span><span class="p">;</span><span class="w">                       </span><span class="c1">-- weak type</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="n">cursor1</span><span class="w">  </span><span class="n">empcurtyp</span><span class="p">;</span><span class="w">       </span><span class="c1">-- strong cursor variable</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="n">cursor2</span><span class="w">  </span><span class="n">genericcurtyp</span><span class="p">;</span><span class="w">   </span><span class="c1">-- weak cursor variable</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="n">my_cursor</span><span class="w"> </span><span class="n">SYS_REFCURSOR</span><span class="p">;</span><span class="w">  </span><span class="c1">-- weak cursor variable</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">  </span><span class="k">TYPE</span><span class="w"> </span><span class="n">deptcurtyp</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">REF</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">departments</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="p">;</span><span class="w">  </span><span class="c1">-- strong type</span>
+<span class="linenos">11</span><span class="w">  </span><span class="n">dept_cv</span><span class="w"> </span><span class="n">deptcurtyp</span><span class="p">;</span><span class="w">  </span><span class="c1">-- strong cursor variable</span>
+<span class="linenos">12</span><span class="k">BEGIN</span>
+<span class="linenos">13</span><span class="w">  </span><span class="k">NULL</span><span class="p">;</span>
+<span class="linenos">14</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Explicit cursors declaration</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">DECLARE</span>
-<span class="linenos">2</span><span class="w">  </span><span class="k">CURSOR</span><span class="w"> </span><span class="n">cParam</span><span class="p">(</span><span class="n">p1</span><span class="w"> </span><span class="nb">NUMBER</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">c1</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="w"> </span><span class="k">IS</span>
-<span class="linenos">3</span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">departments</span>
-<span class="linenos">4</span><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">department_name</span><span class="p">;</span>
-<span class="linenos">5</span>
-<span class="linenos">6</span><span class="k">BEGIN</span>
-<span class="linenos">7</span><span class="w">  </span><span class="k">OPEN</span><span class="w"> </span><span class="n">cParam</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;st_clerk&#39;</span><span class="p">);</span>
-<span class="linenos">8</span><span class="k">END</span><span class="p">;</span>
-<span class="linenos">9</span><span class="o">/</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="k">DECLARE</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">CURSOR</span><span class="w"> </span><span class="n">cparam</span><span class="p">(</span><span class="n">p1</span><span class="w"> </span><span class="nb">NUMBER</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">c1</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="w"> </span><span class="k">IS</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">departments</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">department_name</span><span class="p">;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">BEGIN</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="k">OPEN</span><span class="w"> </span><span class="n">cparam</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;st_clerk&#39;</span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">10</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>Cursor attributes</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">DECLARE</span>
-<span class="linenos"> 2</span><span class="w">  </span><span class="k">CURSOR</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">departments</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="w"> </span><span class="k">IS</span><span class="w">  </span><span class="c1">-- Define c1,</span>
-<span class="linenos"> 3</span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">departments</span><span class="p">;</span><span class="w">              </span><span class="c1">-- repeating return type</span>
-<span class="linenos"> 4</span>
-<span class="linenos"> 5</span><span class="w">  </span><span class="n">the_row</span><span class="w"> </span><span class="n">Rec</span><span class="p">;</span>
-<span class="linenos"> 6</span><span class="k">BEGIN</span>
-<span class="linenos"> 7</span><span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">c1</span><span class="o">%</span><span class="n">ISOPEN</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos"> 8</span><span class="w">    </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;NOT OPEN&#39;</span><span class="p">);</span>
-<span class="linenos"> 9</span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos">10</span><span class="w">  </span><span class="k">OPEN</span><span class="w"> </span><span class="n">c1</span><span class="p">;</span>
-<span class="linenos">11</span><span class="w">  </span><span class="k">FETCH</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">the_row</span><span class="p">;</span>
-<span class="linenos">12</span><span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="n">c1</span><span class="o">%</span><span class="k">FOUND</span><span class="w"> </span><span class="k">THEN</span><span class="w">  </span><span class="c1">-- fetch succeeded</span>
-<span class="linenos">13</span><span class="w">    </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;Name = &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">the_row</span><span class="p">.</span><span class="n">f2</span><span class="w"> </span><span class="p">);</span>
-<span class="linenos">14</span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos">15</span>
-<span class="linenos">16</span><span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="n">c1</span><span class="o">%</span><span class="n">NOTFOUND</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="c1">-- fetch failed</span>
-<span class="linenos">17</span><span class="w">    </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;DATA NOTFOUND!!&#39;</span><span class="p">);</span>
-<span class="linenos">18</span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos">19</span>
-<span class="linenos">20</span><span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="n">c1</span><span class="o">%</span><span class="n">ROWCOUNT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos">21</span><span class="w">     </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;Fetched 1st row&#39;</span><span class="p">);</span>
-<span class="linenos">22</span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos">23</span>
-<span class="linenos">24</span><span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="n">c1</span><span class="o">%</span><span class="n">ISOPEN</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos">25</span><span class="w">     </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;STILL OPEN!!&#39;</span><span class="p">);</span>
-<span class="linenos">26</span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos">27</span><span class="w">  </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">c1</span><span class="p">;</span>
-<span class="linenos">28</span><span class="k">END</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="k">DECLARE</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">CURSOR</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">departments</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="w"> </span><span class="k">IS</span><span class="w">  </span><span class="c1">-- Define c1,</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">departments</span><span class="p">;</span><span class="w">              </span><span class="c1">-- repeating return type</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="n">the_row</span><span class="w"> </span><span class="n">Rec</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="k">BEGIN</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">c1</span><span class="o">%</span><span class="n">ISOPEN</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;NOT OPEN&#39;</span><span class="p">);</span>
+<span class="linenos">10</span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">  </span><span class="k">OPEN</span><span class="w"> </span><span class="n">c1</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">  </span><span class="k">FETCH</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">the_row</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="n">c1</span><span class="o">%</span><span class="k">FOUND</span><span class="w"> </span><span class="k">THEN</span><span class="w">  </span><span class="c1">-- fetch succeeded</span>
+<span class="linenos">14</span><span class="w">    </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;Name = &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">the_row</span><span class="p">.</span><span class="n">f2</span><span class="w"> </span><span class="p">);</span>
+<span class="linenos">15</span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="n">c1</span><span class="o">%</span><span class="n">NOTFOUND</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="c1">-- fetch failed</span>
+<span class="linenos">18</span><span class="w">    </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;DATA NOTFOUND!!&#39;</span><span class="p">);</span>
+<span class="linenos">19</span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="n">c1</span><span class="o">%</span><span class="n">ROWCOUNT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos">22</span><span class="w">     </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;Fetched 1st row&#39;</span><span class="p">);</span>
+<span class="linenos">23</span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="n">c1</span><span class="o">%</span><span class="n">ISOPEN</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos">26</span><span class="w">     </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;STILL OPEN!!&#39;</span><span class="p">);</span>
+<span class="linenos">27</span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos">28</span><span class="w">  </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">c1</span><span class="p">;</span>
+<span class="linenos">29</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">%ROWTYPE</span></code> of cursor</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">DECLARE</span>
-<span class="linenos"> 2</span><span class="w">  </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">IS</span>
-<span class="linenos"> 3</span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">phone_number</span>
-<span class="linenos"> 4</span><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
-<span class="linenos"> 5</span>
-<span class="linenos"> 6</span><span class="w">  </span><span class="n">friend</span><span class="w"> </span><span class="k">c</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="p">;</span>
-<span class="linenos"> 7</span><span class="k">BEGIN</span>
-<span class="linenos"> 8</span><span class="w">  </span><span class="n">friend</span><span class="p">.</span><span class="n">first_name</span><span class="w">   </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;John&#39;</span><span class="p">;</span>
-<span class="linenos"> 9</span><span class="w">  </span><span class="n">friend</span><span class="p">.</span><span class="n">last_name</span><span class="w">    </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Smith&#39;</span><span class="p">;</span>
-<span class="linenos">10</span><span class="w">  </span><span class="n">friend</span><span class="p">.</span><span class="n">phone_number</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1-650-555-1234&#39;</span><span class="p">;</span>
-<span class="linenos">11</span>
-<span class="linenos">12</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="w"> </span><span class="p">(</span>
-<span class="linenos">13</span><span class="w">    </span><span class="n">friend</span><span class="p">.</span><span class="n">first_name</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span>
-<span class="linenos">14</span><span class="w">    </span><span class="n">friend</span><span class="p">.</span><span class="n">last_name</span><span class="w">   </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;, &#39;</span><span class="w"> </span><span class="o">||</span>
-<span class="linenos">15</span><span class="w">    </span><span class="n">friend</span><span class="p">.</span><span class="n">phone_number</span>
-<span class="linenos">16</span><span class="w">  </span><span class="p">);</span>
-<span class="linenos">17</span><span class="k">END</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="k">DECLARE</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">IS</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">phone_number</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="n">friend</span><span class="w"> </span><span class="k">c</span><span class="o">%</span><span class="n">ROWTYPE</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="k">BEGIN</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="n">friend</span><span class="p">.</span><span class="n">first_name</span><span class="w">   </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;John&#39;</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">  </span><span class="n">friend</span><span class="p">.</span><span class="n">last_name</span><span class="w">    </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Smith&#39;</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">  </span><span class="n">friend</span><span class="p">.</span><span class="n">phone_number</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1-650-555-1234&#39;</span><span class="p">;</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos">14</span><span class="w">    </span><span class="n">friend</span><span class="p">.</span><span class="n">first_name</span><span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span>
+<span class="linenos">15</span><span class="w">    </span><span class="n">friend</span><span class="p">.</span><span class="n">last_name</span><span class="w">   </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;, &#39;</span><span class="w"> </span><span class="o">||</span>
+<span class="linenos">16</span><span class="w">    </span><span class="n">friend</span><span class="p">.</span><span class="n">phone_number</span>
+<span class="linenos">17</span><span class="w">  </span><span class="p">);</span>
+<span class="linenos">18</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 <section id="refcursor-in-package">
 <h2>REFCURSOR in package<a class="headerlink" href="#refcursor-in-package" title="Permalink to this heading">#</a></h2>
 <p>For cursor type in the package, we create composite type and corresponding setters and getters for each cursor attribute</p>
-<p>OracleDB</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="n">APP_LIBUTILS</span><span class="w"> </span><span class="k">is</span>
-<span class="linenos">2</span><span class="w">  </span><span class="c1">-- Ref Cursors Types</span>
-<span class="linenos">3</span><span class="w">  </span><span class="k">TYPE</span><span class="w"> </span><span class="n">c_TeamList</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">REF</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">r_TeamList</span><span class="p">;</span>
-<span class="linenos">4</span><span class="k">end</span><span class="w"> </span><span class="n">APP_LIBUTILS</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Oracle</span>
+<span class="linenos">2</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="n">PACKAGE</span><span class="w"> </span><span class="n">app_libutils</span><span class="w"> </span><span class="k">is</span>
+<span class="linenos">3</span><span class="w">  </span><span class="c1">-- Ref Cursors Types</span>
+<span class="linenos">4</span><span class="w">  </span><span class="k">TYPE</span><span class="w"> </span><span class="n">c_team_list</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">REF</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">r_team_list</span><span class="p">;</span>
+<span class="linenos">5</span><span class="k">END</span><span class="w"> </span><span class="n">app_libutils</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The opening cursor of package retype. We create a temp simple variable of REFCURSOR type for passing it to OPEN of FETCH statement and write it back after the operation</p>
-<p>Oracle DB</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w"> </span><span class="k">DECLARE</span>
-<span class="linenos">2</span><span class="w">     </span><span class="n">TeamList</span><span class="w"> </span><span class="n">c_TeamList</span><span class="p">;</span>
-<span class="linenos">3</span><span class="w">  </span><span class="k">BEGIN</span>
-<span class="linenos">4</span><span class="w">     </span><span class="k">OPEN</span><span class="w"> </span><span class="n">TeamList</span><span class="w"> </span><span class="k">FOR</span>
-<span class="linenos">5</span><span class="w">          </span><span class="k">SELECT</span><span class="w"> </span><span class="n">rtm_team</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">vws_res_team</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rtm_link_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExclusionID</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">rtm_type</span><span class="o">=</span><span class="s1">&#39;PERSON&#39;</span><span class="p">;</span>
-<span class="linenos">6</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TeamList</span><span class="o">%</span><span class="n">isopen</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="linenos">7</span><span class="w">       </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;OPEN&#39;</span><span class="w"> </span><span class="p">);</span>
-<span class="linenos">8</span><span class="w">     </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span>
-<span class="linenos">9</span><span class="w">   </span><span class="k">END</span><span class="w"> </span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="k">DECLARE</span>
+<span class="linenos"> 3</span><span class="w">     </span><span class="n">TeamList</span><span class="w"> </span><span class="n">c_TeamList</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="k">BEGIN</span>
+<span class="linenos"> 5</span><span class="w">     </span><span class="k">OPEN</span><span class="w"> </span><span class="n">TeamList</span><span class="w"> </span><span class="k">FOR</span>
+<span class="linenos"> 6</span><span class="w">          </span><span class="k">SELECT</span><span class="w"> </span><span class="n">rtm_team</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">vws_res_team</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rtm_link_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExclusionID</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">rtm_type</span><span class="o">=</span><span class="s1">&#39;PERSON&#39;</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TeamList</span><span class="o">%</span><span class="n">isopen</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos"> 8</span><span class="w">       </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;OPEN&#39;</span><span class="w"> </span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="w">     </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">   </span><span class="k">END</span><span class="w"> </span><span class="p">;</span>
 </pre></div>
 </div>
 </section>

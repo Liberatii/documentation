@@ -280,16 +280,15 @@
 <li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/pl_sql.html">PL/SQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/string_literals.html">String literals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/sql_aliases.html">SQL Aliases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/pl_sql_block.html">Plsql Blocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/functions.html">Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/objects_accessing.html">Objects accessing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/user_types.html">User Types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/parameter_bindings.html">Parameter bindings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/packages.html">Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/sql.html">SQL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/cursors.html">CURSORS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/triggers.html">TRIGGERS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/synonyms.html">SYNONYMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/cursors.html">Cursors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/triggers.html">Triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/synonyms.html">Synonyms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/autonomous_transactions.html">Autonomous transactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/hierarchical_queries.html">Hierarchical queries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../reference/supported_oracle_syntax/bulk_collect_into.html">BULK COLLECT INTO</a></li>
@@ -357,7 +356,7 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated November, 06 2023
+  Updated November, 17 2023
   <br/>
 </p>
                   
@@ -408,16 +407,18 @@
 </ul>
 <p>Absolutely, the advantage of the migration process is that it doesn’t necessitate a complete reiteration from the start if adjustments are required.
 Instead, modifications can be made efficiently without initiating an entire migration process. By simply adjusting the <code class="docutils literal notranslate"><span class="pre">stage</span></code> column within the <code class="docutils literal notranslate"><span class="pre">dbt.migration_objects</span></code> table to the appropriate value, you can effectuate the necessary changes. For instance, suppose you’ve rectified constraints pertaining to the “DEMO”.”DEPARTMENTS” table. In this scenario, executing the following is all that’s needed:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">update</span><span class="w"> </span><span class="n">dbt</span><span class="p">.</span><span class="n">migration_objects</span>
-<span class="linenos">2</span><span class="w">   </span><span class="k">set</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;R&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ddl2</span><span class="o">=</span><span class="s1">&#39;&lt;correct constraints&gt;&#39;</span>
-<span class="linenos">3</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="k">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DEMO&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DEPARTMENTS&#39;</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--PostgreSQL</span>
+<span class="linenos">2</span><span class="k">UPDATE</span><span class="w"> </span><span class="n">dbt</span><span class="p">.</span><span class="n">migration_objects</span>
+<span class="linenos">3</span><span class="w">   </span><span class="k">SET</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;R&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ddl2</span><span class="o">=</span><span class="s1">&#39;&lt;correct constraints&gt;&#39;</span>
+<span class="linenos">4</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DEMO&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DEPARTMENTS&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>And rerun the script in stage constraints.</p>
 <p>It’s also fairly simple to migrate the reports, like:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">select</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">type</span>
-<span class="linenos">2</span><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="n">dbt</span><span class="p">.</span><span class="n">migration_objects</span>
-<span class="linenos">3</span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="k">type</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--PostgreSQL</span>
+<span class="linenos">2</span><span class="k">SELECT</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">type</span>
+<span class="linenos">3</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">dbt</span><span class="p">.</span><span class="n">migration_objects</span>
+<span class="linenos">4</span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="k">type</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>

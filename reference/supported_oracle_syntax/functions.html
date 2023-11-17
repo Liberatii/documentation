@@ -59,7 +59,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Objects accessing" href="objects_accessing.html" />
-    <link rel="prev" title="Plsql Blocks" href="pl_sql_block.html" />
+    <link rel="prev" title="SQL Aliases" href="sql_aliases.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -284,16 +284,15 @@
 <li class="toctree-l3"><a class="reference internal" href="pl_sql.html">PL/SQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="string_literals.html">String literals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql_aliases.html">SQL Aliases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pl_sql_block.html">Plsql Blocks</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="objects_accessing.html">Objects accessing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_types.html">User Types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="parameter_bindings.html">Parameter bindings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="packages.html">Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql.html">SQL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cursors.html">CURSORS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="triggers.html">TRIGGERS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synonyms.html">SYNONYMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cursors.html">Cursors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="triggers.html">Triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synonyms.html">Synonyms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="autonomous_transactions.html">Autonomous transactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hierarchical_queries.html">Hierarchical queries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bulk_collect_into.html">BULK COLLECT INTO</a></li>
@@ -343,7 +342,7 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL Syntax</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL syntax</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">Functions</li>
   </ul>
@@ -361,7 +360,7 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated November, 06 2023
+  Updated November, 17 2023
   <br/>
 </p>
                   
@@ -377,68 +376,76 @@
 <h2><strong>Functions with OUT parameters</strong><a class="headerlink" href="#functions-with-out-parameters" title="Permalink to this heading">#</a></h2>
 <p>Postgres supports functions with OUT parameters, but they should be invoked in a different manner than regular functions.  Output parameters in Postgres automatically make function returns kind of record with fields equal to OUT parameters. So we’ll add an additional OUT parameter for the function result.</p>
 <p>Declaration example:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--OracleDB</span>
-<span class="linenos">2</span><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nb">number</span><span class="p">,</span><span class="n">b</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="nb">number</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="nb">number</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">number</span><span class="w"> </span><span class="k">is</span>
-<span class="linenos">3</span><span class="w">     </span><span class="k">begin</span>
-<span class="linenos">4</span><span class="w">       </span><span class="n">b</span><span class="p">:</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="mi">10</span><span class="p">;</span>
-<span class="linenos">5</span><span class="w">       </span><span class="k">c</span><span class="p">:</span><span class="o">=</span><span class="k">c</span><span class="o">+</span><span class="n">a</span><span class="p">;</span>
-<span class="linenos">6</span><span class="w">    </span><span class="k">return</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-<span class="linenos">7</span><span class="w"> </span><span class="k">end</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="nb">NUMBER</span><span class="p">,</span>
+<span class="linenos"> 3</span><span class="w">                                </span><span class="n">b</span><span class="w"> </span><span class="k">OUT</span><span class="w"> </span><span class="nb">NUMBER</span><span class="p">,</span>
+<span class="linenos"> 4</span><span class="w">                                </span><span class="k">c</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="k">OUT</span><span class="w"> </span><span class="nb">NUMBER</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="k">RETURN</span><span class="w"> </span><span class="nb">NUMBER</span>
+<span class="linenos"> 6</span><span class="k">IS</span>
+<span class="linenos"> 7</span><span class="k">BEGIN</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="n">b</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="k">c</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w">  </span><span class="k">RETURN</span><span class="p">(</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="p">);</span>
+<span class="linenos">11</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>For invoke, we create a temporal variable and select into it the result from a function. Also, replace function call with variable and before expression put select into with a real function call.</p>
 <p>Invoking example:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--OracleDB</span>
-<span class="linenos">2</span><span class="k">declare</span>
-<span class="linenos">3</span><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="nb">number</span><span class="p">:</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
-<span class="linenos">4</span><span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="nb">number</span><span class="p">:</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span>
-<span class="linenos">5</span><span class="w">  </span><span class="n">z</span><span class="w"> </span><span class="nb">number</span><span class="p">;</span>
-<span class="linenos">6</span><span class="k">begin</span>
-<span class="linenos">7</span><span class="w">  </span><span class="n">z</span><span class="p">:</span><span class="o">=</span><span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
-<span class="linenos">8</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="o">||</span><span class="n">X</span><span class="o">||</span><span class="s1">&#39; y&#39;</span><span class="o">||</span><span class="n">y</span><span class="o">||</span><span class="s1">&#39; z&#39;</span><span class="o">||</span><span class="n">z</span><span class="p">);</span>
-<span class="linenos">9</span><span class="k">end</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Oracle</span>
+<span class="linenos">2</span><span class="k">DECLARE</span>
+<span class="linenos">3</span><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos">4</span><span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="linenos">5</span><span class="w">  </span><span class="n">z</span><span class="w"> </span><span class="nb">NUMBER</span><span class="p">;</span>
+<span class="linenos">6</span><span class="k">BEGIN</span>
+<span class="linenos">7</span><span class="w">  </span><span class="n">z</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+<span class="linenos">8</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39; x&#39;</span><span class="o">||</span><span class="n">x</span><span class="o">||</span><span class="s1">&#39; y&#39;</span><span class="o">||</span><span class="n">y</span><span class="o">||</span><span class="s1">&#39; z&#39;</span><span class="o">||</span><span class="n">z</span><span class="p">);</span>
+<span class="linenos">9</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="limitations">
 <h2><strong>Limitations</strong><a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
 <p>One of the limitations of this approach is multiple invoke of the function in a single expression with changing INOUT variables.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--OracleDB</span>
-<span class="linenos"> 2</span><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nb">number</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="nb">number</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">number</span><span class="w"> </span><span class="k">is</span>
-<span class="linenos"> 3</span><span class="w">  </span><span class="k">begin</span>
-<span class="linenos"> 4</span><span class="w">    </span><span class="k">c</span><span class="p">:</span><span class="o">=</span><span class="k">c</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
-<span class="linenos"> 5</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">c</span><span class="p">;</span>
-<span class="linenos"> 6</span><span class="k">end</span><span class="p">;</span>
-<span class="linenos"> 7</span><span class="o">/</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="k">declare</span>
-<span class="linenos">10</span><span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="nb">number</span><span class="p">:</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
-<span class="linenos">11</span><span class="w">  </span><span class="k">c</span><span class="w"> </span><span class="nb">number</span><span class="p">:</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span>
-<span class="linenos">12</span><span class="k">begin</span>
-<span class="linenos">13</span><span class="w">  </span><span class="k">c</span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="k">c</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="k">c</span><span class="p">);</span>
-<span class="linenos">14</span><span class="w">  </span><span class="c1">-- C=64. Second call of fun(a,c) doesn&#39;t</span>
-<span class="linenos">15</span><span class="w">  </span><span class="c1">-- affect c variable in the begining</span>
-<span class="linenos">16</span><span class="w">  </span><span class="c1">-- of addition operation</span>
-<span class="linenos">17</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;A &#39;</span><span class="o">||</span><span class="n">a</span><span class="o">||</span><span class="s1">&#39;  c &#39;</span><span class="o">||</span><span class="k">c</span><span class="p">);</span>
-<span class="linenos">18</span><span class="k">end</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="nb">NUMBER</span><span class="p">,</span>
+<span class="linenos"> 3</span><span class="w">                                </span><span class="k">c</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="k">OUT</span><span class="w"> </span><span class="nb">NUMBER</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="k">RETURN</span><span class="w"> </span><span class="nb">NUMBER</span>
+<span class="linenos"> 5</span><span class="k">IS</span>
+<span class="linenos"> 6</span><span class="k">BEGIN</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="k">c</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="k">RETURN</span><span class="w"> </span><span class="k">c</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">10</span><span class="o">/</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="k">DECLARE</span>
+<span class="linenos">13</span><span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w">  </span><span class="k">c</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="linenos">15</span><span class="k">BEGIN</span>
+<span class="linenos">16</span><span class="w">  </span><span class="k">c</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">);</span>
+<span class="linenos">17</span><span class="w">  </span><span class="c1">-- C=64. Second call of fun(a,c) doesn&#39;t</span>
+<span class="linenos">18</span><span class="w">  </span><span class="c1">-- affect c variable in the begining</span>
+<span class="linenos">19</span><span class="w">  </span><span class="c1">-- of addition operation</span>
+<span class="linenos">20</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;a &#39;</span><span class="o">||</span><span class="n">a</span><span class="o">||</span><span class="s1">&#39;  c &#39;</span><span class="o">||</span><span class="k">c</span><span class="p">);</span>
+<span class="linenos">21</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="function-with-no-arguments">
 <h2><strong>Function with no arguments</strong><a class="headerlink" href="#function-with-no-arguments" title="Permalink to this heading">#</a></h2>
 <p>If the function doesn’t have any argument or has all defaults, Oracle can call this function without parentheses. In Postgres, you should always have parentheses. As we don’t have type inference, we create synonyms that add parentheses to a call.</p>
-<p>OracleDB</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">CREATE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">test_func</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">test_table</span><span class="p">.</span><span class="n">id</span><span class="o">%</span><span class="k">TYPE</span>
-<span class="linenos"> 2</span><span class="k">IS</span>
-<span class="linenos"> 3</span><span class="w">  </span><span class="n">retVal</span><span class="w"> </span><span class="n">test_table</span><span class="p">.</span><span class="n">id</span><span class="o">%</span><span class="k">TYPE</span><span class="p">:</span><span class="o">=-</span><span class="mi">7777</span><span class="p">;</span>
-<span class="linenos"> 4</span><span class="k">BEGIN</span>
-<span class="linenos"> 5</span><span class="w">  </span><span class="k">RETURN</span><span class="w"> </span><span class="n">retVal</span><span class="p">;</span>
-<span class="linenos"> 6</span><span class="k">END</span><span class="p">;</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">txt</span><span class="p">,</span><span class="w"> </span><span class="n">test_func</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;test&quot;</span>
-<span class="linenos">10</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">test_table</span>
-<span class="linenos">11</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">test_func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">7777</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="k">CREATE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">test_func</span>
+<span class="linenos"> 3</span><span class="k">RETURN</span><span class="w"> </span><span class="n">test_table</span><span class="p">.</span><span class="n">id</span><span class="o">%</span><span class="k">TYPE</span>
+<span class="linenos"> 4</span><span class="k">IS</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="n">retVal</span><span class="w"> </span><span class="n">test_table</span><span class="p">.</span><span class="n">id</span><span class="o">%</span><span class="k">TYPE</span><span class="p">:</span><span class="o">=-</span><span class="mi">7777</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="k">BEGIN</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="k">RETURN</span><span class="w"> </span><span class="n">retVal</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="k">END</span><span class="p">;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">txt</span><span class="p">,</span><span class="w"> </span><span class="n">test_func</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">&quot;test&quot;</span>
+<span class="linenos">12</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">test_table</span>
+<span class="linenos">13</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">test_func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">7777</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -446,43 +453,43 @@
 <h2><strong>NO_DATA_FOUND inside functions</strong><a class="headerlink" href="#no-data-found-inside-functions" title="Permalink to this heading">#</a></h2>
 <p>In Oracle, NO_DATA_FOUND  is an error and a state at the same time, depending on what is calling function is.</p>
 <p>If the function is called by PlSQL, NO_DATA_FOUND is considered to be an error and an exception is raised. If the function is called by SQL, NO_DATA_FOUND is considered to be a state and no exception is raised. In PostgreSQL, it is always an error. To emulate this for functions that can rise <code class="docutils literal notranslate"><span class="pre">NO_DATA_FOUND</span></code> (rise explicitly or in <code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">into</span></code>), we create a special wrapper with the original function name to suppress an error. In the original function, we change the name to this template <code class="docutils literal notranslate"><span class="pre">lbr$&lt;function_name&gt;$throw_no_data</span></code> and call this in PLSQL instead of the original name.</p>
-<p>OracleDB</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">CREATE</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w">  </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">no_data_func</span>
-<span class="linenos">2</span><span class="k">RETURN</span><span class="w"> </span><span class="n">VARCHAR2</span>
-<span class="linenos">3</span><span class="k">AS</span>
-<span class="linenos">4</span><span class="k">BEGIN</span>
-<span class="linenos">5</span><span class="w">  </span><span class="n">RAISE</span><span class="w"> </span><span class="n">NO_DATA_FOUND</span><span class="p">;</span>
-<span class="linenos">6</span><span class="w">  </span><span class="k">RETURN</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="linenos">7</span><span class="k">END</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Oracle</span>
+<span class="linenos">2</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">no_data_func</span>
+<span class="linenos">3</span><span class="k">RETURN</span><span class="w"> </span><span class="n">VARCHAR2</span>
+<span class="linenos">4</span><span class="k">AS</span>
+<span class="linenos">5</span><span class="k">BEGIN</span>
+<span class="linenos">6</span><span class="w">  </span><span class="n">RAISE</span><span class="w"> </span><span class="n">NO_DATA_FOUND</span><span class="p">;</span>
+<span class="linenos">7</span><span class="w">  </span><span class="k">RETURN</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">8</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="pipelined-functions">
-<h2><strong>Pipelined functions</strong><a class="headerlink" href="#pipelined-functions" title="Permalink to this heading">#</a></h2>
+<h2><strong>PIPELINED functions</strong><a class="headerlink" href="#pipelined-functions" title="Permalink to this heading">#</a></h2>
 <p>Pipelined table functions are table functions that return or “pipe” rows back to the calling query as the function produces the data in the desired form - and before the function has completed all of its processing. For emulation, we add to every nested table or VARRAY helper field <code class="docutils literal notranslate"><span class="pre">elem</span></code> with the type of collection element.</p>
-<p>OracleDB</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">CREATE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">test_func</span><span class="p">(</span><span class="n">par1</span><span class="w"> </span><span class="n">test_table</span><span class="p">.</span><span class="n">id</span><span class="o">%</span><span class="k">TYPE</span><span class="p">)</span>
-<span class="linenos"> 2</span><span class="c1">-- 1</span>
-<span class="linenos"> 3</span><span class="k">RETURN</span><span class="w"> </span><span class="n">test_type_set</span><span class="w"> </span><span class="n">PIPELINED</span>
-<span class="linenos"> 4</span><span class="k">IS</span>
-<span class="linenos"> 5</span><span class="w">  </span><span class="n">outRec</span><span class="w"> </span><span class="n">test_type</span><span class="p">;</span>
-<span class="linenos"> 6</span><span class="w">  </span><span class="k">CURSOR</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="p">(</span><span class="n">cur_id</span><span class="w"> </span><span class="n">test_table</span><span class="p">.</span><span class="n">id</span><span class="o">%</span><span class="k">TYPE</span><span class="p">,</span><span class="w"> </span><span class="n">cur_dt</span><span class="w"> </span><span class="n">test_table</span><span class="p">.</span><span class="n">dt</span><span class="o">%</span><span class="k">TYPE</span><span class="p">)</span><span class="w"> </span><span class="k">IS</span>
-<span class="linenos"> 7</span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
-<span class="linenos"> 8</span><span class="w">           </span><span class="n">txt</span>
-<span class="linenos"> 9</span><span class="w">      </span><span class="k">FROM</span><span class="w"> </span><span class="n">test_table</span>
-<span class="linenos">10</span><span class="w">     </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">cur_id</span>
-<span class="linenos">11</span><span class="w">       </span><span class="k">AND</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">cur_dt</span><span class="p">;</span>
-<span class="linenos">12</span><span class="w">  </span><span class="k">BEGIN</span>
-<span class="linenos">13</span><span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="n">vRec</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="n">cur</span><span class="p">(</span><span class="n">par1</span><span class="p">,</span><span class="w"> </span><span class="n">TRUNC</span><span class="p">(</span><span class="n">SYSDATE</span><span class="p">))</span><span class="w"> </span><span class="n">LOOP</span>
-<span class="linenos">14</span><span class="w">      </span><span class="n">outRec</span><span class="p">.</span><span class="n">tabId</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">vRec</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
-<span class="linenos">15</span><span class="w">      </span><span class="n">outRec</span><span class="p">.</span><span class="n">tabTxt</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">vRec</span><span class="p">.</span><span class="n">txt</span><span class="p">;</span>
-<span class="linenos">16</span><span class="w">      </span><span class="n">outRec</span><span class="p">.</span><span class="n">recType</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">varConstType</span><span class="p">;</span>
-<span class="linenos">17</span><span class="w">      </span><span class="n">outRec</span><span class="p">.</span><span class="n">recDesc</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">varConstDesc</span><span class="p">;</span>
-<span class="linenos">18</span><span class="w">      </span><span class="c1">-- 2</span>
-<span class="linenos">19</span><span class="w">      </span><span class="n">PIPE</span><span class="w"> </span><span class="k">ROW</span><span class="p">(</span><span class="n">outRec</span><span class="p">);</span>
-<span class="linenos">20</span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="n">LOOP</span><span class="p">;</span>
-<span class="linenos">21</span><span class="w">    </span><span class="k">RETURN</span><span class="p">;</span>
-<span class="linenos">22</span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">test_func</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="k">CREATE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">test_func</span><span class="p">(</span><span class="n">par1</span><span class="w"> </span><span class="n">test_table</span><span class="p">.</span><span class="n">id</span><span class="o">%</span><span class="k">TYPE</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="c1">-- 1</span>
+<span class="linenos"> 4</span><span class="k">RETURN</span><span class="w"> </span><span class="n">test_type_set</span><span class="w"> </span><span class="n">PIPELINED</span>
+<span class="linenos"> 5</span><span class="k">IS</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="n">outRec</span><span class="w"> </span><span class="n">test_type</span><span class="p">;</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="k">CURSOR</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="p">(</span><span class="n">cur_id</span><span class="w"> </span><span class="n">test_table</span><span class="p">.</span><span class="n">id</span><span class="o">%</span><span class="k">TYPE</span><span class="p">,</span><span class="w"> </span><span class="n">cur_dt</span><span class="w"> </span><span class="n">test_table</span><span class="p">.</span><span class="n">dt</span><span class="o">%</span><span class="k">TYPE</span><span class="p">)</span><span class="w"> </span><span class="k">IS</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
+<span class="linenos"> 9</span><span class="w">           </span><span class="n">txt</span>
+<span class="linenos">10</span><span class="w">      </span><span class="k">FROM</span><span class="w"> </span><span class="n">test_table</span>
+<span class="linenos">11</span><span class="w">     </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">cur_id</span>
+<span class="linenos">12</span><span class="w">       </span><span class="k">AND</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">cur_dt</span><span class="p">;</span>
+<span class="linenos">13</span><span class="k">BEGIN</span>
+<span class="linenos">14</span><span class="w">  </span><span class="k">FOR</span><span class="w"> </span><span class="n">vRec</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="n">cur</span><span class="p">(</span><span class="n">par1</span><span class="p">,</span><span class="w"> </span><span class="n">TRUNC</span><span class="p">(</span><span class="n">SYSDATE</span><span class="p">))</span><span class="w"> </span><span class="n">LOOP</span>
+<span class="linenos">15</span><span class="w">    </span><span class="n">outRec</span><span class="p">.</span><span class="n">tabId</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">vRec</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w">    </span><span class="n">outRec</span><span class="p">.</span><span class="n">tabTxt</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">vRec</span><span class="p">.</span><span class="n">txt</span><span class="p">;</span>
+<span class="linenos">17</span><span class="w">    </span><span class="n">outRec</span><span class="p">.</span><span class="n">recType</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">varConstType</span><span class="p">;</span>
+<span class="linenos">18</span><span class="w">    </span><span class="n">outRec</span><span class="p">.</span><span class="n">recDesc</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">varConstDesc</span><span class="p">;</span>
+<span class="linenos">19</span><span class="w">    </span><span class="c1">-- 2</span>
+<span class="linenos">20</span><span class="w">    </span><span class="n">PIPE</span><span class="w"> </span><span class="k">ROW</span><span class="p">(</span><span class="n">outRec</span><span class="p">);</span>
+<span class="linenos">21</span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">LOOP</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">  </span><span class="k">RETURN</span><span class="p">;</span>
+<span class="linenos">23</span><span class="k">END</span><span class="w"> </span><span class="n">test_func</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -492,55 +499,57 @@
 <p>Each nested function has a name <code class="docutils literal notranslate"><span class="pre">&lt;parent_function/block_id&gt;$nested_func_id</span></code>. Also, for each nested function, we capture closure variables from the outer scope and insert them in the function’s call.</p>
 <p>Each anonymous nested function we create in <code class="docutils literal notranslate"><span class="pre">pg_temp</span></code> schema.</p>
 <p><cite>Examples</cite></p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Block</span>
-<span class="linenos"> 2</span><span class="k">DECLARE</span>
-<span class="linenos"> 3</span><span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
-<span class="linenos"> 4</span><span class="w">  </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="nb">NUMBER</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="k">AS</span>
-<span class="linenos"> 5</span><span class="w">  </span><span class="k">BEGIN</span>
-<span class="linenos"> 6</span><span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
-<span class="linenos"> 7</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
-<span class="linenos"> 8</span><span class="k">BEGIN</span>
-<span class="linenos"> 9</span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-<span class="linenos">10</span><span class="w">  </span><span class="k">BEGIN</span>
-<span class="linenos">11</span><span class="w">    </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="n">f1</span><span class="p">(</span><span class="n">a</span><span class="p">));</span>
-<span class="linenos">12</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
-<span class="linenos">13</span><span class="k">END</span><span class="p">;</span>
-<span class="linenos">14</span>
-<span class="linenos">15</span><span class="c1">--Global</span>
-<span class="linenos">16</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">a2</span><span class="p">(</span><span class="n">v1</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">AS</span>
-<span class="linenos">17</span><span class="k">BEGIN</span>
-<span class="linenos">18</span><span class="w">  </span><span class="k">DECLARE</span>
-<span class="linenos">19</span><span class="w">    </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">v2</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">AS</span>
-<span class="linenos">20</span><span class="w">    </span><span class="k">BEGIN</span>
-<span class="linenos">21</span><span class="w">      </span><span class="k">RETURN</span><span class="w"> </span><span class="n">v1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v2</span><span class="p">;</span>
-<span class="linenos">22</span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
-<span class="linenos">23</span><span class="w">  </span><span class="k">BEGIN</span>
-<span class="linenos">24</span><span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-<span class="linenos">25</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
-<span class="linenos">26</span><span class="k">END</span><span class="p">;</span>
-<span class="linenos">27</span><span class="o">/</span>
-<span class="linenos">28</span>
-<span class="linenos">29</span><span class="k">SELECT</span><span class="w"> </span><span class="n">a2</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">DUAL</span><span class="p">;</span>
-<span class="linenos">30</span><span class="c1">-- 1100</span>
-<span class="linenos">31</span>
-<span class="linenos">32</span>
-<span class="linenos">33</span><span class="c1">--Overloading</span>
-<span class="linenos">34</span><span class="k">DECLARE</span>
-<span class="linenos">35</span><span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
-<span class="linenos">36</span><span class="w">  </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="nb">NUMBER</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="k">AS</span>
-<span class="linenos">37</span><span class="w">  </span><span class="k">BEGIN</span>
-<span class="linenos">38</span><span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
-<span class="linenos">39</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
-<span class="linenos">40</span><span class="w">  </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="w"> </span><span class="k">AS</span>
-<span class="linenos">41</span><span class="w">  </span><span class="k">BEGIN</span>
-<span class="linenos">42</span><span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
-<span class="linenos">43</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
-<span class="linenos">44</span><span class="k">BEGIN</span>
-<span class="linenos">45</span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-<span class="linenos">46</span><span class="w">  </span><span class="k">BEGIN</span>
-<span class="linenos">47</span><span class="w">    </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="n">f1</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">||</span><span class="s1">&#39;-&#39;</span><span class="o">||</span><span class="n">f1</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">));</span>
-<span class="linenos">48</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
-<span class="linenos">49</span><span class="k">END</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="c1">--Block</span>
+<span class="linenos"> 4</span><span class="k">DECLARE</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="nb">NUMBER</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="k">AS</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="k">BEGIN</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">10</span><span class="k">BEGIN</span>
+<span class="linenos">11</span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w">  </span><span class="k">BEGIN</span>
+<span class="linenos">13</span><span class="w">    </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="n">f1</span><span class="p">(</span><span class="n">a</span><span class="p">));</span>
+<span class="linenos">14</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">15</span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="c1">--Global</span>
+<span class="linenos">18</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">a2</span><span class="p">(</span><span class="n">v1</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">AS</span>
+<span class="linenos">19</span><span class="k">BEGIN</span>
+<span class="linenos">20</span><span class="w">  </span><span class="k">DECLARE</span>
+<span class="linenos">21</span><span class="w">    </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">v2</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">AS</span>
+<span class="linenos">22</span><span class="w">    </span><span class="k">BEGIN</span>
+<span class="linenos">23</span><span class="w">      </span><span class="k">RETURN</span><span class="w"> </span><span class="n">v1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v2</span><span class="p">;</span>
+<span class="linenos">24</span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">25</span><span class="w">  </span><span class="k">BEGIN</span>
+<span class="linenos">26</span><span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="linenos">27</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">28</span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">29</span><span class="o">/</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span><span class="k">SELECT</span><span class="w"> </span><span class="n">a2</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">DUAL</span><span class="p">;</span>
+<span class="linenos">32</span><span class="c1">-- 1100</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span><span class="c1">--Overloading</span>
+<span class="linenos">36</span><span class="k">DECLARE</span>
+<span class="linenos">37</span><span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
+<span class="linenos">38</span><span class="w">  </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="nb">NUMBER</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="k">AS</span>
+<span class="linenos">39</span><span class="w">  </span><span class="k">BEGIN</span>
+<span class="linenos">40</span><span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="linenos">41</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">42</span><span class="w">  </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">)</span><span class="w"> </span><span class="k">RETURN</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="w"> </span><span class="k">AS</span>
+<span class="linenos">43</span><span class="w">  </span><span class="k">BEGIN</span>
+<span class="linenos">44</span><span class="w">    </span><span class="k">RETURN</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="linenos">45</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">46</span><span class="k">BEGIN</span>
+<span class="linenos">47</span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos">48</span><span class="w">  </span><span class="k">BEGIN</span>
+<span class="linenos">49</span><span class="w">    </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="n">f1</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">||</span><span class="s1">&#39;-&#39;</span><span class="o">||</span><span class="n">f1</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">));</span>
+<span class="linenos">50</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">51</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -555,7 +564,7 @@
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="pl_sql_block.html">
+       href="sql_aliases.html">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-title">Previous Page</p>
@@ -588,7 +597,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations"><strong>Limitations</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-with-no-arguments"><strong>Function with no arguments</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no-data-found-inside-functions"><strong>NO_DATA_FOUND inside functions</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelined-functions"><strong>Pipelined functions</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelined-functions"><strong>PIPELINED functions</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-functions"><strong>Nested functions</strong></a></li>
 </ul>
   </nav></div>

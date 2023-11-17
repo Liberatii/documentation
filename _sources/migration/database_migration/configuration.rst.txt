@@ -90,9 +90,10 @@ Instead, modifications can be made efficiently without initiating an entire migr
 .. code-block:: sql
    :linenos:
 
-   update dbt.migration_objects 
-      set stage = 'R', ddl2='<correct constraints>' 
-    where owner = 'DEMO' and name = 'DEPARTMENTS';
+   --PostgreSQL
+   UPDATE dbt.migration_objects 
+      SET stage = 'R', ddl2='<correct constraints>' 
+    WHERE owner = 'DEMO' AND name = 'DEPARTMENTS';
 
 
 And rerun the script in stage constraints.
@@ -102,9 +103,10 @@ It's also fairly simple to migrate the reports, like:
 .. code-block:: sql
    :linenos:
 
-   select error, count(*), type 
-     from dbt.migration_objects 
-   group by error, type;
+   --PostgreSQL
+   SELECT error, COUNT(*), type 
+     FROM dbt.migration_objects 
+   GROUP BY error, type;
 
 
 

@@ -3,7 +3,7 @@
 BULK COLLECT INTO
 =================
 
-To emulate ``BULK COLLECT INTO``, clause we create an aggregate function for each collection type
+To emulate the BULK COLLECT INTO clause, we create an aggregate function for each collection type.
 
 This is an example of creating an aggregate for associative collection type:
 
@@ -16,6 +16,7 @@ To emulate select bulk collect, we call aggregate for each value and insert them
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    DECLARE
    ...
    BEGIN
@@ -36,9 +37,10 @@ Emulation of select bulk collect into %ROWTYPE collection is similar to regular 
 .. code-block:: sql
    :linenos:
 
-   declare
+   --Oracle
+   DECLARE
        TYPE emp_tbl IS TABLE OF emp%ROWTYPE INDEX BY BINARY_INTEGER;
-       t_emp           EMP_TBL;
+       t_emp        emp_tbl;
    BEGIN
     SELECT *
        BULK COLLECT
@@ -58,11 +60,12 @@ To aggregate values from the cursor, we create a fetch loop and store each fetch
 .. code-block:: sql
    :linenos:
 
-   declare
-       TYPE deptno_tbl    IS TABLE OF dept.deptno%TYPE    INDEX BY BINARY_INTEGER;
+   --Oracle
+   DECLARE
+       TYPE deptno_tbl   IS TABLE OF dept.deptno%TYPE   INDEX BY BINARY_INTEGER;
        TYPE dname_tbl    IS TABLE OF dept.dname%TYPE    INDEX BY BINARY_INTEGER;
        TYPE loc_tbl      IS TABLE OF dept.loc%TYPE      INDEX BY BINARY_INTEGER;
-       t_deptno           deptno_TBL;
+       t_deptno          deptno_TBL;
        t_dname           dname_TBL;
        t_loc             loc_TBL;
    
@@ -83,9 +86,10 @@ Emulation of fetch bulk collect into %ROWTYPE collection is similar to regular f
 .. code-block:: sql
    :linenos:
 
-   declare
+   --Oracle
+   DECLARE
        TYPE emp_tbl IS TABLE OF emp%ROWTYPE INDEX BY BINARY_INTEGER;
-       t_emp           EMP_TBL;
+       t_emp        emp_tbl;
        CURSOR emp_cur IS SELECT * FROM emp;
    BEGIN
        OPEN emp_cur;

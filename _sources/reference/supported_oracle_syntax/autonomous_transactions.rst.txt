@@ -9,11 +9,10 @@ Autonomous transactions emulated due to execution SQL via PostgreSQL dblink. We 
 
 In addition, we create a wrapper for an autonomous function(procedure) with the call of helper function ``dbt.autonous_exec`` with function parameters.
 
-Oracle
-
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    CREATE OR REPLACE PROCEDURE prc_log_errors (v_error_code      IN VARCHAR2,
                                                v_error_msg       IN VARCHAR2,
                                                v_plsql_program   IN VARCHAR2)

@@ -284,16 +284,15 @@
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">PL/SQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="string_literals.html">String literals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql_aliases.html">SQL Aliases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pl_sql_block.html">Plsql Blocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="objects_accessing.html">Objects accessing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_types.html">User Types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="parameter_bindings.html">Parameter bindings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="packages.html">Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql.html">SQL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cursors.html">CURSORS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="triggers.html">TRIGGERS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synonyms.html">SYNONYMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cursors.html">Cursors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="triggers.html">Triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synonyms.html">Synonyms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="autonomous_transactions.html">Autonomous transactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hierarchical_queries.html">Hierarchical queries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bulk_collect_into.html">BULK COLLECT INTO</a></li>
@@ -343,7 +342,7 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL Syntax</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL syntax</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">PL/SQL</li>
   </ul>
@@ -361,7 +360,7 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated November, 06 2023
+  Updated November, 17 2023
   <br/>
 </p>
                   
@@ -370,29 +369,30 @@
 <section id="block">
 <h2>Block<a class="headerlink" href="#block" title="Permalink to this heading">#</a></h2>
 <p>We wrap anonymous blocks with <code class="docutils literal notranslate"><span class="pre">DO</span> <span class="pre">$$</span> <span class="pre">...</span> <span class="pre">$$</span></code> and for procedures and functions we wrap the bodies with <code class="docutils literal notranslate"><span class="pre">$$...$$</span> <span class="pre">LANGUAGE</span> <span class="pre">plpgsql</span></code>.</p>
-<p><strong>Oracle DB</strong></p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Anonimus blocks</span>
-<span class="linenos"> 2</span><span class="k">declare</span>
-<span class="linenos"> 3</span><span class="k">begin</span>
-<span class="linenos"> 4</span><span class="w">   </span><span class="p">...</span>
-<span class="linenos"> 5</span><span class="k">end</span><span class="p">;</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span><span class="c1">--Functions</span>
-<span class="linenos"> 9</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(...)</span>
-<span class="linenos">10</span><span class="w">  </span><span class="k">RETURN</span><span class="w"> </span><span class="o">&lt;</span><span class="n">ret_type</span><span class="o">&gt;</span>
-<span class="linenos">11</span><span class="k">IS</span>
-<span class="linenos">12</span><span class="k">BEGIN</span>
-<span class="linenos">13</span><span class="w"> </span><span class="p">...</span>
-<span class="linenos">14</span><span class="k">END</span><span class="p">;</span>
-<span class="linenos">15</span>
-<span class="linenos">16</span>
-<span class="linenos">17</span><span class="c1">--Procedures</span>
-<span class="linenos">18</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="p">(...)</span>
-<span class="linenos">19</span><span class="k">IS</span>
-<span class="linenos">20</span><span class="k">BEGIN</span>
-<span class="linenos">21</span><span class="w">  </span><span class="p">...</span>
-<span class="linenos">22</span><span class="k">END</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="c1">--Anonimus blocks</span>
+<span class="linenos"> 4</span><span class="k">DECLARE</span>
+<span class="linenos"> 5</span><span class="k">BEGIN</span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="p">...</span>
+<span class="linenos"> 7</span><span class="k">END</span><span class="p">;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="c1">--Functions</span>
+<span class="linenos">11</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(...)</span>
+<span class="linenos">12</span><span class="w">  </span><span class="k">RETURN</span><span class="w"> </span><span class="o">&lt;</span><span class="n">ret_type</span><span class="o">&gt;</span>
+<span class="linenos">13</span><span class="k">IS</span>
+<span class="linenos">14</span><span class="k">BEGIN</span>
+<span class="linenos">15</span><span class="w"> </span><span class="p">...</span>
+<span class="linenos">16</span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="c1">--Procedures</span>
+<span class="linenos">20</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="p">(...)</span>
+<span class="linenos">21</span><span class="k">IS</span>
+<span class="linenos">22</span><span class="k">BEGIN</span>
+<span class="linenos">23</span><span class="w">  </span><span class="p">...</span>
+<span class="linenos">24</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -405,8 +405,12 @@
 <p>Postgres can handle this almost like Oracle does, but it has a few limitations. Postgres cannot use <code class="docutils literal notranslate"><span class="pre">%TYPE</span></code> attribute in the column definition of table or type. So we substitute <code class="docutils literal notranslate"><span class="pre">%TYPE</span></code> attribute with the real column type by getting the column’s metadata from DB in this case.</p>
 </section>
 <section id="select-into">
-<h2>Select into<a class="headerlink" href="#select-into" title="Permalink to this heading">#</a></h2>
+<h2>SELECT INTO<a class="headerlink" href="#select-into" title="Permalink to this heading">#</a></h2>
 <p>To ensure that we select only one row and that any related error is generated if we do not, we use the <code class="docutils literal notranslate"><span class="pre">STRICT</span></code> keyword.</p>
+</section>
+<section id="pl-sql-blocks">
+<h2>PL/SQL Blocks<a class="headerlink" href="#pl-sql-blocks" title="Permalink to this heading">#</a></h2>
+<p>We label each PL/SQL block with the next id <code class="docutils literal notranslate"><span class="pre">&lt;&lt;lbr$block$COUNTER&gt;&gt;</span></code>  <code class="docutils literal notranslate"><span class="pre">COUNTER</span></code>- is a number from 0 to blocks count. We don’t label function blocks.</p>
 </section>
 </section>
 
@@ -450,7 +454,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block">Block</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#procedures-call">Procedures call</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-attribute">%TYPE attribute</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-into">Select into</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-into">SELECT INTO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pl-sql-blocks">PL/SQL Blocks</a></li>
 </ul>
   </nav></div>
 

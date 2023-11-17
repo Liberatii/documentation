@@ -284,16 +284,15 @@
 <li class="toctree-l3"><a class="reference internal" href="pl_sql.html">PL/SQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="string_literals.html">String literals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql_aliases.html">SQL Aliases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pl_sql_block.html">Plsql Blocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="objects_accessing.html">Objects accessing</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">User Types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="parameter_bindings.html">Parameter bindings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="packages.html">Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql.html">SQL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cursors.html">CURSORS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="triggers.html">TRIGGERS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synonyms.html">SYNONYMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cursors.html">Cursors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="triggers.html">Triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synonyms.html">Synonyms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="autonomous_transactions.html">Autonomous transactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hierarchical_queries.html">Hierarchical queries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bulk_collect_into.html">BULK COLLECT INTO</a></li>
@@ -343,7 +342,7 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL Syntax</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL syntax</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">User Types</li>
   </ul>
@@ -361,7 +360,7 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated November, 06 2023
+  Updated November, 17 2023
   <br/>
 </p>
                   
@@ -370,12 +369,13 @@
 <section id="declaring">
 <h2><strong>Declaring</strong><a class="headerlink" href="#declaring" title="Permalink to this heading">#</a></h2>
 <p>For declaring a variable of user type, we use the prefix <code class="docutils literal notranslate"><span class="pre">LBR$UT$</span></code> for any user type and join all parts of a name with <code class="docutils literal notranslate"><span class="pre">$</span></code> for the complex names.  Also, for variables of user types without initialization, we insert explicit initialization with a function call with the default constructor function.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">DECLARE</span>
-<span class="linenos">2</span><span class="w">  </span><span class="n">default_week</span><span class="w"> </span><span class="n">pack</span><span class="p">.</span><span class="n">rectype</span><span class="p">;</span>
-<span class="linenos">3</span><span class="w">  </span><span class="n">default_week2</span><span class="w"> </span><span class="n">global_col_type</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">global_col_type</span><span class="p">(</span><span class="n">N</span><span class="s1">&#39;MoMo&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="s1">&#39;TEST&#39;</span><span class="p">);</span>
-<span class="linenos">4</span><span class="k">BEGIN</span>
-<span class="linenos">5</span><span class="w">  </span><span class="k">NULL</span><span class="p">;</span>
-<span class="linenos">6</span><span class="k">END</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Oracle</span>
+<span class="linenos">2</span><span class="k">DECLARE</span>
+<span class="linenos">3</span><span class="w">  </span><span class="n">default_week</span><span class="w"> </span><span class="n">pack</span><span class="p">.</span><span class="n">rectype</span><span class="p">;</span>
+<span class="linenos">4</span><span class="w">  </span><span class="n">default_week2</span><span class="w"> </span><span class="n">global_col_type</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">global_col_type</span><span class="p">(</span><span class="n">N</span><span class="s1">&#39;MoMo&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="s1">&#39;TEST&#39;</span><span class="p">);</span>
+<span class="linenos">5</span><span class="k">BEGIN</span>
+<span class="linenos">6</span><span class="w">  </span><span class="k">NULL</span><span class="p">;</span>
+<span class="linenos">7</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -394,19 +394,20 @@ because of the translation of accessors <code class="docutils literal notranslat
 <p><strong>Anonymous block</strong></p>
 <p>Create a type and function it in the <code class="docutils literal notranslate"><span class="pre">PG_TEMP</span></code> schema. Also, constructors, setters, and getters should be called from <code class="docutils literal notranslate"><span class="pre">PG_TEMP</span></code> schema. After the anonymous block, we should drop the type with the <code class="docutils literal notranslate"><span class="pre">CASCADE</span></code> option. The construction function should have parameters corresponding to the records attribute to transfer default values.</p>
 <p><cite>Example</cite></p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">DECLARE</span>
-<span class="linenos"> 2</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">11</span><span class="p">;</span>
-<span class="linenos"> 3</span><span class="w">  </span><span class="k">TYPE</span><span class="w"> </span><span class="n">R1</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="n">RECORD</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w">  </span><span class="n">b</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">);</span>
-<span class="linenos"> 4</span><span class="w">  </span><span class="n">V1</span><span class="w"> </span><span class="n">R1</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">R1</span><span class="p">();</span>
-<span class="linenos"> 5</span><span class="k">BEGIN</span>
-<span class="linenos"> 6</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;V1.a - &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">V1</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>
-<span class="linenos"> 7</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="linenos"> 8</span><span class="w">  </span><span class="k">DECLARE</span>
-<span class="linenos"> 9</span><span class="w">    </span><span class="n">V2</span><span class="w"> </span><span class="n">R1</span><span class="p">;</span>
-<span class="linenos">10</span><span class="w">  </span><span class="k">BEGIN</span>
-<span class="linenos">11</span><span class="w">    </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;V2.a - &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">V2</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>
-<span class="linenos">12</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
-<span class="linenos">13</span><span class="k">END</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="k">DECLARE</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="n">t</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">11</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="k">TYPE</span><span class="w"> </span><span class="n">r1</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="n">RECORD</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w">  </span><span class="n">b</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="n">v1</span><span class="w"> </span><span class="n">r1</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">r1</span><span class="p">();</span>
+<span class="linenos"> 6</span><span class="k">BEGIN</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;v1.a - &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">v1</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="n">t</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="k">DECLARE</span>
+<span class="linenos">10</span><span class="w">    </span><span class="n">v2</span><span class="w"> </span><span class="n">r1</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w">  </span><span class="k">BEGIN</span>
+<span class="linenos">12</span><span class="w">    </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;v2.a - &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">v2</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>
+<span class="linenos">13</span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">14</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Not yet implemented:</p>
@@ -425,38 +426,39 @@ because of the translation of accessors <code class="docutils literal notranslat
 <p><strong>In package</strong></p>
 <p>For the collection in a package, we change the name of the type to a <code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;$&lt;collection_name&gt;</span></code>  and create the same functions as for local, except we change the name of the constructor function to a <code class="docutils literal notranslate"><span class="pre">lbr$m$&lt;package_name&gt;$&lt;record_name&gt;</span></code>.</p>
 <p>For each package variable of collection type, we create an additional setter and getter. For example:</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="n">PACKAGE</span><span class="w"> </span><span class="n">P1</span><span class="w"> </span><span class="k">IS</span>
-<span class="linenos">2</span><span class="w">  </span><span class="c1">-- Associative array indexed by string:</span>
-<span class="linenos">3</span><span class="w">  </span><span class="k">TYPE</span><span class="w"> </span><span class="n">population</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="c1">-- Associative array type</span>
-<span class="linenos">4</span><span class="w">    </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">64</span><span class="p">);</span><span class="w">           </span><span class="c1">-- indexed by string</span>
-<span class="linenos">5</span>
-<span class="linenos">6</span><span class="w">  </span><span class="n">city_population</span><span class="w"> </span><span class="n">population</span><span class="p">;</span><span class="w"> </span><span class="c1">-- Associative array variable</span>
-<span class="linenos">7</span><span class="k">END</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Oracle</span>
+<span class="linenos">2</span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="n">PACKAGE</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="k">IS</span>
+<span class="linenos">3</span><span class="w">  </span><span class="c1">-- Associative array indexed by string:</span>
+<span class="linenos">4</span><span class="w">  </span><span class="k">TYPE</span><span class="w"> </span><span class="n">population</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="c1">-- Associative array type</span>
+<span class="linenos">5</span><span class="w">    </span><span class="k">INDEX</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">64</span><span class="p">);</span><span class="w">           </span><span class="c1">-- indexed by string</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="w">  </span><span class="n">city_population</span><span class="w"> </span><span class="n">population</span><span class="p">;</span><span class="w"> </span><span class="c1">-- Associative array variable</span>
+<span class="linenos">8</span><span class="k">END</span><span class="p">;</span>
 </pre></div>
 </div>
 <p><strong>Nested tables and Varrays</strong></p>
 <p>We convert Nested tables and Varrays to a Postgres Type as well. For VARRAY, we store max length in addition to values.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">TYPE</span><span class="w"> </span><span class="n">Foursome</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="n">VARRAY</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">TYPE</span><span class="w"> </span><span class="n">foursome</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="n">VARRAY</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>For NESTED TABLE, we store placeholders for deleted elements(the ORACLE <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> method of the nested table just marks elements rather than deletes them).</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">TYPE</span><span class="w"> </span><span class="n">Roster</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">TYPE</span><span class="w"> </span><span class="n">roster</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
 </pre></div>
 </div>
 <p><strong>FORALL loop</strong></p>
 <p>We emulate the FORALL loop with extended DML that is used inside of it. In extended DML, we use subquery over bounds that are specified in FORALL bounds clause.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">forall</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">prodList</span><span class="p">.</span><span class="k">first</span><span class="p">..</span><span class="n">prodList</span><span class="p">.</span><span class="k">last</span>
-<span class="linenos">2</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="n">EMP</span>
-<span class="linenos">3</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">ENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;UP&#39;</span><span class="o">||</span><span class="s1">&#39;DATED&#39;</span>
-<span class="linenos">4</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">EMPNO</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">prodList</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">FORALL</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="n">prodList</span><span class="p">.</span><span class="k">FIRST</span><span class="p">..</span><span class="n">prodList</span><span class="p">.</span><span class="k">LAST</span>
+<span class="linenos">2</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">emp</span>
+<span class="linenos">3</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">ename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;UP&#39;</span><span class="o">||</span><span class="s1">&#39;DATED&#39;</span>
+<span class="linenos">4</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">empno</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">prodList</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">forall</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">prodList</span><span class="p">.</span><span class="k">first</span><span class="p">..</span><span class="n">prodList</span><span class="p">.</span><span class="k">last</span>
-<span class="linenos">2</span><span class="w">  </span><span class="k">delete</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">EMP</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">EMPNO</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">prodList</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">FORALL</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="n">prodList</span><span class="p">.</span><span class="k">FIRST</span><span class="p">..</span><span class="n">prodList</span><span class="p">.</span><span class="k">LAST</span>
+<span class="linenos">2</span><span class="w">  </span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">empno</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">prodList</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">forall</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">prodList</span><span class="p">.</span><span class="k">first</span><span class="p">..</span><span class="n">prodList</span><span class="p">.</span><span class="k">last</span>
-<span class="linenos">2</span><span class="w">  </span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">EMP</span><span class="w"> </span><span class="p">(</span><span class="n">EMPNO</span><span class="p">,</span><span class="n">ENAME</span><span class="p">)</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="n">prodList</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="s1">&#39;INSERTED&#39;</span><span class="p">);</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">FORALL</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="n">prodList</span><span class="p">.</span><span class="k">FIRST</span><span class="p">..</span><span class="n">prodList</span><span class="p">.</span><span class="k">LAST</span>
+<span class="linenos">2</span><span class="w">  </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="p">(</span><span class="n">empno</span><span class="p">,</span><span class="w"> </span><span class="n">ename</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">prodList</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="s1">&#39;INSERTED&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p><strong>Not yet implemented</strong></p>

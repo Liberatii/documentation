@@ -12,6 +12,7 @@ For declaring a variable of user type, we use the prefix ``LBR$UT$`` for any use
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    DECLARE
      default_week pack.rectype;
      default_week2 global_col_type := global_col_type(N'MoMo', N'TEST');
@@ -51,17 +52,18 @@ Create a type and function it in the ``PG_TEMP`` schema. Also, constructors, set
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    DECLARE
-     T NUMBER := 11;
-     TYPE R1 IS RECORD (a NUMBER DEFAULT 3 * T,  b NUMBER );
-     V1 R1 := R1();
+     t NUMBER := 11;
+     TYPE r1 IS RECORD (a NUMBER DEFAULT 3 * t,  b NUMBER );
+     v1 r1 := r1();
    BEGIN
-     DBMS_OUTPUT.put_line('V1.a - ' || V1.a);
-     T := 0;
+     DBMS_OUTPUT.put_line('v1.a - ' || v1.a);
+     t := 0;
      DECLARE 
-       V2 R1;
+       v2 r1;
      BEGIN
-       DBMS_OUTPUT.put_line('V2.a - ' || V2.a);
+       DBMS_OUTPUT.put_line('v2.a - ' || v2.a);
      END;
    END;
 
@@ -105,7 +107,8 @@ For each package variable of collection type, we create an additional setter and
 .. code-block:: sql
    :linenos:
 
-   CREATE OR REPLACE PACKAGE P1 IS
+   --Oracle
+   CREATE OR REPLACE PACKAGE p1 IS
      -- Associative array indexed by string:
      TYPE population IS TABLE OF NUMBER -- Associative array type
        INDEX BY VARCHAR2(64);           -- indexed by string
@@ -123,7 +126,7 @@ We convert Nested tables and Varrays to a Postgres Type as well. For VARRAY, we 
 .. code-block:: sql
    :linenos:
 
-   TYPE Foursome IS VARRAY(4) OF VARCHAR2(15);
+   TYPE foursome IS VARRAY(4) OF VARCHAR2(15);
 
 
 
@@ -133,7 +136,7 @@ For NESTED TABLE, we store placeholders for deleted elements(the ORACLE ``DELETE
 .. code-block:: sql
    :linenos:
 
-   TYPE Roster IS TABLE OF VARCHAR2(15);
+   TYPE roster IS TABLE OF VARCHAR2(15);
 
 
 
@@ -145,22 +148,22 @@ We emulate the FORALL loop with extended DML that is used inside of it. In exten
 .. code-block:: sql
    :linenos:
 
-   forall i in prodList.first..prodList.last
-    update EMP
-    set ENAME = 'UP'||'DATED'
-    where EMPNO > prodList(i);
+   FORALL i IN prodList.FIRST..prodList.LAST
+    UPDATE emp
+    SET ename = 'UP'||'DATED'
+    WHERE empno > prodList(i);
 
 .. code-block:: sql
    :linenos:
 
-   forall i in prodList.first..prodList.last
-     delete from EMP where EMPNO < prodList(i);
+   FORALL i IN prodList.FIRST..prodList.LAST
+     DELETE FROM emp WHERE empno < prodList(i);
 
 .. code-block:: sql
    :linenos:
 
-   forall i in prodList.first..prodList.last
-     insert into EMP (EMPNO,ENAME) values (prodList(i),'INSERTED');
+   FORALL i IN prodList.FIRST..prodList.LAST
+     INSERT INTO emp (empno, ename) VALUES (prodList(i),'INSERTED');
 
 
 

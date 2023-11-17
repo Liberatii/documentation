@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>TRIGGERS &#8212; Liberatii Gateway</title>
+    <title>Triggers &#8212; Liberatii Gateway</title>
   
   
   
@@ -58,8 +58,8 @@
     <link rel="shortcut icon" href="../../_static/dark-theme-logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="SYNONYMS" href="synonyms.html" />
-    <link rel="prev" title="CURSORS" href="cursors.html" />
+    <link rel="next" title="Synonyms" href="synonyms.html" />
+    <link rel="prev" title="Cursors" href="cursors.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -280,16 +280,15 @@
 <li class="toctree-l3"><a class="reference internal" href="pl_sql.html">PL/SQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="string_literals.html">String literals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql_aliases.html">SQL Aliases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pl_sql_block.html">Plsql Blocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="objects_accessing.html">Objects accessing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_types.html">User Types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="parameter_bindings.html">Parameter bindings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="packages.html">Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql.html">SQL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cursors.html">CURSORS</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">TRIGGERS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synonyms.html">SYNONYMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cursors.html">Cursors</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synonyms.html">Synonyms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="autonomous_transactions.html">Autonomous transactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hierarchical_queries.html">Hierarchical queries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bulk_collect_into.html">BULK COLLECT INTO</a></li>
@@ -339,9 +338,9 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL Syntax</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL syntax</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">TRIGGERS</li>
+    <li class="breadcrumb-item active" aria-current="page">Triggers</li>
   </ul>
 </nav>
 </div>
@@ -357,28 +356,28 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated November, 06 2023
+  Updated November, 17 2023
   <br/>
 </p>
                   
   <section id="triggers">
-<span id="id1"></span><h1>TRIGGERS<a class="headerlink" href="#triggers" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1>Triggers<a class="headerlink" href="#triggers" title="Permalink to this heading">#</a></h1>
 <p>The main difference between Oracle and Postgres triggers is the PostgreSQL trigger’s function which is invoked by a trigger.</p>
 <p><a class="reference external" href="https://docs.oracle.com/en/database/oracle/oracle-database/19/lnpls/CREATE-TRIGGER-statement.html#GUID-AF9E33F1-64D1-4382-A6A4-EC33C36F237B">Oracle 19 Create Trigger</a></p>
 <p><a class="reference external" href="https://www.postgresql.org/docs/11/sql-createtrigger.html">Postgres Create Trigger</a></p>
 <p><a class="reference external" href="https://www.postgresql.org/docs/current/plpgsql-trigger.html">Postgres trigger functions</a></p>
-<p>Oracle DB</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">after_tr_test</span>
-<span class="linenos"> 2</span><span class="k">AFTER</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">DELETE</span>
-<span class="linenos"> 3</span><span class="k">ON</span><span class="w"> </span><span class="n">tr_test</span>
-<span class="linenos"> 4</span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
-<span class="linenos"> 5</span><span class="k">BEGIN</span>
-<span class="linenos"> 6</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;   old.id:&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">:</span><span class="k">old</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;|&#39;</span><span class="p">);</span>
-<span class="linenos"> 7</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;   new.id:&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">:</span><span class="k">new</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;|&#39;</span><span class="p">);</span>
-<span class="linenos"> 8</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;  old.txt:&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">:</span><span class="k">old</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;|&#39;</span><span class="p">);</span>
-<span class="linenos"> 9</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;  new.txt:&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">:</span><span class="k">new</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;|&#39;</span><span class="p">);</span>
-<span class="linenos">10</span><span class="k">END</span><span class="p">;</span>
-<span class="linenos">11</span><span class="o">/</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">--Oracle</span>
+<span class="linenos"> 2</span><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">after_tr_test</span>
+<span class="linenos"> 3</span><span class="k">AFTER</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">DELETE</span>
+<span class="linenos"> 4</span><span class="k">ON</span><span class="w"> </span><span class="n">tr_test</span>
+<span class="linenos"> 5</span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
+<span class="linenos"> 6</span><span class="k">BEGIN</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;   old.id:&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">:</span><span class="k">old</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;|&#39;</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;   new.id:&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">:</span><span class="k">new</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;|&#39;</span><span class="p">);</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;  old.txt:&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">:</span><span class="k">old</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;|&#39;</span><span class="p">);</span>
+<span class="linenos">10</span><span class="w">  </span><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">PUT_LINE</span><span class="p">(</span><span class="s1">&#39;  new.txt:&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">:</span><span class="k">new</span><span class="p">.</span><span class="n">txt</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;|&#39;</span><span class="p">);</span>
+<span class="linenos">11</span><span class="k">END</span><span class="p">;</span>
+<span class="linenos">12</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>Also, PostgreSQL triggers don’t have trigger conditions inside the trigger’s body. We emulate them with TP_OP special variable:</p>
@@ -402,8 +401,8 @@
 </tbody>
 </table>
 <p>For dropping triggers, Postgres should know the table on which it was created.</p>
-<p>OracleDB</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">DROP</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">trigg</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Oracle</span>
+<span class="linenos">2</span><span class="k">DROP</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">trigg</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="line-block">

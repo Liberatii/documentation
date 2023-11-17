@@ -12,8 +12,11 @@ Outer Join operators like ``(+)`` are translated into ``OUTER JOIN`` ANSI SQL Sy
 .. code-block:: sql
    :linenos:
 
-   SELECT * FROM Table1 t1, Table2 t2, Table3 t3 
-   where t1.NAME(+) = t2.NAME and t1.NAME = t3.NAME;
+   --Oracle
+   SELECT * 
+     FROM table1 t1, table2 t2, table3 t3 
+    WHERE t1.name(+) = t2.name 
+      AND t1.name = t3.name;
 
 
 
@@ -25,6 +28,7 @@ Outer Join operators like ``(+)`` are translated into ``OUTER JOIN`` ANSI SQL Sy
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    SELECT ROWID, last_name  
      FROM employees
     WHERE department_id = 20;
@@ -41,8 +45,12 @@ For example:
 .. code-block:: sql
    :linenos:
 
-   SELECT ITEM_NUM, ORDER_NUM FROM items 
-   WHERE ITEM_NUM < 10 AND ROWNUM < 6 AND ORDER_NUM > 100;
+   --Oracle
+   SELECT item_num, order_num
+     FROM items 
+    WHERE item_num < 10 
+      AND ROWNUM < 6
+      AND order_num > 100;
 
 
 
@@ -52,6 +60,7 @@ For example:
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    UPDATE employees SET employee_id = ROWNUM, manager_id = ROWNUM;
 
 
@@ -75,7 +84,7 @@ PostgreSQL has ``CREATE SEQUENCE`` syntax with some differences:
 
 
 
-**UNIQUE in Select statement**
+**UNIQUE in SELECT statement**
 ++++++++++++++++++++++++++++++
 
 ``UNIQUE`` is the Oracle's synonym for ``DISTINCT``. So we replace ``UNIQUE`` with ``DISTINCT``.
@@ -90,6 +99,7 @@ For emulation, we transform PIVOT into Decode form with aggregation and translat
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    SELECT * FROM
    (SELECT EXTRACT(YEAR FROM order_date) year, order_mode, order_total FROM orders)
    PIVOT
@@ -107,6 +117,7 @@ Example:
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    SELECT * FROM sale_stats
     UNPIVOT INCLUDE NULLS(
        quantity
@@ -137,6 +148,7 @@ Oracle EXCLUDE NULLS.
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    SELECT * FROM sale_stats
     UNPIVOT (   --EXCLUDE NULLS by default or we can explicit specify  
        quantity
@@ -155,6 +167,7 @@ Oracle unpivot multiple columns.
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    SELECT * FROM sale_stats
    UNPIVOT (
       (quantity, amount)

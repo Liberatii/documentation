@@ -284,16 +284,15 @@
 <li class="toctree-l3"><a class="reference internal" href="pl_sql.html">PL/SQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="string_literals.html">String literals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql_aliases.html">SQL Aliases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pl_sql_block.html">Plsql Blocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="objects_accessing.html">Objects accessing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_types.html">User Types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="parameter_bindings.html">Parameter bindings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="packages.html">Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql.html">SQL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cursors.html">CURSORS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="triggers.html">TRIGGERS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synonyms.html">SYNONYMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cursors.html">Cursors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="triggers.html">Triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synonyms.html">Synonyms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="autonomous_transactions.html">Autonomous transactions</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Hierarchical queries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bulk_collect_into.html">BULK COLLECT INTO</a></li>
@@ -343,7 +342,7 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL Syntax</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL syntax</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">Hierarchical queries</li>
   </ul>
@@ -361,7 +360,7 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated November, 06 2023
+  Updated November, 17 2023
   <br/>
 </p>
                   
@@ -370,75 +369,75 @@
 <p>We emulate Oracle’s hierarchical queries with CTE.</p>
 <section id="connect-by">
 <h2>CONNECT BY<a class="headerlink" href="#connect-by" title="Permalink to this heading">#</a></h2>
-<p>We emulate <code class="docutils literal notranslate"><span class="pre">connect</span> <span class="pre">by</span></code> by joining CTE with the source table on PRIOR column from CTE and the child from the source table.</p>
-<p>Oracle</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">SELECT</span><span class="w"> </span><span class="n">employee_id</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">manager_id</span>
-<span class="linenos">2</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
-<span class="linenos">3</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span>
-<span class="linenos">4</span><span class="k">CONNECT</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">PRIOR</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manager_id</span><span class="p">;</span>
+<p>We emulate CONNECT BY by joining CTE with the source table on PRIOR column from CTE and the child from the source table.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Oracle</span>
+<span class="linenos">2</span><span class="k">SELECT</span><span class="w"> </span><span class="n">employee_id</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">manager_id</span>
+<span class="linenos">3</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+<span class="linenos">4</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span>
+<span class="linenos">5</span><span class="k">CONNECT</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">PRIOR</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manager_id</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="level">
 <h2>LEVEL<a class="headerlink" href="#level" title="Permalink to this heading">#</a></h2>
 <p>As pseudo column LEVEL always calculates for hierarchical queries adding LEVEL in the top select is enough to have LEVEL in the result set.</p>
-<p>Oracle</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">SELECT</span><span class="w"> </span><span class="n">employee_id</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span>
-<span class="linenos">2</span><span class="w">       </span><span class="n">manager_id</span><span class="p">,</span><span class="w"> </span><span class="k">LEVEL</span>
-<span class="linenos">3</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
-<span class="linenos">4</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span>
-<span class="linenos">5</span><span class="w"> </span><span class="k">CONNECT</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">PRIOR</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manager_id</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Oracle</span>
+<span class="linenos">2</span><span class="k">SELECT</span><span class="w"> </span><span class="n">employee_id</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span>
+<span class="linenos">3</span><span class="w">       </span><span class="n">manager_id</span><span class="p">,</span><span class="w"> </span><span class="k">LEVEL</span>
+<span class="linenos">4</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+<span class="linenos">5</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span>
+<span class="linenos">6</span><span class="w"> </span><span class="k">CONNECT</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">PRIOR</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manager_id</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="start-with">
 <h2>START WITH<a class="headerlink" href="#start-with" title="Permalink to this heading">#</a></h2>
 <p>START WITH condition is emulated by adding a condition in the non-recursive part of CTE.</p>
-<p>Oracle</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">employee_id</span><span class="p">,</span><span class="w"> </span><span class="n">manager_id</span><span class="p">,</span><span class="w"> </span><span class="k">LEVEL</span>
-<span class="linenos">2</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
-<span class="linenos">3</span><span class="k">START</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span>
-<span class="linenos">4</span><span class="k">CONNECT</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">PRIOR</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manager_id</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Oracle</span>
+<span class="linenos">2</span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">employee_id</span><span class="p">,</span><span class="w"> </span><span class="n">manager_id</span><span class="p">,</span><span class="w"> </span><span class="k">LEVEL</span>
+<span class="linenos">3</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+<span class="linenos">4</span><span class="k">START</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span>
+<span class="linenos">5</span><span class="k">CONNECT</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">PRIOR</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manager_id</span>
 </pre></div>
 </div>
 </section>
 <section id="order-siblings-by">
 <h2>ORDER SIBLINGS BY<a class="headerlink" href="#order-siblings-by" title="Permalink to this heading">#</a></h2>
-<p>In Oracle’s hierarchical query, do not specify either <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> or <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code>, as they will destroy the hierarchical order of the <code class="docutils literal notranslate"><span class="pre">CONNECT</span> <span class="pre">BY</span></code> results. If you want to order rows of siblings of the same parent, then use the <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">SIBLINGS</span> <span class="pre">BY</span></code> clause.</p>
-<p>To emulate <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">SIBLINGS</span> <span class="pre">BY</span></code> clause we store expressions in an array and do a sort in the top <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p>
-<p>Oracle</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">employee_id</span><span class="p">,</span><span class="w"> </span><span class="n">manager_id</span><span class="p">,</span><span class="w"> </span><span class="k">LEVEL</span>
-<span class="linenos">2</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
-<span class="linenos">3</span><span class="k">START</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span>
-<span class="linenos">4</span><span class="k">CONNECT</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">PRIOR</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manager_id</span>
-<span class="linenos">5</span><span class="k">ORDER</span><span class="w"> </span><span class="n">SIBLINGS</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">last_name</span><span class="p">;</span>
+<p>In Oracle’s hierarchical query, do not specify either ORDER BY or GROUP BY, as they will destroy the hierarchical order of the CONNECT BY results. If you want to order rows of siblings of the same parent, then use the ORDER SIBLINGS BY clause.</p>
+<p>To emulate ORDER SIBLINGS BY clause we store expressions in an array and do a sort in the top SELECT.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Oracle</span>
+<span class="linenos">2</span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">employee_id</span><span class="p">,</span><span class="w"> </span><span class="n">manager_id</span><span class="p">,</span><span class="w"> </span><span class="k">LEVEL</span>
+<span class="linenos">3</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+<span class="linenos">4</span><span class="k">START</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span>
+<span class="linenos">5</span><span class="k">CONNECT</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">PRIOR</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manager_id</span>
+<span class="linenos">6</span><span class="k">ORDER</span><span class="w"> </span><span class="n">SIBLINGS</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">last_name</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="connect-by-path">
 <h2>CONNECT_BY_PATH<a class="headerlink" href="#connect-by-path" title="Permalink to this heading">#</a></h2>
-<p>To emulate <code class="docutils literal notranslate"><span class="pre">CONNECT_BY_PATH</span></code> we store columns in an array and call PostgreSQL <code class="docutils literal notranslate"><span class="pre">array_to_string</span></code> function.</p>
-<p>Oracle</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_n</span>
-<span class="linenos">2</span><span class="w">       </span><span class="k">LEVEL</span><span class="p">,</span>
-<span class="linenos">3</span><span class="w">       </span><span class="n">SYS_CONNECT_BY_PATH</span><span class="p">(</span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="w"> </span><span class="ss">&quot;Path&quot;</span>
-<span class="linenos">4</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
-<span class="linenos">5</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">level</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span>
-<span class="linenos">6</span><span class="w"> </span><span class="k">START</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Hunold&#39;</span>
-<span class="linenos">7</span><span class="k">CONNECT</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">PRIOR</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manager_id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">LEVEL</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<p>To emulate CONNECT_BY_PATH we store columns in an array and call PostgreSQL array_to_string function.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Oracle</span>
+<span class="linenos">2</span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_n</span>
+<span class="linenos">3</span><span class="w">       </span><span class="k">LEVEL</span><span class="p">,</span>
+<span class="linenos">4</span><span class="w">       </span><span class="n">SYS_CONNECT_BY_PATH</span><span class="p">(</span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="w"> </span><span class="ss">&quot;Path&quot;</span>
+<span class="linenos">5</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+<span class="linenos">6</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">level</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span>
+<span class="linenos">7</span><span class="w"> </span><span class="k">START</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Hunold&#39;</span>
+<span class="linenos">8</span><span class="k">CONNECT</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">PRIOR</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manager_id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">LEVEL</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="connect-by-iscycle">
 <h2>CONNECT_BY_ISCYCLE<a class="headerlink" href="#connect-by-iscycle" title="Permalink to this heading">#</a></h2>
 <p>To emulate CONNECT_BY_ISCYCLE,  we store child columns in an array and check if the parent column value exists in this array. Also, we init CONNECT_BY_ISCYCLE  column with 0.</p>
-<p>Oracle</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">CONNECT_BY_ISCYCLE</span><span class="w"> </span><span class="ss">&quot;Cycle&quot;</span><span class="p">,</span>
-<span class="linenos">2</span><span class="w">       </span><span class="k">LEVEL</span><span class="p">,</span><span class="w"> </span><span class="n">SYS_CONNECT_BY_PATH</span><span class="p">(</span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="w"> </span><span class="ss">&quot;Path&quot;</span>
-<span class="linenos">3</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
-<span class="linenos">4</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">level</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span>
-<span class="linenos">5</span><span class="w"> </span><span class="k">START</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Hunold&#39;</span>
-<span class="linenos">6</span><span class="k">CONNECT</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">NOCYCLE</span><span class="w"> </span><span class="k">PRIOR</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manager_id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">LEVEL</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Oracle</span>
+<span class="linenos">2</span><span class="k">SELECT</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">CONNECT_BY_ISCYCLE</span><span class="w"> </span><span class="ss">&quot;Cycle&quot;</span><span class="p">,</span>
+<span class="linenos">3</span><span class="w">       </span><span class="k">LEVEL</span><span class="p">,</span><span class="w"> </span><span class="n">SYS_CONNECT_BY_PATH</span><span class="p">(</span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="w"> </span><span class="ss">&quot;Path&quot;</span>
+<span class="linenos">4</span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span>
+<span class="linenos">5</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">level</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span>
+<span class="linenos">6</span><span class="w"> </span><span class="k">START</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Hunold&#39;</span>
+<span class="linenos">7</span><span class="k">CONNECT</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">NOCYCLE</span><span class="w"> </span><span class="k">PRIOR</span><span class="w"> </span><span class="n">employee_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manager_id</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">LEVEL</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>

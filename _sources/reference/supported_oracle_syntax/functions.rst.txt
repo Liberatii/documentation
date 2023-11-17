@@ -24,13 +24,17 @@ Declaration example:
 .. code-block:: sql
    :linenos:
 
-   --OracleDB
-   create or replace function fun (a in number,b out number, c in out number) return number is
-        begin
-          b:=a+10;
-          c:=c+a;
-       return(100);
-    end;
+   --Oracle
+   CREATE OR REPLACE FUNCTION fun (a IN NUMBER,
+                                   b OUT NUMBER,
+                                   c IN OUT NUMBER)
+   RETURN NUMBER
+   IS
+   BEGIN
+     b := a + 10;
+     c := c + a;
+     RETURN( 100 );
+   END; 
 
 
 
@@ -41,16 +45,15 @@ Invoking example:
 .. code-block:: sql
    :linenos:
 
-   --OracleDB
-   declare
-     x number:=10;
-     y number:=20;
-     z number;
-   begin
-     z:=fun(x,z,y);
-     DBMS_OUTPUT.PUT_LINE('X'||X||' y'||y||' z'||z);
-   end;
-
+   --Oracle
+   DECLARE
+     x NUMBER := 10;
+     y NUMBER := 20;
+     z NUMBER;
+   BEGIN
+     z := fun(x,z,y);
+     DBMS_OUTPUT.PUT_LINE(' x'||x||' y'||y||' z'||z);
+   END;
 
 
 
@@ -62,24 +65,27 @@ One of the limitations of this approach is multiple invoke of the function in a 
 .. code-block:: sql
    :linenos:
 
-   --OracleDB
-   create or replace function fun (a in number, c in out number) return number is
-     begin
-       c:=c+1;
-       return c;
-   end;
-   / 
-   
-   declare
-     a number:=10;
-     c number:=20;
-   begin
-     c:= c + fun(a,c) + fun(a,c);
+   --Oracle
+   CREATE OR REPLACE FUNCTION fun (a IN NUMBER,
+                                   c IN OUT NUMBER)
+   RETURN NUMBER
+   IS
+   BEGIN
+     c := c + 1;
+     RETURN c;
+   END;
+   /
+
+   DECLARE
+     a NUMBER := 10;
+     c NUMBER := 20;
+   BEGIN
+     c := c + fun(a, c) + fun(a, c);
      -- C=64. Second call of fun(a,c) doesn't
      -- affect c variable in the begining 
      -- of addition operation
-     DBMS_OUTPUT.PUT_LINE('A '||a||'  c '||c);
-   end;
+     DBMS_OUTPUT.PUT_LINE('a '||a||'  c '||c);
+   END;
 
 
 
@@ -89,12 +95,12 @@ One of the limitations of this approach is multiple invoke of the function in a 
 
 If the function doesn't have any argument or has all defaults, Oracle can call this function without parentheses. In Postgres, you should always have parentheses. As we don't have type inference, we create synonyms that add parentheses to a call.
 
-OracleDB
-
 .. code-block:: sql
    :linenos:
 
-   CREATE FUNCTION test_func RETURN test_table.id%TYPE
+   --Oracle
+   CREATE FUNCTION test_func 
+   RETURN test_table.id%TYPE
    IS
      retVal test_table.id%TYPE:=-7777;
    BEGIN
@@ -116,12 +122,11 @@ In Oracle, NO_DATA_FOUND  is an error and a state at the same time, depending on
 
 If the function is called by PlSQL, NO_DATA_FOUND is considered to be an error and an exception is raised. If the function is called by SQL, NO_DATA_FOUND is considered to be a state and no exception is raised. In PostgreSQL, it is always an error. To emulate this for functions that can rise ``NO_DATA_FOUND`` (rise explicitly or in ``select into``), we create a special wrapper with the original function name to suppress an error. In the original function, we change the name to this template ``lbr$<function_name>$throw_no_data`` and call this in PLSQL instead of the original name.
 
-OracleDB
-
 .. code-block:: sql
    :linenos:
 
-   CREATE or replace  FUNCTION no_data_func
+   --Oracle
+   CREATE OR REPLACE FUNCTION no_data_func
    RETURN VARCHAR2
    AS
    BEGIN
@@ -132,16 +137,15 @@ OracleDB
 
 
 
-**Pipelined functions**
+**PIPELINED functions**
 +++++++++++++++++++++++
 
 Pipelined table functions are table functions that return or "pipe" rows back to the calling query as the function produces the data in the desired form - and before the function has completed all of its processing. For emulation, we add to every nested table or VARRAY helper field ``elem`` with the type of collection element.
 
-OracleDB
-
 .. code-block:: sql
    :linenos:
 
+   --Oracle
    CREATE FUNCTION test_func(par1 test_table.id%TYPE)
    -- 1
    RETURN test_type_set PIPELINED
@@ -153,17 +157,17 @@ OracleDB
          FROM test_table
         WHERE id <= cur_id
           AND dt >= cur_dt;
-     BEGIN
-       FOR vRec IN cur(par1, TRUNC(SYSDATE)) LOOP
-         outRec.tabId := vRec.id;
-         outRec.tabTxt := vRec.txt;
-         outRec.recType := varConstType;
-         outRec.recDesc := varConstDesc;
-         -- 2
-         PIPE ROW(outRec);
-       END LOOP;
-       RETURN;
-     END test_func;
+   BEGIN
+     FOR vRec IN cur(par1, TRUNC(SYSDATE)) LOOP
+       outRec.tabId := vRec.id;
+       outRec.tabTxt := vRec.txt;
+       outRec.recType := varConstType;
+       outRec.recDesc := varConstDesc;
+       -- 2
+       PIPE ROW(outRec);
+     END LOOP;
+     RETURN;
+   END test_func;
 
 
 
@@ -180,6 +184,8 @@ Each anonymous nested function we create in ``pg_temp`` schema.
 
 .. code-block:: sql
    :linenos:
+
+   --Oracle
 
    --Block
    DECLARE

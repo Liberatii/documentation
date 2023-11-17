@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>SYNONYMS &#8212; Liberatii Gateway</title>
+    <title>Synonyms &#8212; Liberatii Gateway</title>
   
   
   
@@ -59,7 +59,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Autonomous transactions" href="autonomous_transactions.html" />
-    <link rel="prev" title="TRIGGERS" href="triggers.html" />
+    <link rel="prev" title="Triggers" href="triggers.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -280,16 +280,15 @@
 <li class="toctree-l3"><a class="reference internal" href="pl_sql.html">PL/SQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="string_literals.html">String literals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql_aliases.html">SQL Aliases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pl_sql_block.html">Plsql Blocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="objects_accessing.html">Objects accessing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_types.html">User Types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="parameter_bindings.html">Parameter bindings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="packages.html">Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql.html">SQL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cursors.html">CURSORS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="triggers.html">TRIGGERS</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">SYNONYMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cursors.html">Cursors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="triggers.html">Triggers</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Synonyms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="autonomous_transactions.html">Autonomous transactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hierarchical_queries.html">Hierarchical queries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bulk_collect_into.html">BULK COLLECT INTO</a></li>
@@ -339,9 +338,9 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL Syntax</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL syntax</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">SYNONYMS</li>
+    <li class="breadcrumb-item active" aria-current="page">Synonyms</li>
   </ul>
 </nav>
 </div>
@@ -357,20 +356,21 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated November, 06 2023
+  Updated November, 17 2023
   <br/>
 </p>
                   
   <section id="synonyms">
-<span id="id1"></span><h1>SYNONYMS<a class="headerlink" href="#synonyms" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1>Synonyms<a class="headerlink" href="#synonyms" title="Permalink to this heading">#</a></h1>
 <p>In PostgreSQL there is no direct analogue of Oracle’s synonym. So we just store the synonym name and its reference object to a table <code class="docutils literal notranslate"><span class="pre">dbt.synonyms</span></code>, and substitute the synonym name in SQL to a referenced object.</p>
 <p>OracleDB</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">CREATE</span><span class="w"> </span><span class="n">SYNONYM</span><span class="w"> </span><span class="n">countries</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">hr</span><span class="p">.</span><span class="n">countries</span><span class="p">;</span>
-<span class="linenos">2</span><span class="o">/</span>
-<span class="linenos">3</span><span class="k">Select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">From</span><span class="w"> </span><span class="n">countries</span><span class="p">;</span>
-<span class="linenos">4</span><span class="o">/</span>
-<span class="linenos">5</span><span class="k">Drop</span><span class="w"> </span><span class="n">SYNONYM</span><span class="w"> </span><span class="n">countries</span><span class="p">;</span>
-<span class="linenos">6</span><span class="o">/</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">--Oracle</span>
+<span class="linenos">2</span><span class="k">CREATE</span><span class="w"> </span><span class="n">SYNONYM</span><span class="w"> </span><span class="n">countries</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">hr</span><span class="p">.</span><span class="n">countries</span><span class="p">;</span>
+<span class="linenos">3</span><span class="o">/</span>
+<span class="linenos">4</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">countries</span><span class="p">;</span>
+<span class="linenos">5</span><span class="o">/</span>
+<span class="linenos">6</span><span class="k">DROP</span><span class="w"> </span><span class="n">SYNONYM</span><span class="w"> </span><span class="n">countries</span><span class="p">;</span>
+<span class="linenos">7</span><span class="o">/</span>
 </pre></div>
 </div>
 </section>

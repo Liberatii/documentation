@@ -328,7 +328,8 @@ For example:
 .. code-block:: sql
    :linenos:
 
-   insert into dbt.manual_translation_table(src,dst) values(
+   --PostgreSQL
+   INSERT INTO dbt.manual_translation_table(src,dst) VALUES(
        'BEGIN user_context_pkg.set_app_user_lang($1)', 
        'CALL "lbr$m$DBMS_APPLICATION_INFO$SET_CLIENT_INFO"($1)');
 

@@ -284,16 +284,15 @@
 <li class="toctree-l3"><a class="reference internal" href="pl_sql.html">PL/SQL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="string_literals.html">String literals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql_aliases.html">SQL Aliases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pl_sql_block.html">Plsql Blocks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Objects accessing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="user_types.html">User Types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="parameter_bindings.html">Parameter bindings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="packages.html">Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sql.html">SQL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cursors.html">CURSORS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="triggers.html">TRIGGERS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="synonyms.html">SYNONYMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cursors.html">Cursors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="triggers.html">Triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="synonyms.html">Synonyms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="autonomous_transactions.html">Autonomous transactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hierarchical_queries.html">Hierarchical queries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bulk_collect_into.html">BULK COLLECT INTO</a></li>
@@ -343,7 +342,7 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL Syntax</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Supported Oracle SQL and PL/SQL syntax</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">Objects accessing</li>
   </ul>
@@ -361,7 +360,7 @@
                 
 <div id="searchbox"></div>
                 <article class="bd-article" role="main"><p class="last-updated">
-  Updated November, 06 2023
+  Updated November, 17 2023
   <br/>
 </p>
                   
@@ -382,13 +381,13 @@
 <p><code class="docutils literal notranslate"><span class="pre">lbr$s</span></code> - for setting properties value.</p>
 <p><code class="docutils literal notranslate"><span class="pre">lbr$m</span></code> - for methods accessing.</p>
 <p>Pseudocode examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>--ORACLE
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>--Oracle
 <span class="linenos"> 2</span>CREATE PACKAGE pack {
 <span class="linenos"> 3</span>  fld1 integer;
 <span class="linenos"> 4</span>  function func1();
 <span class="linenos"> 5</span>}
 <span class="linenos"> 6</span>
-<span class="linenos"> 7</span>--PG
+<span class="linenos"> 7</span>--PostgreSQL
 <span class="linenos"> 8</span>CREATE FUNCTION lbr$g$pack$fld1();  --getter
 <span class="linenos"> 9</span>CREATE FUNCTION lbr$s$pack$fld1(integer);  --setter
 <span class="linenos">10</span>CREATE FUNCTION lbr$m$pack$func1(); --method call
@@ -408,7 +407,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">lbr$n</span></code> - for methods accessing.</p>
 <p>For collection types, <code class="docutils literal notranslate"><span class="pre">lbr$j</span></code> and <code class="docutils literal notranslate"><span class="pre">lbr$z</span></code> can be created without <code class="docutils literal notranslate"><span class="pre">&lt;property_name&gt;</span></code> to emulate accessing by index:</p>
 <p>Pseudocode examples:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>--ORACLE
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>--Oracle
 <span class="linenos"> 2</span>CREATE TYPE type {
 <span class="linenos"> 3</span>  fld1 integer;
 <span class="linenos"> 4</span>  function func1()

@@ -9,11 +9,11 @@ For each subquery, we add an alias if it doesn't exist.
 .. code-block:: sql
    :linenos:
 
-   --Ora:
+   --Oracle
    SELECT 1 FROM (SELECT 1 FROM DUAL);
    
    
-   --PG:
+   --PostgreSQL:
    SELECT 1 FROM (SELECT 1 FROM DUAL) DTA$1;
 
 
@@ -23,12 +23,11 @@ We add ``AS`` keyword before ``SELECT`` item alias if it was missed.
 .. code-block:: sql
    :linenos:
 
-   --Ora:
-
+   --Oracle
    SELECT 1 ONE FROM DUAL;
 
 
-   --PG:
+   --PostgreSQL
    SELECT 1 AS ONE FROM DUAL;
 
 
