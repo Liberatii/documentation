@@ -112,5 +112,22 @@ To emulate CONNECT_BY_ISCYCLE,  we store child columns in an array and check if 
     START WITH last_name = 'Hunold'
    CONNECT BY NOCYCLE PRIOR employee_id = manager_id AND LEVEL <= 4;
 
+CONNECT_BY_ROOT
++++++++++++++++
 
+.. code-block:: sql
+   :linenos:
+
+   --Oracle
+   select level,
+       cp.profilename,
+       SYS_CONNECT_BY_PATH(cp.profilename, ' |_ ') profile_tree,
+       CONNECT_BY_ROOT cp.profilename AS root_profile,
+       a.accountnumber,
+       a.balance current_balance,
+       a.id account_id
+  from account a
+  inner join communicationprofile cp on cp.id = a.communicationprofileid
+  start with a.parentaccountid is null
+  connect by NOCYCLE PRIOR a.id = a.parentaccountid;
 
